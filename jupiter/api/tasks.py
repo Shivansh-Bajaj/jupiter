@@ -16,3 +16,13 @@ This module exists with following simple goals:
   - Add a webhook subscription
   - Remove the subscription
 """
+import hug
+
+from jupiter._config import version
+from jupiter.api.directives import access_token
+
+
+@hug.get('/{task_id}', versions=version)
+def get_task(access_token, task_id: hug.types.text):
+  pass
+
