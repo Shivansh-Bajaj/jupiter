@@ -12,7 +12,7 @@ from jupiter.webhooks.scopes import scope_values
 from jupiter.api.directives import access_token
 
 @hug.put('/', versions=version)
-def put_hook(access_token,
+def put_hook(key: access_token,
       scope: hug.types.one_of(scope_values),
       callback_uri: hug.types.text):
   """Add an explicit subscription for the task completion
@@ -27,7 +27,7 @@ def put_hook(access_token,
 delete_hook_methods = ['hook_id', 'callback_uri']
 
 @hug.delete('/', versions=version)
-def delete_hook(access_token,
+def delete_hook(key: access_token,
       by: hug.types.one_of(delete_hook_methods),
       data: hug.types.text):
   """Remove a webhook subscription

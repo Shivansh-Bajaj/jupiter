@@ -11,7 +11,7 @@ from jupiter._config import version, redis_params
 huey = RedisHuey(**redis_params)
 
 
-@hug.get('/', versions=version)
+@hug.get('/', versions=1)
 def index():
   return "Survaider"
 
