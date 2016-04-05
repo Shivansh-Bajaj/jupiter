@@ -3,6 +3,28 @@
 # Survaider
 import hug
 
-from jupiter._config import version
-# from jupiter.huey import huey
+from huey import RedisHuey
+
+from jupiter._config import version, redis_params
+
+
+huey = RedisHuey(**redis_params)
+
+
+@hug.get('/', versions=version)
+def index():
+  return "Survaider"
+
+from jupiter.api import (
+  hooks as api_hooks,
+  tasks as api_tasks,
+)
+
+@hug.extend_api('/hooks')
+def attach_hooks_api():
+  return [api_hooks]
+
+@hug.extend_api('/tasks')
+def attach_tasks_api():
+  return [api_tasks]
 

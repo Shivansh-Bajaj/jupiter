@@ -12,3 +12,9 @@ access_tokens = {
     'active': True
   }
 }
+
+redis_params = {
+  'host': 'localhost',
+  'port': '6379',
+  'password': ''
+}
