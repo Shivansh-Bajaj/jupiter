@@ -4,5 +4,5 @@
 import hug
 
 from jupiter._config import version
-from jupiter.huey import huey
+# from jupiter.huey import huey
 

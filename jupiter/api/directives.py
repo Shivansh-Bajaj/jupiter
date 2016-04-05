@@ -13,16 +13,16 @@ import falcon
 from jupiter._config import access_tokens
 
 @hug.directive()
-def access_token(request, response, **kwa):
+def access_token(request, **kwa):
   """Check API Keys and Verify them"""
   api_key = request.get_header('Authorization')
   if not api_key:
     raise falcon.HTTPMissingHeader(header_name='Authorization')
 
-  if not api_key in access_tokens:
-    raise falcon.HTTPInvalidHeader(
-      msg='Invalid access_token',
-      header_name='Authorization'
+  if not api_key in access_tokens or not access_tokens[api_key]['active']:
+    raise falcon.HTTPForbidden(
+      title='Invalid access_token',
+      description='The supplied access token is invalid'
     )
 
   return api_key
