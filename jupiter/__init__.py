@@ -4,17 +4,24 @@
 import hug
 
 from huey import RedisHuey
+from mongoengine import connect as mongo_connect
 
-from jupiter._config import version, redis_params
+from jupiter._config import version, redis_params, mongo_params
 
 
 huey = RedisHuey(**redis_params)
 
+mongo_connect('jupiter', **mongo_params)
+
+# Register Huey tasks
+import jupiter.tasks.periodic
+import jupiter.tasks.utils
 
 @hug.get('/', versions=1)
 def index():
   return "Survaider"
 
+# Register APIs
 from jupiter.api import (
   hooks as api_hooks,
   tasks as api_tasks,

@@ -15,6 +15,11 @@ access_tokens = {
 
 redis_params = {
   'host': 'localhost',
-  'port': '6379',
-  'password': ''
+  'port': '6379'
+}
+
+mongo_params = {
+  # 'name': 'jupiter',
+  'host': 'localhost',
+  'port': 27017
 }

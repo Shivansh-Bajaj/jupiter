@@ -23,6 +23,13 @@ from jupiter.api.directives import access_token
 
 
 @hug.get('/{task_id}', versions=version)
-def get_task(access_token, task_id: hug.types.text):
+def get_task(key: access_token, task_id: hug.types.text):
   pass
 
+@hug.put('/', versions=version)
+def put_task(key: access_token, scope, payload):
+  pass
+
+@hug.delete('/{task_id}', versions=version)
+def delete_task(key: access_token, task_id: hug.types.text):
+  pass
