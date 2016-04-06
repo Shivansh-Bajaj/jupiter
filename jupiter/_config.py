@@ -19,7 +19,8 @@ redis_params = {
 }
 
 mongo_params = {
-  # 'name': 'jupiter',
   'host': 'localhost',
   'port': 27017
 }
+
+mongo_dbi = 'jupiter'

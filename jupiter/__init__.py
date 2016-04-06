@@ -6,12 +6,12 @@ import hug
 from huey import RedisHuey
 from mongoengine import connect as mongo_connect
 
-from jupiter._config import version, redis_params, mongo_params
+from jupiter._config import version, redis_params, mongo_params, mongo_dbi
 
 
 huey = RedisHuey(**redis_params)
 
-mongo_connect('jupiter', **mongo_params)
+mongo_connect(mongo_dbi, **mongo_params)
 
 # Register Huey tasks
 import jupiter.tasks.periodic
