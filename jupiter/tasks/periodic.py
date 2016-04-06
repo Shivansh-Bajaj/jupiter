@@ -34,7 +34,6 @@ def spawn_processor_m_15():
   Processors Index
   ----------------
   These processors are explicitly run:
-  - Webhooks
   - (Extend this list as needed)
   """
   pass
