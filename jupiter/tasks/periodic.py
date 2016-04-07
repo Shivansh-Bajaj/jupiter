@@ -4,6 +4,7 @@
 from huey import crontab
 
 from jupiter import huey
+from jupiter.sentient.model import Aspect
 
 
 @huey.periodic_task(crontab(minute='*/30'))
@@ -27,7 +28,7 @@ def spawn_processor_m_30():
   """
   pass
 
-@huey.periodic_task(crontab(minute='*/15'))
+@huey.periodic_task(crontab(minute='*/1'))
 def spawn_processor_m_15():
   """These processors are run every 15 minutes
 
@@ -36,4 +37,6 @@ def spawn_processor_m_15():
   These processors are explicitly run:
   - (Extend this list as needed)
   """
+  for obj in Aspect.objects:
+    obj.execute()
   pass

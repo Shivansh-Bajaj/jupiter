@@ -24,7 +24,6 @@ def emit(scope, callback, **kwa):
     if not hook.active:
       raise RuntimeError
     hook.payload.update(kwa)
-    hook.updated = True
     hook.save()
     hook.execute()
   except (KeyError, RuntimeError):
@@ -35,7 +34,6 @@ class Hook(Document):
   scope = StringField(required=True, choices=scope_values)
   payload = DictField()
   active = BooleanField(default=True)
-  updated = BooleanField(default=True)
 
   meta = {'allow_inheritance': True}
 
