@@ -36,17 +36,45 @@ def put_task(key: access_token,
       provider: hug.types.one_of(list(providers.keys())),
       access_url: hug.types.text,
       survey_id: hug.types.text,
-      children: hug.types.comma_separated_list=[]):
+      children: hug.types.text):
   provider_cls = providers[provider]
-
+  #I can write the logic below? Right.--NO
+  if provider=="zomato":
+      #Check if parent survey exists
+      parent= Zomato.objects(unique_identifier= survey_id+provider).count()
+      try:
+          if parent!=1:
+            obj=Zomato()
+            obj.base_url = access_url
+            obj.survey_id = survey_id
+            obj.parent = "true"
+            obj.unique_identifier=survey_id+provider
+            obj.save()
+            pass
+          else:pass
+          obj2= Zomato()
+          obj2.base_url=access_url
+          obj2.survey_id=children
+          obj2.unique_identifier=children+provider
+          return obj.repr
+      except ValidationError:raise falcon.HTTPBadRequest(title='ValidationError',description='The parameters provided are invalid')
+      except NotUniqueError:raise falcon.HTTPBadRequest(title='NotUniqueError',description='The given survey_id exists')
+  elif provider=="tripadvisor":
+    parent= Tripadvisor.objects(unique_identifier=survey_id+provider).count()
   try:
-    obj = Zomato()
-    obj.base_url = access_url
-    obj.survey_id = survey_id
-    obj.unit_ids = children
-    obj.save()
+    if parent!=1:
+      obj = Tripadvisor()
+      obj.base_url = access_url
+      obj.survey_id = survey_id
+      obj.parent ="true"
+      obj.unique_identifier=survey_id+provider
+      obj.save()
+    else:pass
+    obj2=Tripadvisor()
+    obj2.base_url=access_url
+    obj2.survey_id=children
+    obj2.unique_identifier=children+provider
     return obj.repr
-
   except ValidationError:
     raise falcon.HTTPBadRequest(
         title='ValidationError',
