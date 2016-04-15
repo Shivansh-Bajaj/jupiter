@@ -22,22 +22,29 @@ class AspectQ(Document):
   survey_id = StringField(required=True)
   unique_identifier=StringField(required=True,unique=True)
   parent= StringField() #Value , 'true'
-  # unit_ids  =StringField()
-
+  parent_id=StringField()
+  # unit_ids  =ListField(StringField())
   #Shouldn't there be a provider variable too?
+  if parent=="true":
+    survey_id=[survey_id]
+    for i in AspectQ.objects(parent=survey_id,provider=provider):
+      survey_id.append(i.survey_id)
   meta = {'allow_inheritance': True}
   @property
   def repr(self):
     return {
       'id': str(self.pk),
       'access_url': self.base_url,
-      'survey_id': self.survey_id,
-      'children': self.unit_ids
+      'survey_id': self.survey_id
+      # 'children': self.unit_ids
     }
   def execute(self):
-    print (self.survey_id)
+    print (self.unique_identifier)
   def wordcloud(self):
-    task= Status.objects(unique_identifier=self.survey_id+self.provider)
+    if isinstance(self.survey_id,list):
+      survey_id=self.survey_id[0]
+    else:survey_id=self.survey_id
+    task= Status.objects(unique_identifier=survey_id+self.provider)
   def reviewp(self):
     task= Status.objects(unique_identifier=self.survey_id+self.provider)
     if task.scraped_status=="success" and task.reviewp_status!="success":
@@ -62,26 +69,30 @@ class AspectQ(Document):
 
 
   def scrap(self):
-    task= Status.objects(unique_identifier=self.survey_id+self.provider)
-    if task.scraped_status=="success":
-      print(self.survey_id,"ignored for provider",self.provider)
+    if isinstance(survey_id,list):
       pass
     else:
-      if self.provider=="zomato":
-        try:
-          Zomato(self.base_url,self.survey_id,self.provider)
-          Status(unique_identifier=self.survey_id+self.provider,scraped_status="success")
-          
-        except:
-          print("Exception occured for ",self.survey_id,"provider",self.provider)
-      elif self.provider=="tripadvisor":
-        try:
-          TripAdvisor(self.base_url,self.survey_id,self.provider)
-          Status(unique_identifier=self.survey_id+self.provider,scraped_status="success")
-        except:
-          print("Exception occured for ",self.survey_id,"provider",self.provider)
+      task= Status.objects(unique_identifier=self.survey_id+self.provider)
+      if task.scraped_status=="success" or self.parent=="true":
+        print(self.survey_id,"ignored for provider",self.provider)
+        pass
       else:
-        print("Bad Provider: ",self.provider)
+
+        if self.provider=="zomato":
+          try:
+            Zomato(self.base_url,self.survey_id,self.provider)
+            Status(unique_identifier=self.survey_id+self.provider,scraped_status="success")
+            
+          except:
+            print("Exception occured for ",self.survey_id,"provider",self.provider)
+        elif self.provider=="tripadvisor":
+          try:
+            TripAdvisor(self.base_url,self.survey_id,self.provider)
+            Status(unique_identifier=self.survey_id+self.provider,scraped_status="success")
+          except:
+            print("Exception occured for ",self.survey_id,"provider",self.provider)
+        else:
+          print("Bad Provider: ",self.provider)
 
 
     # self.provider would work.

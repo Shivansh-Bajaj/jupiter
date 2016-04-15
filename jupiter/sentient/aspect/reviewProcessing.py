@@ -136,6 +136,8 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
     joined_sentences = []
     sentences_id = []
     aspect_annot = []
+    if isinstance(survey_id,list):
+        sid= survey_id[0]
     # print("test",survey_id,provider)
     for stn in m_sentences_annotated:
        
@@ -168,7 +170,7 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
         # count+=1
     # ChiFinal(survey_id=survey_id,provider=provider,data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences})
     output = pd.DataFrame( data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences})     
-    output.to_csv("aspect/"+filename+"#"+survey_id+"#"+provider)    
+    output.to_csv("aspect/"+filename+"#"+sid+"#"+provider)    
 
 # Save final Aspect Keywords list
 def saveExtendedAspectKeywords(m_aspectkeywords_fixed,AOutfilename):    

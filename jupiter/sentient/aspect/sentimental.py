@@ -27,9 +27,11 @@ class Sentiment():
 		self.sid= survey_id
 		self.p= provider
 	def run(self):
-
+		if isinstance(self.sid,list):
+			survey_id= self.sid[0]
+		else:survey_id=self.sid
 		data = []
-		filename="aspect/Data/annotated_sentences_chi_final.csv#"+self.sid+"#"+self.p
+		filename="aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
 
 		with open(filename, "rt") as csvfile:	
 			spamreader = csv.reader(csvfile)
@@ -60,7 +62,7 @@ class Sentiment():
 			line = data[i]
 			line.append(sentiment)
 			# print ("line",line)
-			SentR(provider=self.p,survey_id=self.sid,line=line).save()
+			SentR(provider=self.p,survey_id=survey_id,line=line).save()
 			# writer.writerow(line)
 		#print("Sentiment Done")
 if __name__ == '__main__':

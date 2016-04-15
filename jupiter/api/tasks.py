@@ -51,30 +51,35 @@ def put_task(key: access_token,
             obj.unique_identifier=survey_id+provider
             obj.save()
             pass
-          else:pass
+          else:
+            pass
           obj2= Zomato()
           obj2.base_url=access_url
           obj2.survey_id=children
+          obj2.parent_id=survey_id
           obj2.unique_identifier=children+provider
-          return obj.repr
+          obj2.save()
+          return obj2.repr
       except ValidationError:raise falcon.HTTPBadRequest(title='ValidationError',description='The parameters provided are invalid')
       except NotUniqueError:raise falcon.HTTPBadRequest(title='NotUniqueError',description='The given survey_id exists')
   elif provider=="tripadvisor":
-    parent= Tripadvisor.objects(unique_identifier=survey_id+provider).count()
+    parent= TripAdvisor.objects(unique_identifier=survey_id+provider).count()
   try:
     if parent!=1:
-      obj = Tripadvisor()
+      obj = TripAdvisor()
       obj.base_url = access_url
       obj.survey_id = survey_id
       obj.parent ="true"
       obj.unique_identifier=survey_id+provider
       obj.save()
     else:pass
-    obj2=Tripadvisor()
+    obj2=TripAdvisor()
     obj2.base_url=access_url
     obj2.survey_id=children
+    obj2.parent_id=survey_id
     obj2.unique_identifier=children+provider
-    return obj.repr
+    obj2.save()
+    return obj2.repr
   except ValidationError:
     raise falcon.HTTPBadRequest(
         title='ValidationError',

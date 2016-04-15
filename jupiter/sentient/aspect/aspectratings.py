@@ -33,7 +33,10 @@ def aspect_rating(review_rows, aspect_rows, overall):
 class AspectR(object):
 	"""docstring for AspectR"""
 	def __init__(self,survey_id,provider):
-		self.sid=survey_id
+		if isinstance(survey_id,list):
+			self.sid=survey_id[0]
+		else:
+			self.sid= survey_id
 		self.p=provider
 	def run(self):
 		data = []
