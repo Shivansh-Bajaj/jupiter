@@ -25,9 +25,9 @@ def spawn_processor_m_30():
 
   To prevent any magic to happen, do **not** spawn any periodic tasks inside.
   """
-  # print ("Process Running-- delay : 2min")
-  # for obj in AspectQ.objects:
-  #   obj.ml()
+  print ("Process Running-- delay : 2min")
+  for obj in AspectQ.objects:
+    obj.reviewp()
   pass
 
 @huey.periodic_task(crontab(minute='*/1'))
@@ -39,7 +39,30 @@ def spawn_processor_m_15():
   These processors are explicitly run:
   - (Extend this list as needed)
   """
-  print ("Process Running-- delay : 1min")
   for obj in AspectQ.objects:
     obj.scrap()
   pass
+
+@huey.periodic_task(crontab(minute='*/1'))
+def spawn_processor_m_45():
+  """
+  These processors are run every 45 minutes.
+  This is the next step after aspectr.
+
+  """
+  for obj in AspectQ.objects:
+    obj.sentiment
+  pass
+
+@huey.periodic_task(crontab(minute='*/60'))
+def spawn_processor_m_60():
+  """
+  These processors are run every 60 minutes.
+  This is the next step after sentiment.
+  Takes a long time.
+
+  """
+  for obj in AspectQ.objects:
+    obj.aspectr
+  pass
+

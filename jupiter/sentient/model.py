@@ -25,10 +25,7 @@ class AspectQ(Document):
   parent_id=StringField()
   # unit_ids  =ListField(StringField())
   #Shouldn't there be a provider variable too?
-  if parent=="true":
-    survey_id=[survey_id]
-    for i in AspectQ.objects(parent=survey_id,provider=provider):
-      survey_id.append(i.survey_id)
+
   meta = {'allow_inheritance': True}
   @property
   def repr(self):
@@ -38,6 +35,7 @@ class AspectQ(Document):
       'survey_id': self.survey_id
       # 'children': self.unit_ids
     }
+  
   def execute(self):
     print (self.unique_identifier)
   def wordcloud(self):
@@ -60,6 +58,8 @@ class AspectQ(Document):
     else:
       print ("Sentiment job ignored for ",self.survey_id,"provider",self.provider)
   def aspectr(self):
+    if self.parent=="true":
+      
     task= Status.objects(unique_identifier=self.survey_id+self.provider)
     if task.scraped_status=="success" and task.reviewp_status=="success" and task.sentiment_status=="success":
       AspectR(self.survey_id,self.provider)
@@ -69,8 +69,7 @@ class AspectQ(Document):
 
 
   def scrap(self):
-    print(self.parent)
-    if isinstance(self.survey_id,list):
+    if self.parent=="true":
       print (self.survey_id,"is a parent survey")
       pass
     else:
@@ -83,11 +82,13 @@ class AspectQ(Document):
         if self.provider=="zomato":
           try:
             print ("Scraping",self.survey_id)
-            Zomato(self.base_url,self.survey_id,self.provider).get_data()
-            Status(unique_identifier=self.survey_id+self.provider,scraped_status="success").save()
+            # Zomato(self.base_url,self.survey_id,self.provider).get_data()
+            # Status(unique_identifier=self.survey_id+self.provider,scraped_status="success").save()
             
           except Exception as e:
-            print("Exception occured for ",e,"***********88",self.survey_id,"provider",self.provider)
+            print("Exception occured for ",e,"***********",self.survey_id,"provider",self.provider)
+            with open("log.txt","a") as f:
+              f.write(str(e)+"****** \n")
         elif self.provider=="tripadvisor":
           try:
             TripAdvisor(self.base_url,self.survey_id,self.provider).get_data()

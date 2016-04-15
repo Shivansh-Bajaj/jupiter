@@ -34,13 +34,20 @@ class Zomato(object):
 	def __init__(self,url,survey_id,provider):
 		self.url= url
 		self.sid= survey_id
-	def get_total(self):pass
+	def get_total(self):
+		response= urlopen(self.url).read()
+		soup=BeautifulSoup(response)
+		total= soup.find('a',{'data-sort':'reviews-dd'}).find("span").text
+		return int(total)
+
 
 	def get_id(self):
 		response= urlopen(self.url).read()
 		soup=BeautifulSoup(response)
 		rid= int(soup.find('body')['itemid'])
+		# total= soup.find('a',{'data-sort':'reviews-dd'}).find("span").text
 		return rid
+
 	def sub_get(self,i):
 		rid= self.get_id()
 
@@ -58,6 +65,7 @@ class Zomato(object):
 			if review!=None or len(review)!=0:
 				rating=x.find('div')['aria-label'].replace("Rated ","")
 				sentiment= Senti(review).sent()
+				# print (review)
 				Reviews(provider="zomato",survey_id=self.sid,rating=rating,review=review,sentiment=sentiment).save()
 	def get_data(self):
 		if isinstance(self.sid,list):
@@ -73,15 +81,18 @@ class Zomato(object):
 			# 		pass
 		else:
 			rid = self.get_id()
+			total= self.get_total()
 			if len(Record.objects(survey_id= self.sid,rid=str(rid)))!=0:
 				print ("Already Review Collected")
 			else:
 				pool= Pool()
-				ids=list(range(1,100))
+				ids=list(range(0,total))
+				
 				pool.map(self.sub_get,ids)
+				
 				Record(provider="zomato",survey_id=self.sid,rid=str(rid)).save()
 if __name__ == '__main__':
-	test_url="https://www.zomato.com/ncr/alishas-kitchen-aaya-nagar-new-delhi"
-	z= Zomato(test_url)
+	test_url="https://www.zomato.com/ncr/le-himalaya-safdarjung-new-delhi"
+	z= Zomato(test_url,"x","y")
 	z.get_data()
-
+	print ("Done")
