@@ -31,7 +31,7 @@ header={
 url='https://www.zomato.com/php/social_load_more.php'
 class Zomato(object):
 	"""docstring for Zomato"""
-	def __init__(self,url,survey_id):
+	def __init__(self,url,survey_id,provider):
 		self.url= url
 		self.sid= survey_id
 	def get_total(self):pass

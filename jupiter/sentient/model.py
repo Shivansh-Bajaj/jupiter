@@ -69,26 +69,29 @@ class AspectQ(Document):
 
 
   def scrap(self):
-    if isinstance(survey_id,list):
+    print(self.parent)
+    if isinstance(self.survey_id,list):
+      print (self.survey_id,"is a parent survey")
       pass
     else:
-      task= Status.objects(unique_identifier=self.survey_id+self.provider)
-      if task.scraped_status=="success" or self.parent=="true":
+      task= Status.objects(unique_identifier=self.survey_id+self.provider).count()
+      if task==1:
         print(self.survey_id,"ignored for provider",self.provider)
         pass
       else:
 
         if self.provider=="zomato":
           try:
-            Zomato(self.base_url,self.survey_id,self.provider)
-            Status(unique_identifier=self.survey_id+self.provider,scraped_status="success")
+            print ("Scraping",self.survey_id)
+            Zomato(self.base_url,self.survey_id,self.provider).get_data()
+            Status(unique_identifier=self.survey_id+self.provider,scraped_status="success").save()
             
-          except:
-            print("Exception occured for ",self.survey_id,"provider",self.provider)
+          except Exception as e:
+            print("Exception occured for ",e,"***********88",self.survey_id,"provider",self.provider)
         elif self.provider=="tripadvisor":
           try:
-            TripAdvisor(self.base_url,self.survey_id,self.provider)
-            Status(unique_identifier=self.survey_id+self.provider,scraped_status="success")
+            TripAdvisor(self.base_url,self.survey_id,self.provider).get_data()
+            Status(unique_identifier=self.survey_id+self.provider,scraped_status="success").save()
           except:
             print("Exception occured for ",self.survey_id,"provider",self.provider)
         else:
@@ -112,7 +115,7 @@ class AspectQ(Document):
     #   except Exception as e:
     #     print ("Exception for survey_id",self.survey_id)
 
-class Zomato(AspectQ):
+class ZomatoQ(AspectQ):
   provider = 'zomato'
   def _scrape(self):
     # print("Zomato")
@@ -120,7 +123,7 @@ class Zomato(AspectQ):
    # -> This is correct?: Sentient.run(self.base_url,self.survey_id,"zomato").run()
    #  print("Zomato")
 
-class TripAdvisor(AspectQ):
+class TripAdvisorQ(AspectQ):
   provider = 'tripadvisor'
   def _scrape(self):pass
     

@@ -25,7 +25,7 @@ def spawn_processor_m_30():
 
   To prevent any magic to happen, do **not** spawn any periodic tasks inside.
   """
-  print ("Process Running-- delay : 2min")
+  # print ("Process Running-- delay : 2min")
   # for obj in AspectQ.objects:
   #   obj.ml()
   pass
@@ -41,5 +41,5 @@ def spawn_processor_m_15():
   """
   print ("Process Running-- delay : 1min")
   for obj in AspectQ.objects:
-    obj.execute()
+    obj.scrap()
   pass
