@@ -24,7 +24,7 @@ def aspect_rating(review_rows, aspect_rows, overall):
 
 # os.chdir('..')
 # os.chdir('..')
-filename = "Data/sentimentalreviews.csv"
+filename = "jupiter/sentient/Data/sentimentalreviews.csv"
 
 data = []
 with open(filename, "rt") as csvfile:

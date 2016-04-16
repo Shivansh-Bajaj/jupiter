@@ -7,6 +7,7 @@ from multiprocessing import Pool
 try:
 	from jupiter.sentient.reviews.models.model import Reviews,Scraped,Record
 	from jupiter.sentient.reviews.nlp import Senti
+	from jupiter.sentient.models.model import Status
 except:
 	from models.model import Reviews,Scraped,Record
 	from nlp import Senti
@@ -31,7 +32,7 @@ header={
 url='https://www.zomato.com/php/social_load_more.php'
 class Zomato(object):
 	"""docstring for Zomato"""
-	def __init__(self,url,survey_id,provider):
+	def __init__(self,url,survey_id,provider="zomato"):
 		self.url= url
 		self.sid= survey_id
 	def get_total(self):
@@ -91,6 +92,7 @@ class Zomato(object):
 				pool.map(self.sub_get,ids)
 				
 				Record(provider="zomato",survey_id=self.sid,rid=str(rid)).save()
+				Status(unique_identifier=self.sid+provider,scraped_status="success").save()
 if __name__ == '__main__':
 	test_url="https://www.zomato.com/ncr/le-himalaya-safdarjung-new-delhi"
 	z= Zomato(test_url,"x","y")
