@@ -6,8 +6,12 @@ import requests
 from collections import Counter
 from multiprocessing import Pool
 import sys
-from jupiter.sentient.reviews.models.model import Reviews,Record
-from jupiter.sentient.reviews.nlp import Senti
+try:
+	from jupiter.sentient.reviews.models.model import Reviews,Record
+	from jupiter.sentient.reviews.nlp import Senti
+except:
+	from reviews.models.model import Reviews,Record
+	from reviews.nlp import Senti
 # import ssl
 # from functools import wraps
 # def sslwrap(func):

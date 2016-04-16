@@ -4,12 +4,12 @@ import os
 try:
 	from jupiter.sentient.aspect.models.model import ChiFinal,SentR
 except Exception as e:
-	from models.model import ChiFinal,SentR
+	from aspect.models.model import SentR
 
 provider="none"
 survey_id="none"
 
-filename = "Data/annotated_sentences_chi_final.csv"
+filename = "jupiter/sentient/Data/annotated_sentences_chi_final.csv"
 def get_sentiment(text):
 	blob = TextBlob(text)
 	sentence_sentiment = blob.sentences[0].sentiment.polarity
@@ -31,7 +31,7 @@ class Sentiment():
 			survey_id= self.sid[0]
 		else:survey_id=self.sid
 		data = []
-		filename="aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
+		filename="jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
 
 		with open(filename, "rt") as csvfile:	
 			spamreader = csv.reader(csvfile)

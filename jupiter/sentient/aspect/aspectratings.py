@@ -1,6 +1,9 @@
 import csv
 import os
-from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR
+try:
+	from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR
+except:
+	from aspect.models.model import Aspect,Reviews,SentR
 # from mongoengine import *
 # class Reviews(Document):
 # 	pass

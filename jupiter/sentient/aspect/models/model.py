@@ -18,6 +18,7 @@ class Reviews(Document):
 	survey_id=StringField()
 	rating=StringField()
 	review=StringField()
+	sentiment= StringField()
 class ChiFinal(Document):
 	data=ListField()
 	survey_id=StringField()

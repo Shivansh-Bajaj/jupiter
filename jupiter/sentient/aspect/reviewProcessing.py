@@ -8,11 +8,15 @@ from nltk.tokenize import sent_tokenize
 from nltk.corpus import stopwords
 from nltk.tag import pos_tag
 import nltk
-from jupiter.sentient.aspect import aspectSegmenter 
 import pandas as pd
 import re
 import os
-from jupiter.sentient.aspect.models.model import Aspect,Reviews,ChiFinal
+try:
+    from jupiter.sentient.aspect.models.model import Aspect,Reviews,ChiFinal
+    from jupiter.sentient.aspect import aspectSegmenter 
+except:
+    from aspect.models.model import Aspect,Reviews,ChiFinal
+    from aspect import aspectSegmenter 
 # nltk.download('')
 
 lemmatizer = nltk.WordNetLemmatizer()
@@ -170,7 +174,7 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
         # count+=1
     # ChiFinal(survey_id=survey_id,provider=provider,data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences})
     output = pd.DataFrame( data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences})     
-    output.to_csv("jupiter/sentient/aspect/Data/"+filename+"#"+sid+"#"+provider)    
+    output.to_csv("jupiter/sentient/aspect/Data/"+filename+"#"+survey_id+"#"+provider)    
 
 # Save final Aspect Keywords list
 def saveExtendedAspectKeywords(m_aspectkeywords_fixed,AOutfilename):    

@@ -3,8 +3,8 @@ try:
 	from jupiter.sentient.reviews.rake import Rake
 	from jupiter.sentient.reviews.models.model import Reviews,WordCloudD
 except:
-	from rake import Rake
-	from models.model import Reviews,WordCloudD
+	from reviews.rake import Rake
+	from reviews.models.model import Reviews,WordCloudD
 from collections import OrderedDict
 from operator import itemgetter
 class Senti(object):
@@ -48,6 +48,7 @@ class WordCloud(object):
 		"""
 		"""
 		stoppath="jupiter/sentient/reviews/models/stopwords.txt"
+		# stoppath="reviews/models/stopwords.txt"
 		text= self.collect_reviews()
 		rake= Rake(stoppath)
 		keywords= rake.run(text)
@@ -56,7 +57,7 @@ class WordCloud(object):
 		print (wc)
 		# wc= rake_object(text).run()
 
-		# wcd= WordCloudD(survey_id=self.sid,provider=self.p,wc=wc).save()
+		wcd= WordCloudD(survey_id=self.sid,provider=self.p,wc=wc).save()
 		# print (wc)
 		
 
