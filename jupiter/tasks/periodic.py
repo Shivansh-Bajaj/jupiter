@@ -28,10 +28,13 @@ def spawn_processor_m_30():
   print ("Process Running-- delay : 2min")
   for obj in AspectQ.objects:
     try:
+      print (obj.survey_id)
       obj.execute()
       obj(status="true").save()
     except Exception as e:
       print ("Exception",e)
+      # break
+      
   pass
 
 # @huey.periodic_task(crontab(minute='*/1'))

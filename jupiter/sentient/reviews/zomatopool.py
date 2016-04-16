@@ -70,6 +70,7 @@ class Zomato(object):
 				Reviews(provider="zomato",survey_id=self.sid,rating=rating,review=review,sentiment=sentiment).save()
 	def get_data(self):
 		if isinstance(self.sid,list):
+			print ("Zomato ignored",self.sid)
 			pass
 			# parent_id= self.sid[0]
 			# for i in range(len(self.sid)):

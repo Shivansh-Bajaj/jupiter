@@ -28,10 +28,17 @@ class WordCloud(object):
 		self.sid= survey_id
 		self.p= provider
 	def collect_reviews(self):
-		if self.p=="all":
-			reviews= Reviews.objects(survey_id=self.sid)
+		if isinstance(self.sid,list):
+
+			if self.p=="all":
+				reviews= Reviews.objects(survey_id__in=self.sid)
+			else:
+				reviews= Reviews.objects(survey_id__in=self.sid,provider=self.p)
 		else:
-			reviews= Reviews.objects(survey_id=self.sid,provider=self.p)
+			if self.p=="all":
+				reviews= Reviews.objects(survey_id=self.sid)
+			else:
+				reviews= Reviews.objects(survey_id=self.sid,provider=self.p)
 		text=""
 		for i in reviews:
 			text+=i.review
@@ -56,8 +63,9 @@ class WordCloud(object):
 		
 		print (wc)
 		# wc= rake_object(text).run()
-
-		wcd= WordCloudD(survey_id=self.sid,provider=self.p,wc=wc).save()
+		if isinstance(self.sid,list):
+			wcd= WordCloudD(survey_id=self.sid[0],provider=self.p,wc=wc).save()
+		else:wcd= WordCloudD(survey_id=self.sid,provider=self.p,wc=wc).save()
 		# print (wc)
 		
 

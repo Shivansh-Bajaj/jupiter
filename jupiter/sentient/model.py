@@ -28,23 +28,24 @@ class AspectQ(Document):
     }
 
   def execute(self):
-    if self.status==True:
+    if self.status=="true":
       print("Already Done",self.survey_id)
     else:
       if self.parent=="true":
         survey_id=[self.survey_id]
-        for obj in AspectQ.objects(parent=self.survey_id):
+        for obj in AspectQ.objects(parent_id=self.survey_id):
           survey_id.append(obj.survey_id)
-
+      else:
+        survey_id=self.survey_id
       try:
-        Sentient(self.base_url,self.survey_id,self.provider).run()
+        Sentient(self.base_url,survey_id,self.provider).run()
 
 
         pass
       except Exception as e:
         raise e
 
-      print(self.survey_id)
+      print("survey_id",survey_id)
 
 class ZomatoQ(AspectQ):
   provider="zomato"

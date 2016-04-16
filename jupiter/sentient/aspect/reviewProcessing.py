@@ -174,7 +174,7 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
         # count+=1
     # ChiFinal(survey_id=survey_id,provider=provider,data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences})
     output = pd.DataFrame( data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences})     
-    output.to_csv("jupiter/sentient/aspect/Data/"+filename+"#"+survey_id+"#"+provider)    
+    output.to_csv(filename+"#"+survey_id+"#"+provider)    
 
 # Save final Aspect Keywords list
 def saveExtendedAspectKeywords(m_aspectkeywords_fixed,AOutfilename):    
