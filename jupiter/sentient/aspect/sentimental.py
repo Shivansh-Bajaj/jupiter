@@ -47,7 +47,7 @@ class Sentiment():
 
 		# with open("Data/sentimentalreviews.csv", "w") as out_file:
 		# 	writer = csv.writer(out_file)
-
+		SentR.objects(provider=self.p,survey_id=survey_id).delete()
 		for i in range(1, number_of_sentences):
 			# sentence = data[i][3]
 			# sentence= data.sentences
@@ -62,6 +62,8 @@ class Sentiment():
 			line = data[i]
 			line.append(sentiment)
 			# print ("line",line)
+			# print ("Saving SentR",survey_id)
+			
 			SentR(provider=self.p,survey_id=survey_id,line=line).save()
 			# writer.writerow(line)
 		#print("Sentiment Done")

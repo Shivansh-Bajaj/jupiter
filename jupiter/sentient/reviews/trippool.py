@@ -61,7 +61,7 @@ class TripAdvisor(object):
 		base_url= "https://www.tripadvisor.in"
 		# reviews=[]
 		for j in review_link:
-			print ("New Review Link")
+			# print ("New Review Link")
 			rl = j.find("a",href=True)
 			review_res= urlopen(base_url+rl['href']).read()
 			if review_res!=None:
@@ -93,7 +93,7 @@ class TripAdvisor(object):
 	def multi(self):
 		links= self.generate_link()
 		# return links
-		if len(Record.objects(links=set(links)))==0:
+		if len(Record.objects(links=set(links)))!=0:
 			print ("Already Review Collected")
 		else:
 			pool= Pool(8)

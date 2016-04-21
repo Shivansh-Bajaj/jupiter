@@ -167,6 +167,7 @@ def rankKeywordsByChi(m_chi_table, m_vocabulary, m_aspectkeywords, m_ranklist):
     return extended, m_aspectkeywords       
                     
 def BootStrapping(m_sentences, m_vocabulary, m_aspectkeywords):
+
     print ("Vocabulary Size:", len(m_vocabulary))
     it = 0
     while True:
@@ -179,4 +180,5 @@ def BootStrapping(m_sentences, m_vocabulary, m_aspectkeywords):
         else:
             print ("Aspect Keywords not changing or iteration limit exceeds. Converging Bootstrapping algorithm for",it,"iteration.")
             break
+
     return m_sentences, m_aspectkeywords    

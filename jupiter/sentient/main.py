@@ -24,17 +24,20 @@ class Sentient(object):
 		if "zomato.com" in self.u:
 			# self.p= "zomato"
 			Zomato(self.u,self.sid).get_data()
-			print("zomato")
 		if "tripadvisor" in self.u:
 			# self.p="tripadvisor"
 			TripAdvisor(self.u,self.sid).get_data()
-			print("tripadvisor")
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
 	def run_ml(self):
+		
 		ReviewP(self.sid,self.p).run()
+		print("ReviewP Done")
+		
 		Sentiment(self.sid,self.p).run()
+		print("Sentiment Done")
 		AspectR(self.sid,self.p).run()
+		print ("AspectR Done")
 	def run(self):
 		if verbose:print ("Starting Scraping")
 		self.scrap_data()

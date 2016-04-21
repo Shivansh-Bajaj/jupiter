@@ -24,10 +24,11 @@ class AspectQ(Document):
       'id': str(self.pk),
       'access_url': self.base_url,
       'survey_id': self.survey_id,
-      'children': self.unit_ids
+      # 'children': self.children
     }
 
   def execute(self):
+    
     if self.status=="true":
       print("Already Done",self.survey_id)
     else:
@@ -38,13 +39,15 @@ class AspectQ(Document):
       else:
         survey_id=self.survey_id
       try:
+        print("provider",self.provider)
         Sentient(self.base_url,survey_id,self.provider).run()
 
 
         pass
       except Exception as e:
-        raise e
 
+        print("EXECUTE Exception", e)
+        raise e
       print("survey_id",survey_id)
 
 class ZomatoQ(AspectQ):

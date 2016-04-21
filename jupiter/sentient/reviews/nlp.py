@@ -2,11 +2,14 @@ from textblob import TextBlob
 try:
 	from jupiter.sentient.reviews.rake import Rake
 	from jupiter.sentient.reviews.models.model import Reviews,WordCloudD
+	from jupiter.sentient.reviews.keywordcount import KeywordCount
 except:
 	from reviews.rake import Rake
 	from reviews.models.model import Reviews,WordCloudD
+	from reviews.keywordcount import KeywordCount
 from collections import OrderedDict
 from operator import itemgetter
+
 class Senti(object):
 	"""docstring for Senti"""
 	def __init__(self, txt):
@@ -57,15 +60,19 @@ class WordCloud(object):
 		stoppath="jupiter/sentient/reviews/models/stopwords.txt"
 		# stoppath="reviews/models/stopwords.txt"
 		text= self.collect_reviews()
-		rake= Rake(stoppath)
-		keywords= rake.run(text)
+		# rake= Rake(stoppath)
+		# keywords= rake.run(text)
+		keywordcounts = KeywordCount(stoppath)
+		keywords = keywordcounts.run(text)
+
 		wc= self.wc_to_dict(keywords)
 		
 		print (wc)
+		if len(wc)!=0:
 		# wc= rake_object(text).run()
-		if isinstance(self.sid,list):
-			wcd= WordCloudD(survey_id=self.sid[0],provider=self.p,wc=wc).save()
-		else:wcd= WordCloudD(survey_id=self.sid,provider=self.p,wc=wc).save()
+			if isinstance(self.sid,list):
+				wcd= WordCloudD(survey_id=self.sid[0],provider=self.p,wc=wc).save()
+			else:wcd= WordCloudD(survey_id=self.sid,provider=self.p,wc=wc).save()
 		# print (wc)
 		
 

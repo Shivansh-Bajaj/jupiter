@@ -20,7 +20,7 @@ class Reviews(Document):
 	review=StringField()
 	sentiment= StringField()
 class ChiFinal(Document):
-	data=ListField()
+	data=ListField(unique=True)
 	survey_id=StringField()
 	provider=StringField()
 class ExpKeywords(Document):

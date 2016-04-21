@@ -1,32 +1,80 @@
 ,RID,aspects,original,sentences
-0,1,2,Being a college student I try finding places that serve good food at cheap price this place ex eider my expectations I really love the food and after ordering 7 to 8 dishes when I'm full to the brim the bill rarely exceeds 800 hundred .,college student try finding places serve good food cheap price place ex eider expectations really love food ordering 7 8 dishes m full brim bill rarely exceeds 800 hundred .
-1,1,2,For anyone who loves spicy food and loves to experiment with food this place is it,anyone loves spicy food loves experiment food place
-2,2,-1,Checked out this place.,checked place .
-3,2,-1,Decor is sweet and good.,decor sweet good .
-4,2,-1,We didnt have main course just had the deserts with coffee.,didnt main course deserts coffee .
-5,2,-1,Their deserts were average.,deserts average .
-6,2,-1,Nothing great!,nothing great !
-7,2,-1,"Wouldn't go back again, I guess!","would n't go back , guess !"
-8,3,-1,I just went to this restaurant.,went restaurant .
-9,3,-1,This restaurant is good and happening and interior is good but something awkward happened.,restaurant good happening interior good something awkward happened .
-10,3,2,This restaurant food is quiet good and nice also.,restaurant food quiet good nice also .
-11,4,-1,If there is one place in Delhi that I would like to call a hidden gem than this place for me will surely top the list.,one place delhi would like call hidden gem place surely top list .
-12,4,-1,I am just in love with the place.,love place .
-13,4,2,Some quirky interiors to the love for Tibet and some amazing food is all found under one roof.,quirky interiors love tibet amazing food found one roof .
-14,4,-1,"From Nepalese to Tibetan to Chinese this place serves all and the taste of all will take you in some other world al together, you won't believe me that easy on this and why should you but take my words if you may because this place will take you to a hell of a ride.","nepalese tibetan chinese place serves taste take world al together , wo n't believe easy take words may place take hell ride ."
-15,4,-1,The shi shi momos this place serves is the best I have ever tasted and than being a tea lover I am in love with the tibetan butter tea.,shi shi momos place serves best ever tasted tea lover love tibetan butter tea .
-16,4,-1,I can have it at any hour of the day and trust me it is too had too resist to just have a cup of this.,hour day trust resist cup .
-17,4,-1,And if you are getting into the groove of what more they serve than sit back and enjoy.,getting groove serve sit back enjoy .
-18,5,-1,We got one paneer fried momos and one chicken fried momos.,got one paneer fried momos one chicken fried momos .
-19,5,0,"They said the order will be ready in 10 mins, but it took them 30 mins.","said order ready 10 mins , took 30 mins ."
-20,5,-1,They momos were okay-both of them.,momos okay-both .
-21,5,-1,The oil they use isn't good because it caused us major acidity issues after eating from here.,oil use n't good caused us major acidity issues eating .
-22,6,-1,Le Himalaya changed their interiors to make it more sophisticated and have also started karaoke nights although the area cannot accommodate more than 18-20 people.,le himalaya changed interiors make sophisticated also started karaoke nights although area accommodate 18-20 people .
-23,6,-1,The menu is non-veg heavy and shi shi momos a specialty.,menu non-veg heavy shi shi momos specialty .
-24,6,-1,The gravy of momos is full of flavors and so is crispy shredded honey chicken.,gravy momos full flavors crispy shredded honey chicken .
-25,6,-1,Surprisingly their white sauce pasta is also good but the sauce is a little to thick.,surprisingly white sauce pasta also good sauce little thick .
-26,6,-1,Nevertheless its full of vegetables.,nevertheless full vegetables .
-27,6,2,Certainly a good place for a decent meal.,certainly good place decent meal .
-28,7,-1,Great place and very friendly people.,great place friendly people .
-29,7,2,Food prices are also good.,food prices also good .
-30,7,2,But i want them to be consistent with their food and keep the good vibes going.,want consistent food keep good vibes going .
+0,1,1,Awesome Chinese I had ever eat.,awesome chinese ever eat .
+1,1,1,Mast and must try.,mast must try .
+2,1,1,Free wifi is an advantage.,free wifi advantage .
+3,1,1,I had a mind to eat Bhutan dish but Chinese is good.,mind eat bhutan dish chinese good .
+4,2,1,Stumbled upon this cafe while I went shopping with my friends.,stumbled upon cafe went shopping friends .
+5,2,-1,Now i was at Majnu ka Tila... FOR SHOPPING!!,majnu ka tila ... shopping ! !
+6,2,1,Now if that doesn't tell u that em frugal i don't know what will....,n't tell u em frugal n't know ... .
+7,2,-1,"So u can understand my panic when my friends start entering this place with perfect Tibetan coffee shop ambiance which screamed ""Expensive"" in its every fiber !!",u understand panic friends start entering place perfect tibetan coffee shop ambiance screamed `` expensive '' every fiber ! !
+8,3,1,Great Food..Great Ambience..liked everything of it..freshly prepared food...ordered fruit great great taste...pan fried momos perfectly cooked..choupsey again mind blowing,great food..great ambience..liked everything it..freshly prepared food ... ordered fruit great great taste ... pan fried momos perfectly cooked..choupsey mind blowing
+9,4,1,Beautiful rustic cafe with warm ambience.,beautiful rustic cafe warm ambience .
+10,4,1,Came here for a late lunch and ended up having amazing soul food.,came late lunch ended amazing soul food .
+11,4,1,Star feature the amazing coffee in huge beautiful cups.,star feature amazing coffee huge beautiful cups .
+12,4,-1,Definitely recommend the place and shall be visiting again for sure!,definitely recommend place shall visiting sure !
+13,5,1,Quite serendipitous how I ended up here.,quite serendipitous ended .
+14,5,-1,I just needed to sit down and walked to into this cafe and was amazed away!,needed sit walked cafe amazed away !
+15,5,1,"The butter tea was extremely good and they had a bunch of home made cookies too, among which the oats one was the best.","butter tea extremely good bunch home made cookies , among oats one best ."
+16,5,1,"The cafe is also very quaint, with a touch is simple modernity.","cafe also quaint , touch simple modernity ."
+17,5,-1,Definitely going back,definitely going back
+18,6,1,"The ambience is quite nice, except for the music.","ambience quite nice , except music ."
+19,6,1,The food was good but as a specialised Tibetan outlet I expected better.,food good specialised tibetan outlet expected better .
+20,6,1,"Price is pocket friendly & yes, you can have a good time with your friends here.","price pocket friendly & yes , good time friends ."
+21,6,1,"We ordered Momos, Thupka & a cold drink.","ordered momos , thupka & cold drink ."
+22,6,1,"To our surprise, there were no Pork momos in evening but only chicken ones.","surprise , pork momos evening chicken ones ."
+23,6,1,It was a huge let down when you are serving a paneer momo.,huge let serving paneer momo .
+24,6,1,The momos were alright but it missed that smooth oozy juicy texture that makes a momo brilliant.,momos alright missed smooth oozy juicy texture makes momo brilliant .
+25,6,1,"As far as, digging deeper into the best of food, ambience or music, I think Dekhang needs to keep digging.","far , digging deeper best food , ambience music , think dekhang needs keep digging ."
+26,6,1,"So far, it has done alright but there is immense room for improvement.","far , done alright immense room improvement ."
+27,6,1,We really enjoyed our cold drink.,really enjoyed cold drink .
+28,7,1,"Normally, I'm having most of coffee n brownies here at Dekhang Cafe but this time, it was my most pathetic experience.","normally , m coffee n brownies dekhang cafe time , pathetic experience ."
+29,7,1,They are not giving fresh brownies n marble cakes.,giving fresh brownies n marble cakes .
+30,7,1,"So, I complained about it to the counter lady and she just ignored my words!!",", complained counter lady ignored words ! !"
+31,7,-1,:( Beware of what you EAT guys!,: ( beware eat guys !
+32,8,1,"Stumbled upon this little gem a couple of months ago, and were so happy with the overall experience that we decided to revisit.","stumbled upon little gem couple months ago , happy overall experience decided revisit ."
+33,8,1,"The place is unassumingly tucked away on the busy main road, however, the interior is tastefully decorated and very well kept.","place unassumingly tucked away busy main road , however , interior tastefully decorated well kept ."
+34,8,-1,"The staff is friendly, just the sweet waiter suffering from short term memory loss (seriously) had to write everything down.","staff friendly , sweet waiter suffering short term memory loss ( seriously ) write everything ."
+35,8,1,":) The best part, the food, everything here tastes delicious especially the momos, pork starters, and mains.",": ) best part , food , everything tastes delicious especially momos , pork starters , mains ."
+36,8,1,The mixed fried rice is very well made.,mixed fried rice well made .
+37,9,1,"Had an incredibly yummy lunch today, at Dekhang Café just outside the Tibetan Refugee Colony gate.","incredibly yummy lunch today , dekhang café outside tibetan refugee colony gate ."
+38,9,1,The Ema Datsey was delicious.,ema datsey delicious .
+39,9,1,"Must try, when u are in that area.","must try , u area ."
+40,10,1,We checked out this place as a part of our food journey and was left with a residue of passion with culture.,checked place part food journey left residue passion culture .
+41,10,1,The people are warm however when the place is crowded sound like a stock market as it becomes too loud.,people warm however place crowded sound like stock market becomes loud .
+42,10,1,Food is good however there is a great scope of improvement.,food good however great scope improvement .
+43,10,-1,The price point is low  thus makes it comfortable to a wide range of visitors.,price point low thus makes comfortable wide range visitors .
+44,10,1,The decor is simple yet neat.,decor simple yet neat .
+45,10,-1,Overall a nice place to check and eat or even to sip some hot coffee,overall nice place check eat even sip hot coffee
+46,11,1,"Located just outside of the main Majnu ka Tilla market, this place has definitely become my favorite.","located outside main majnu ka tilla market , place definitely become favorite ."
+47,11,1,"The ambience is pleasing and neat, loved the wonderful paintings all over their wall.","ambience pleasing neat , loved wonderful paintings wall ."
+48,11,1,"There are plenty of food options, from shakes, coffee and coolers to proper meal in Tibetan, Thai and Bhutanese cuisines.","plenty food options , shakes , coffee coolers proper meal tibetan , thai bhutanese cuisines ."
+49,11,1,Also they have a wonderful section of fresh cakes and cookies.,also wonderful section fresh cakes cookies .
+50,11,1,"We  ordered for Pork chops, virgin mojito, strawberry cooler and a muffin.","ordered pork chops , virgin mojito , strawberry cooler muffin ."
+51,11,1,The food came pretty quickly.,food came pretty quickly .
+52,11,1,"The pork was wonderfully fried, no extra layer of fat, uniformly cooked.","pork wonderfully fried , extra layer fat , uniformly cooked ."
+53,11,1,The coolers were refreshing and the muffin was totally delightful.,coolers refreshing muffin totally delightful .
+54,11,1,"The staff were very friendly, mannered and trained.","staff friendly , mannered trained ."
+55,11,1,"Loved the overall experience, would definitely come back again.","loved overall experience , would definitely come back ."
+56,12,1,"Located on the main road, this one is easy to spot.","located main road , one easy spot ."
+57,12,1,We dropped in early morning for a quick spot of breakfast and had a nice experience.,dropped early morning quick spot breakfast nice experience .
+58,12,1,The place is clean and well lit with very charming decor.,place clean well lit charming decor .
+59,12,1,"They have a limited breakfast menu consisting of various preparations of breads, eggs, porridge and pancakes.","limited breakfast menu consisting various preparations breads , eggs , porridge pancakes ."
+60,12,1,"Coffee, tea and juices were available as well.","coffee , tea juices available well ."
+61,12,1,"Our order of sandwiches, pancakes and espresso was freshly prepared and very tasty.","order sandwiches , pancakes espresso freshly prepared tasty ."
+62,12,-1,A shout out to their portions sizes!,shout portions sizes !
+63,13,1,The great thing about this place is that they make homemade chocolates too and they taste very good; the right amount of cocoa and sugar in them.,great thing place make homemade chocolates taste good ; right amount cocoa sugar .
+64,13,1,"I always have a cup of cappuccino when I go there, but I make sure to stay away from the cakes and muffins as they are quite dry and does not go down one's throat easily.","always cup cappuccino go , make sure stay away cakes muffins quite dry go one throat easily ."
+65,13,-1,The beef Momos are great there and if you bot that health conscious order the fried ones.,beef momos great bot health conscious order fried ones .
+66,13,-1,Let me share a secret with you when ordering coffees- order takeaways as the takeaway cups are much larger than the coffee mugs.,let share secret ordering coffees- order takeaways takeaway cups much larger coffee mugs .
+67,13,-1,Peace out!,peace !
+68,14,1,"Situated in mini Tibet like place, this place offers exactly what one needs at late winter evening.","situated mini tibet like place , place offers exactly one needs late winter evening ."
+69,14,1,"Cosy environment, informal setting and perfect food.","cosy environment , informal setting perfect food ."
+70,15,1,WORTH IT.,worth .
+71,16,1,We were starving in our zest to find a unique place to eat at Majnu ka Tilla.,starving zest find unique place eat majnu ka tilla .
+72,16,1,"Just when we were about to give up and head back came this cafe out of the blue, which looked like a posh cafe only rich would venture.","give head back came cafe blue , looked like posh cafe rich would venture ."
+73,16,1,But we had to give in and went in anyways.,give went anyways .
+74,16,1,Only when the menu arrived did we know that this is what we were looking for.,menu arrived know looking .
+75,16,1,The food was amazing especially the veggie dishes that we ordered and forgot the names.,food amazing especially veggie dishes ordered forgot names .
+76,16,-1,The staff are extremely cordial and friendly.,staff extremely cordial friendly .
+77,16,1,"But, the killer of the all was the homemade chocolates that we bought.",", killer homemade chocolates bought ."
+78,16,1,It literally made us make a mental note that we are coming back again.,literally made us make mental note coming back .

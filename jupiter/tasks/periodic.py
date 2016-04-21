@@ -30,9 +30,14 @@ def spawn_processor_m_30():
     try:
       print (obj.survey_id)
       obj.execute()
-      obj(status="true").save()
+      obj.status="true"
+      obj.save()
+      # obj(status="true").save()
+      print("success",obj.survey_id)
     except Exception as e:
-      print ("Exception",e)
+      print ("Exception",e,obj.survey_id)
+      # break
+      # obj(status="true").save()
       # break
       
   pass

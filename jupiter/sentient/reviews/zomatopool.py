@@ -96,6 +96,7 @@ class Zomato(object):
 				Status(unique_identifier=self.sid+provider,scraped_status="success").save()
 if __name__ == '__main__':
 	test_url="https://www.zomato.com/ncr/le-himalaya-safdarjung-new-delhi"
+	
 	z= Zomato(test_url,"x","y")
 	z.get_data()
 	print ("Done")

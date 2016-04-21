@@ -65,6 +65,6 @@ for review_ID in range(1, last_review_ID):
 		AR_price = overall
 	
 	# OUTPUT
-	print (review_rows)
-	print ("Food: ", AR_food, " Service: ", AR_service, " Price: ", AR_price)
-	print ("Overall", overall)
+	# print (review_rows)
+	# print ("Food: ", AR_food, " Service: ", AR_service, " Price: ", AR_price)
+	# print ("Overall", overall)
