@@ -4,9 +4,9 @@ try:
 	from jupiter.sentient.reviews.models.model import Reviews,WordCloudD
 	from jupiter.sentient.reviews.keywordcount import KeywordCount
 except:
-	from reviews.rake import Rake
-	from reviews.models.model import Reviews,WordCloudD
-	from reviews.keywordcount import KeywordCount
+	from rake import Rake
+	from models.model import Reviews,WordCloudD
+	from keywordcount import KeywordCount
 from collections import OrderedDict
 from operator import itemgetter
 
