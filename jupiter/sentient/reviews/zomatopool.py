@@ -9,8 +9,8 @@ try:
 	from jupiter.sentient.reviews.nlp import Senti
 	from jupiter.sentient.models.model import Status
 except:
-	from reviews.models.model import Reviews,Scraped,Record
-	from reviews.nlp import Senti
+	from models.model import Reviews,Scraped,Record
+	from nlp import Senti
 """from 
 VARIABLES
 """
@@ -51,7 +51,7 @@ class Zomato(object):
 
 	def sub_get(self,i):
 		rid= self.get_id()
-
+		print("I",i)
 		payload={'entity_id':rid,
 				'profile_action':'reviews-dd',
 				'page':i,
@@ -61,13 +61,15 @@ class Zomato(object):
 		response=json.loads(str(r))
 		soup=BeautifulSoup(response['html'])
 		data= soup.find_all('div',{'class':'rev-text'})
-		for x in data:
-			review= x.find('div').next_sibling.strip()
-			if review!=None or len(review)!=0:
-				rating=x.find('div')['aria-label'].replace("Rated ","")
-				sentiment= Senti(review).sent()
-				# print (review)
-				Reviews(provider="zomato",survey_id=self.sid,rating=rating,review=review,sentiment=sentiment).save()
+		try:
+			for x in data:
+				review= x.find('div').next_sibling.strip()
+				if review!=None or len(review)!=0:
+					rating=x.find('div')['aria-label'].replace("Rated ","")
+					sentiment= Senti(review).sent()
+					# print (review)
+					Reviews(provider="zomato",survey_id=self.sid,rating=rating,review=review,sentiment=sentiment).save()
+		except :print("lol")
 	def get_data(self):
 		if isinstance(self.sid,list):
 			print ("Zomato ignored",self.sid)
@@ -84,18 +86,24 @@ class Zomato(object):
 		else:
 			rid = self.get_id()
 			total= self.get_total()
+			turn = int(total/5)
+			print (turn)
+			# 1/0
 			if len(Record.objects(survey_id= self.sid,rid=str(rid)))!=0:
 				print ("Already Review Collected")
 			else:
 				pool= Pool()
-				ids=list(range(0,total))
-				
+				ids=list(range(0,turn))
+				print (ids)
+				# 1/0
+				# for i in ids:
+				# 	self.sub_get(i)	
 				pool.map(self.sub_get,ids)
 				
 				Record(provider="zomato",survey_id=self.sid,rid=str(rid)).save()
 				Status(unique_identifier=self.sid+provider,scraped_status="success").save()
 if __name__ == '__main__':
-	test_url="https://www.zomato.com/ncr/le-himalaya-safdarjung-new-delhi"
+	test_url="https://www.zomato.com/bangalore/petoo-sarjapur-road"
 	
 	z= Zomato(test_url,"x","y")
 	z.get_data()
