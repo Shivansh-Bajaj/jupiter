@@ -3,29 +3,128 @@ import os
 try:
 	from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR
 except:
-	from aspect.models.model import Aspect,Reviews,SentR
+	from models.model import Aspect,Reviews,SentR
 # from mongoengine import *
 # class Reviews(Document):
 # 	pass
 
 verbose=False
+class AspectRating(object):
+	"""docstring for AspectRating"""
+	def __init__(self,survey_id):
+		self.sid= survey_id
+	def get_all(self):
+		aspects_p={"food":0,"service":0,"price":0,"neutral":0}
+		aspects_n={"food":0,"service":0,"price":0,"neutral":0}
+		aspects_nu={"food":0,"service":0,"price":0,"neutral":0}
+		objs= SentR.objects(survey_id= self.sid)
+		for o in objs:
+			obj= o.line
+			# print(type(obj[2]))
+			if obj[5]=="Positive":
+				if obj[2]=='0':
+					aspects_p['food']+=1
+				if obj[2]=='1':
+					aspects_p['service']+=1
+				if obj[2]=='2':
+					aspects_n['price']+=1
+				if obj[2]=='-1':
+					aspects_n['neutral']+=1
+			if obj[5]=="Negative":
+				if obj[2]=='0':
+					aspects_n['food']+=1
+				if obj[2]=='1':
+					aspects_n['service']+=1
+				if obj[2]=='2':
+					aspects_n['price']+=1
+				if obj[2]=='-1':
+					aspects_n['neutral']+=1
+			if obj[5]=="Neutral":
+				if obj[2]=='0':
+					aspects_nu['food']+=1
+				if obj[2]=='1':
+					aspects_nu['service']+=1
+				if obj[2]=='2':
+					aspects_nu['price']+=1
+				if obj[2]=='-1':
+					aspects_nu['neutral']+=1
+		return {"positive":aspects_p,"negative":aspects_n,"neutral":aspects_nu}
+				
+		"""
+		Logic:
+			smookifthing const:
+			total positive
+			total neutral
+			total negative
+
+			if negative more than positive:
+				give more weight to positive 
+			c= mx +ny+oz
+			where m , n and o are weight const for x ,y,z
+			m= 0.75*n= 0.5 *o
+			x,y,z are the negative, positive, neutral values
+			weight formula= (1.5 *a + b + 0.5*c)/total
+
+			if b >a  , c refers to neutral
+			{'positive': {'food': 48, 'neutral': 0, 'service': 0, 'price': 0}, 'neutral': {'food': 12, 'neutral': 4, 'service': 0, 'price': 0}, 'negative': {'food': 7, 'neutral': 7, 'service': 0, 'price': 1}}
+
+
+
+		"""
+	def get_c(self,aspect):
+		total= self.get_all()
+		sum_t=0
+		a=0
+		b=0
+		c=0
+
+		for key in total:
+			sum_t+=total[key][aspect]
+		# print(sum_t)
+		if sum_t==0:
+			return 0
+		if (0.8 *total['positive'][aspect])>total['negative'][aspect] :
+			a= total['negative'][aspect]
+			b= total['positive'][aspect]
+			c= total['neutral'][aspect]
+			# print(a,b,c)
+			w=(1.5 *a + b + 0.5*c)/sum_t
+		elif total['positive'][aspect]<(0.8*total['negative'][aspect]):
+			a= total['positive'][aspect]
+			b=total['negative'][aspect]
+			c= total['neutral'][aspect]
+			w= (1.5 *a + b + 0.5*c)/sum_t
+		elif total['positive'][aspect]==total['negative'][aspect]:
+			a= total['positive'][aspect]
+			b=total['negative'][aspect]
+			c= total['neutral'][aspect]
+			w= (a+b+c)/sum_t
+		return w
+
+
+				
+
+		
 def aspect_rating(review_rows, aspect_rows, overall):
 	positive_rows = [row for row in aspect_rows if row[2] == 'Positive']
 	negative_rows = [row for row in aspect_rows if row[2] == 'Negative']
+	# c= AspectRating.get_c()
+	if len(aspect_rows) == 0:
+		y = overall
+	else:
+		if len(positive_rows) == len(negative_rows):
+			x = (len(positive_rows) + len(negative_rows))*float(overall)/len(review_rows)
+			y = (x + 10)/5
 
-	if len(positive_rows) == len(negative_rows):
-		x = (len(positive_rows) + len(negative_rows))*float(overall)/len(review_rows)
-		y = (x + 10)/5
+		if len(positive_rows) > len(negative_rows):
+			diff = len(positive_rows) - len(negative_rows)
+			x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
+			y = 3 + 2*x/5
 
-	if len(positive_rows) > len(negative_rows):
-		diff = len(positive_rows) - len(negative_rows)
-		x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
-		y = 3 + 2*x/5
-
-	if len(positive_rows) < len(negative_rows):
-		diff = len(negative_rows) - len(positive_rows)
-		x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
-		y = 2*x/5
+		if len(positive_rows) < len(negative_rows):
+			diff = len(negative_rows) - len(positive_rows)
+			x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
+			y = 2*x/5
 
 	return y
 
@@ -89,28 +188,28 @@ class AspectR(object):
 			for review_ID in range(1, last_review_ID):
 
 				review_rows = [row for row in data if row[0] == str(review_ID)]
-
+				# print (review_rows)
 				food_rows = [row for row in review_rows if row[1] == '0']
 				service_rows = [row for row in review_rows if row[1] == '1']
 				price_rows = [row for row in review_rows if row[1] == '2']
 				neutral_rows = [row for row in review_rows if row[1] == '-1']
-
+				# print(food_rows)
 				overall = overall_ratings[review_ID]
 
 				if len(review_rows) !=0 :
-					AR_food = aspect_rating(review_rows, food_rows, overall)
-					AR_service = aspect_rating(review_rows, service_rows, overall)
-					AR_price = aspect_rating(review_rows, price_rows, overall)
+					AR_food = aspect_rating(review_rows, food_rows, overall)-AspectRating(self.sid).get_c("food")
+					AR_service = aspect_rating(review_rows, service_rows, overall)-AspectRating(self.sid).get_c("service")
+					AR_price = aspect_rating(review_rows, price_rows, overall)-AspectRating(self.sid).get_c("price")
 				else :
 					AR_food = overall
 					AR_service = overall
 					AR_price = overall
-				
+					
 				# OUTPUT
 				# print (review_rows)
-				# print ("Food: ", AR_food, " Service: ", AR_service, " Price: ", AR_price)
+				return("Food: ", AR_food, " Service: ", AR_service, " Price: ", AR_price)
 				# print ("Overall", overall)
-				r= Aspect(sector="food",provider=self.p,survey_id=self.sid,food=str(AR_food),service=str(AR_service),price=str(AR_price),overall=str(overall)).save()
+				# r= Aspect(sector="food",provider=self.p,survey_id=self.sid,food=str(AR_food),service=str(AR_service),price=str(AR_price),overall=str(overall)).save()
 				print("Aspect Rating Done")
 		except Exception as e:
 			# print("aspect_rating3",e)
@@ -118,3 +217,5 @@ class AspectR(object):
 # 	[['1', '1', 'Positive']]
 # Food:  2.0  Service:  3.088888888888889  Price:  2.0
 # Overall 4.5
+a= AspectR('children1',"zomato")
+print(a.run())
