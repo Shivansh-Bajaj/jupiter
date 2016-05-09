@@ -197,9 +197,22 @@ class AspectR(object):
 				overall = overall_ratings[review_ID]
 
 				if len(review_rows) !=0 :
-					AR_food = aspect_rating(review_rows, food_rows, overall)-AspectRating(self.sid).get_c("food")
-					AR_service = aspect_rating(review_rows, service_rows, overall)-AspectRating(self.sid).get_c("service")
-					AR_price = aspect_rating(review_rows, price_rows, overall)-AspectRating(self.sid).get_c("price")
+					AR_food = aspect_rating(review_rows, food_rows, overall)
+					print(AR_food)
+					AR_service = aspect_rating(review_rows, service_rows, overall)
+					AR_price = aspect_rating(review_rows, price_rows, overall)
+					if AR_food <=2:
+						AR_food=AR_food+AspectRating(self.sid).get_c("food")
+					else:
+						AR_food = aspect_rating(review_rows, food_rows, overall)-AspectRating(self.sid).get_c("food")
+					if AR_service <=2:
+						AR_service=AR_service+AspectRating(self.sid).get_c("service")
+					else:
+						AR_service = aspect_rating(review_rows, service_rows, overall)-AspectRating(self.sid).get_c("service")
+					if AR_price <=2:
+						AR_price=AR_price+AspectRating(self.sid).get_c("price")
+					else:
+						AR_price = aspect_rating(review_rows, price_rows, overall)-AspectRating(self.sid).get_c("price")
 				else :
 					AR_food = overall
 					AR_service = overall
