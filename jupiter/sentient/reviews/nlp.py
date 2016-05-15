@@ -57,12 +57,12 @@ class WordCloud(object):
 	def wc(self):
 		"""
 		"""
-		stoppath="jupiter/sentient/reviews/models/stopwords.txt"
-		# stoppath="reviews/models/stopwords.txt"
+		# stoppath="jupiter/sentient/reviews/models/stopwords.txt"
+
 		text= self.collect_reviews()
 		# rake= Rake(stoppath)
 		# keywords= rake.run(text)
-		keywordcounts = KeywordCount(stoppath)
+		keywordcounts = KeywordCount()
 		keywords = keywordcounts.run(text)
 
 		wc= self.wc_to_dict(keywords)

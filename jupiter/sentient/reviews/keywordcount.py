@@ -1,16 +1,13 @@
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 import csv
+from jupiter.sentient.reviews.stop_words import stops
+
+
 
 class KeywordCount(object):
-	def __init__(self, stop_words_path):
-		self.stop_words_path = stop_words_path
-		stopwords_file = open(stop_words_path, 'r')
-		
-		self.stopwords_list = stopwords_file.read().split('\n')
-
-		# self.__stop_words_pattern = build_stop_word_regex(stop_words_path)
-	
+	def __init__(self):
+		self.stopwords_list = stops
 
 	def run(self, text):
 		cv = CountVectorizer(min_df=0, stop_words=self.stopwords_list, max_features=20, analyzer = 'word', ngram_range = (1,4))
