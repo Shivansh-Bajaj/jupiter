@@ -4,10 +4,9 @@
 from huey import crontab
 
 from jupiter import huey
-from jupiter.sentient.model import Aspect
+from jupiter.sentient.model import AspectQ
 
-
-@huey.periodic_task(crontab(minute='*/30'))
+@huey.periodic_task(crontab(minute='*/1'))
 def spawn_processor_m_30():
   """These processors are run every 30 minutes
 
@@ -26,17 +25,56 @@ def spawn_processor_m_30():
 
   To prevent any magic to happen, do **not** spawn any periodic tasks inside.
   """
+  print ("Process Running-- delay : 2min")
+  for obj in AspectQ.objects:
+    try:
+      print (obj.survey_id)
+      obj.execute()
+      obj.status="true"
+      obj.save()
+      # obj(status="true").save()
+      print("success",obj.survey_id)
+    except Exception as e:
+      print ("Exception",e,obj.survey_id)
+      # break
+      # obj(status="true").save()
+      # break
+      
   pass
 
-@huey.periodic_task(crontab(minute='*/1'))
-def spawn_processor_m_15():
-  """These processors are run every 15 minutes
+# @huey.periodic_task(crontab(minute='*/1'))
+# def spawn_processor_m_15():
+#   """These processors are run every 15 minutes
 
-  Processors Index
-  ----------------
-  These processors are explicitly run:
-  - (Extend this list as needed)
-  """
-  for obj in Aspect.objects:
-    obj.execute()
-  pass
+#   Processors Index
+#   ----------------
+#   These processors are explicitly run:
+#   - (Extend this list as needed)
+#   """
+#   for obj in AspectQ.objects:
+#     obj.scrap()
+#   pass
+
+# @huey.periodic_task(crontab(minute='*/45'))
+# def spawn_processor_m_45():
+#   """
+#   These processors are run every 45 minutes.
+#   This is the next step after aspectr.
+
+#   """
+#   # for obj in AspectQ.objects:
+#   #   obj.sentiment
+#   pass
+
+# @huey.periodic_task(crontab(minute='*/60'))
+# def spawn_processor_m_60():
+#   """
+#   These processors are run every 60 minutes.
+#   This is the next step after sentiment.
+#   Takes a long time.
+
+#   """
+#   # for obj in AspectQ.objects:
+#   #   obj.aspectr
+#   pass
+

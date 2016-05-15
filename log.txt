@@ -1,0 +1,46 @@
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Le Himalaya changed their interiors to make it more sophisticated and have also started karaoke nights although the area cannot accommodate more than ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Beautiful rustic cafe with warm ambience. Came here for a late lunch and ended up having amazing soul food. Star feature the amazing coffee in huge be..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Being a college student I try finding places that serve good food at cheap price this place ex eider my expectations I really love the food and after ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Beautiful rustic cafe with warm ambience. Came here for a late lunch and ended up having amazing soul food. Star feature the amazing coffee in huge be..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Being a college student I try finding places that serve good food at cheap price this place ex eider my expectations I really love the food and after ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Awesome Chinese I had ever eat. Mast and must try. Free wifi is an advantage. I had a mind to eat Bhutan dish but Chinese is good." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Le Himalaya changed their interiors to make it more sophisticated and have also started karaoke nights although the area cannot accommodate more than ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Stumbled upon this cafe while I went shopping with my friends. Now i was at Majnu ka Tila... FOR SHOPPING!! Now if that doesn't tell u that em frugal ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Le Himalaya changed their interiors to make it more sophisticated and have also started karaoke nights although the area cannot accommodate more than ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Stumbled upon this cafe while I went shopping with my friends. Now i was at Majnu ka Tila... FOR SHOPPING!! Now if that doesn't tell u that em frugal ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Le Himalaya changed their interiors to make it more sophisticated and have also started karaoke nights although the area cannot accommodate more than ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Stumbled upon this cafe while I went shopping with my friends. Now i was at Majnu ka Tila... FOR SHOPPING!! Now if that doesn't tell u that em frugal ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Le Himalaya changed their interiors to make it more sophisticated and have also started karaoke nights although the area cannot accommodate more than ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Beautiful rustic cafe with warm ambience. Came here for a late lunch and ended up having amazing soul food. Star feature the amazing coffee in huge be..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Being a college student I try finding places that serve good food at cheap price this place ex eider my expectations I really love the food and after ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Great Food..Great Ambience..liked everything of it..freshly prepared food...ordered fruit great great taste...pan fried momos perfectly cooked..choups..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Le Himalaya changed their interiors to make it more sophisticated and have also started karaoke nights although the area cannot accommodate more than ..." })****** 
+Tried to save duplicate unique keys (E11000 duplicate key error index: qwer.reviews.$review_1 dup key: { : "Awesome Chinese I had ever eat. Mast and must try. Free wifi is an advantage. I had a mind to eat Bhutan dish but Chinese is good." })****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 
+<urlopen error [Errno -2] Name or service not known>****** 

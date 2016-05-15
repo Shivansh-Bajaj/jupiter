@@ -5,7 +5,7 @@
 
 This module exists with following simple goals:
 - Manage tasks with a set of credentials into the periodic task runners.
-  - Credentials are the Zomato/Tripadvisor/etc. IDs and other informations
+  - Credentials are the ZomatoQ/Tripadvisor/etc. IDs and other informations
     that are sufficient to perform the aggregation tasks and any other stuff.
 - Management provides the following interfaces via REST Endpoints:
   - Add a credential
@@ -23,30 +23,64 @@ from mongoengine import ValidationError, NotUniqueError
 
 from jupiter._config import version
 from jupiter.api.directives import access_token
-from jupiter.sentient.model import Zomato, TripAdvisor
+from jupiter.sentient.model import ZomatoQ, TripAdvisorQ
 
 @hug.get('/{task_id}', versions=version)
 def get_task(key: access_token, task_id: hug.types.text):
   pass
 
-providers = {'zomato': Zomato, 'tripadvisor': TripAdvisor}
+providers = {'zomato': ZomatoQ, 'tripadvisor': TripAdvisorQ}
 
 @hug.put('/', versions=version)
 def put_task(key: access_token,
       provider: hug.types.one_of(list(providers.keys())),
       access_url: hug.types.text,
       survey_id: hug.types.text,
-      children: hug.types.comma_separated_list=[]):
+      children: hug.types.text):
+
   provider_cls = providers[provider]
-
+  #I can write the logic below? Right.--NO
+  if provider=="zomato":
+      #Check if parent survey exists
+      parent= ZomatoQ.objects(unique_identifier= survey_id+provider).count()
+      try:
+          if parent!=1:
+            obj=ZomatoQ()
+            obj.base_url = access_url
+            obj.survey_id = survey_id
+            obj.parent = "true"
+            obj.unique_identifier=survey_id+provider
+            obj.save()
+            pass
+          else:
+            pass
+          obj2= ZomatoQ()
+          obj2.base_url=access_url
+          obj2.survey_id=children
+          obj2.parent_id=survey_id
+          obj2.unique_identifier=children+provider
+          obj2.save()
+          return obj2.repr
+      except ValidationError:raise falcon.HTTPBadRequest(title='ValidationError',description='The parameters provided are invalid')
+      except NotUniqueError:raise falcon.HTTPBadRequest(title='NotUniqueError',description='The given survey_id exists')
+  elif provider=="tripadvisor":
+    parent= TripAdvisorQ.objects(unique_identifier=survey_id+provider).count()
   try:
-    obj = Zomato()
-    obj.base_url = access_url
-    obj.survey_id = survey_id
-    obj.unit_ids = children
-    obj.save()
-    return obj.repr
-
+    if parent!=1:
+      obj = TripAdvisorQ()
+      obj.base_url = access_url
+      obj.survey_id = survey_id
+      obj.parent ="true"
+      obj.unique_identifier=survey_id+provider
+      obj.save()
+    else:pass
+    obj2=TripAdvisorQ()
+    obj2.base_url=access_url
+    obj2.survey_id=children
+    obj2.parent_id=survey_id
+    obj2.unique_identifier=children+provider
+    obj2.save()
+    return obj2.repr
   except ValidationError:
     raise falcon.HTTPBadRequest(
         title='ValidationError',

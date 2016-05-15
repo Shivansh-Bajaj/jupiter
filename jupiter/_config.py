@@ -23,4 +23,5 @@ mongo_params = {
   'port': 27017
 }
 
-mongo_dbi = 'jupiter'
+mongo_dbi = 'qwer'
+# Should be same as the survaider-app
