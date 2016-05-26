@@ -9,8 +9,8 @@ try:
 	from jupiter.sentient.reviews.nlp import Senti
 	from jupiter.sentient.models.model import Status
 except:
-	from models.model import Reviews,Scraped,Record
-	from nlp import Senti
+	from reviews.models.model import Reviews,Scraped,Record
+	from reviews.nlp import Senti
 """from 
 VARIABLES
 """

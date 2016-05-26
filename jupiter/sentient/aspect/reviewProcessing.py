@@ -181,7 +181,8 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
     # print ("Check \n")  
     # data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences}
     # print (data)
-    print ("INFO",len(sentences_id),len(joined_sentences),len(aspect_annot),len(q_sentences))
+    # print ("INFO",len(sentences_id),len(joined_sentences),len(aspect_annot),len(q_sentences))
+    # print("Aspect Annot",aspect_annot)
     output = pd.DataFrame( data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences}) 
     output.to_csv(filename+"#"+survey_id+"#"+provider) 
 
@@ -207,13 +208,23 @@ class ReviewP(object):
         try:
             print ("LIST m_sentences","wow",len(m_sentences),m_sentences[0],"enf")
         except:print("LIST m_sentences")
-        m_aspectkeywords = aspectSegmenter.loadAspectKeywords('jupiter/sentient/aspect/Data/restaurant_bootstrapping.dat')
+        try:
+            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('jupiter/sentient/aspect/Data/restaurant_bootstrapping.dat')
+
+        except Exception as e:
+            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('aspect/Data/restaurant_bootstrapping.dat')
+
         q_sentences = loadReviewAndProcess(self.sid,self.p)[0]
         m_sentences=loadReviewAndProcess(self.sid,self.p)[1]
         m_sentences_annotated, m_aspectkeywords_fixed = aspectSegmenter.BootStrapping(m_sentences, m_vocabulary, m_aspectkeywords)
-        saveAnnotatedSentences(m_sentences_annotated, q_sentences,"jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv",self.sid,self.p)
+        try:
+            saveAnnotatedSentences(m_sentences_annotated, q_sentences,"jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv",self.sid,self.p)
+            saveExtendedAspectKeywords(m_aspectkeywords_fixed,'jupiter/sentient/aspect/Data/restaurant_bootstrapped_keywords_chi_final.dat')
+        except Exception as  e:
+            saveAnnotatedSentences(m_sentences_annotated, q_sentences,"aspect/Data/annotated_sentences_chi_final.csv",self.sid,self.p)
+            saveExtendedAspectKeywords(m_aspectkeywords_fixed,'aspect/Data/restaurant_bootstrapped_keywords_chi_final.dat')
        
-        saveExtendedAspectKeywords(m_aspectkeywords_fixed,'jupiter/sentient/aspect/Data/restaurant_bootstrapped_keywords_chi_final.dat')
+        
         print("Review Processing Done!")
 
         

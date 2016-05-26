@@ -2,8 +2,11 @@ import csv
 import os
 try:
 	from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR
+	from jupiter.sentient.aspect.config import ASPECTS
 except:
-	from models.model import Aspect,Reviews,SentR
+	from aspect.models.model import Aspect,Reviews,SentR
+	from aspect.config import ASPECTS
+
 # from mongoengine import *
 # class Reviews(Document):
 # 	pass
@@ -14,9 +17,16 @@ class AspectRating(object):
 	def __init__(self,survey_id):
 		self.sid= survey_id
 	def get_all(self):
-		aspects_p={"food":0,"service":0,"price":0,"neutral":0}
-		aspects_n={"food":0,"service":0,"price":0,"neutral":0}
-		aspects_nu={"food":0,"service":0,"price":0,"neutral":0}
+		aspects_p={}
+		aspects_n={}
+		aspects_nu={}
+		for key in ASPECTS:
+			aspects_p[key]=0
+			aspects_n[key]=0
+			aspects_nu[key]=0
+		# aspects_p={"food":0,"service":0,"price":0,"neutral":0}
+		# aspects_n={"food":0,"service":0,"price":0,"neutral":0}
+		# aspects_nu={"food":0,"service":0,"price":0,"neutral":0}
 		objs= SentR.objects(survey_id= self.sid)
 		for o in objs:
 			obj= o.line
@@ -188,47 +198,62 @@ class AspectR(object):
 			for review_ID in range(1, last_review_ID):
 
 				review_rows = [row for row in data if row[0] == str(review_ID)]
-				# print (review_rows)
-				food_rows = [row for row in review_rows if row[1] == '0']
-				service_rows = [row for row in review_rows if row[1] == '1']
-				price_rows = [row for row in review_rows if row[1] == '2']
+				food_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('food'))]
+				service_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('service'))]
+				price_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('price'))]
+				ambience_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('ambience'))]
+				vfm_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('value_for_money'))]
+				rs_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('room_service'))]
+				cleanliness_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('cleanliness'))]
 				neutral_rows = [row for row in review_rows if row[1] == '-1']
 				# print(food_rows)
 				overall = overall_ratings[review_ID]
 
 				if len(review_rows) !=0 :
 					AR_food = aspect_rating(review_rows, food_rows, overall)
-					print(AR_food)
 					AR_service = aspect_rating(review_rows, service_rows, overall)
 					AR_price = aspect_rating(review_rows, price_rows, overall)
-					if AR_food <=2:
-						AR_food=AR_food+AspectRating(self.sid).get_c("food")
-					else:
-						AR_food = aspect_rating(review_rows, food_rows, overall)-AspectRating(self.sid).get_c("food")
-					if AR_service <=2:
-						AR_service=AR_service+AspectRating(self.sid).get_c("service")
-					else:
-						AR_service = aspect_rating(review_rows, service_rows, overall)-AspectRating(self.sid).get_c("service")
-					if AR_price <=2:
-						AR_price=AR_price+AspectRating(self.sid).get_c("price")
-					else:
-						AR_price = aspect_rating(review_rows, price_rows, overall)-AspectRating(self.sid).get_c("price")
+					AR_ambience=aspect_rating(review_rows,ambience_rows,overall)
+					AR_vfm=aspect_rating(review_rows,vfm_rows,overall)
+					AR_rs=aspect_rating(review_rows,rs_rows,overall)
+					AR_cleanliness=aspect_rating(review_rows,cleanliness_rows,overall)
+
+
+					# if AR_food <=2:
+					# 	AR_food=AR_food+AspectRating(self.sid).get_c("food")
+					# else:
+					# 	AR_food = aspect_rating(review_rows, food_rows, overall)-AspectRating(self.sid).get_c("food")
+					# if AR_service <=2:
+					# 	AR_service=AR_service+AspectRating(self.sid).get_c("service")
+					# else:
+					# 	AR_service = aspect_rating(review_rows, service_rows, overall)-AspectRating(self.sid).get_c("service")
+					# if AR_price <=2:
+					# 	AR_price=AR_price+AspectRating(self.sid).get_c("price")
+					# else:
+					# 	AR_price = aspect_rating(review_rows, price_rows, overall)-AspectRating(self.sid).get_c("price")
 				else :
 					AR_food = overall
 					AR_service = overall
 					AR_price = overall
+					AR_ambience=overall
+					AR_vfm=overall
+					AR_rs=overall
+					AR_cleanliness=overall
 					
 				# OUTPUT
 				# print (review_rows)
-				return("Food: ", AR_food, " Service: ", AR_service, " Price: ", AR_price)
+				# print ("Food: ", AR_food, " Service: ", AR_service, " Price: ", AR_price,"Ambience",AR_ambience,"Crowd",AR_crowd)
 				# print ("Overall", overall)
-				# r= Aspect(sector="food",provider=self.p,survey_id=self.sid,food=str(AR_food),service=str(AR_service),price=str(AR_price),overall=str(overall)).save()
+				# return 0
+				r= Aspect(sector="food",provider=self.p,survey_id=self.sid,food=str(AR_food),service=str(AR_service),price=str(AR_price),value_for_money=str(AR_vfm),room_service=str(AR_rs),cleanliness=str(AR_cleanliness),overall=str(overall)).save()
 				print("Aspect Rating Done")
 		except Exception as e:
 			# print("aspect_rating3",e)
 			raise e
 # 	[['1', '1', 'Positive']]
 # Food:  2.0  Service:  3.088888888888889  Price:  2.0
+if __name__ == '__main__':
+
 # Overall 4.5
-a= AspectR('children1',"zomato")
-print(a.run())
+	a= AspectR('MAlnDybkavavGkBxn9D',"zomato")
+	print(a.run())

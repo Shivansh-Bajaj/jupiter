@@ -31,13 +31,21 @@ class Sentiment():
 			survey_id= self.sid[0]
 		else:survey_id=self.sid
 		data = []
-		filename="jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
-
-		with open(filename, "rt") as csvfile:	
-			spamreader = csv.reader(csvfile)
-		# spamreader=ChiFinal.objects(survey_id=self.sid)
-			for row in spamreader:
-				data.append(row)
+		
+		try:
+			filename="jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
+			with open(filename, "rt") as csvfile:	
+				spamreader = csv.reader(csvfile)
+			# spamreader=ChiFinal.objects(survey_id=self.sid)
+				for row in spamreader:
+					data.append(row)
+		except:
+			filename="aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
+			with open(filename, "rt") as csvfile:	
+				spamreader = csv.reader(csvfile)
+			# spamreader=ChiFinal.objects(survey_id=self.sid)
+				for row in spamreader:
+					data.append(row)
 		# print (data)
 		# spamreader= ChiFinal.objects()
 		# for row in spamreader:
