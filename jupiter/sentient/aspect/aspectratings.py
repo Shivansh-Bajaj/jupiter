@@ -118,7 +118,7 @@ class AspectRating(object):
 def aspect_rating(review_rows, aspect_rows, overall):
 	positive_rows = [row for row in aspect_rows if row[2] == 'Positive']
 	negative_rows = [row for row in aspect_rows if row[2] == 'Negative']
-	# c= AspectRating.get_c()
+
 	if len(aspect_rows) == 0:
 		y = overall
 	else:

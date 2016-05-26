@@ -4,20 +4,23 @@ import os
 def aspect_rating(review_rows, aspect_rows, overall):
 	positive_rows = [row for row in aspect_rows if row[2] == 'Positive']
 	negative_rows = [row for row in aspect_rows if row[2] == 'Negative']
+	
+	if len(aspect_rows) == 0:
+		y = overall
+	else:
+		if len(positive_rows) == len(negative_rows):
+			x = (len(positive_rows) + len(negative_rows))*float(overall)/len(review_rows)
+			y = (x + 10)/5
 
-	if len(positive_rows) == len(negative_rows):
-		x = (len(positive_rows) + len(negative_rows))*float(overall)/len(review_rows)
-		y = (x + 10)/5
+		if len(positive_rows) > len(negative_rows):
+			diff = len(positive_rows) - len(negative_rows)
+			x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
+			y = 3 + 2*x/5
 
-	if len(positive_rows) > len(negative_rows):
-		diff = len(positive_rows) - len(negative_rows)
-		x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
-		y = 3 + 2*x/5
-
-	if len(positive_rows) < len(negative_rows):
-		diff = len(negative_rows) - len(positive_rows)
-		x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
-		y = 2*x/5
+		if len(positive_rows) < len(negative_rows):
+			diff = len(negative_rows) - len(positive_rows)
+			x = (diff*len(review_rows))/(float(overall) * (len(positive_rows) + len(negative_rows)))
+			y = 2*x/5
 
 	return y
 
