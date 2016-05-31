@@ -47,7 +47,7 @@ class Sentient(object):
 		self.run_ml()
 		print("Done")
 if __name__ == '__main__':
-	url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
+	# url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
 	url="https://www.tripadvisor.in/Restaurant_Review-g1162523-d4009998-Reviews-The_Beer_Cafe-Kirtinagar_Uttarakhand.html"
 	survey_id="test"
 	provider="tripadvisor"
