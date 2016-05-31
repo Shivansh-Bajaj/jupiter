@@ -7,8 +7,12 @@
 
 from mongoengine import Document
 from mongoengine.fields import URLField, DictField, BooleanField, StringField, ListField
-from jupiter.sentient.main import Sentient
-from jupiter.sentient.models.model import WStatus
+try:
+  from jupiter.sentient.main import Sentient
+  from jupiter.sentient.models.model import WStatus
+except:
+  from main import Sentient
+  from models.model import WStatus
 class AspectQ(Document):
   base_url  = URLField(required=True)
   survey_id = StringField(required=True)

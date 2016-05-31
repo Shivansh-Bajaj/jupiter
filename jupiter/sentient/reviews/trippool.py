@@ -72,8 +72,10 @@ class TripAdvisor(object):
 				sentiment= Senti(review).sent()
 				# print("chunk done")
 				print(rating)
-				save = Reviews(survey_id=self.sid,provider=self.p,review=review,rating=rating,sentiment=sentiment).save()
-
+				try:
+					save = Reviews(survey_id=self.sid,provider=self.p,review=review,rating=rating,sentiment=sentiment).save()
+				except Exception as e:
+					print (e)
 				# print ("Saved")
 				# reviews.append(review)
 			else:
@@ -87,8 +89,10 @@ class TripAdvisor(object):
 			if len(Record.objects(links=set(links)))!=0:
 				print ("Already Reviews Collected")
 			else:
-				pool= Pool(8)
-				pool.map(self.sub_get,links)
+				# pool= Pool(8)
+				# pool.map(self.sub_get,links)
+				for i in links:
+					self.sub_get(i)
 				Record(survey_id= self.sid,provider="tripadvisor",links= set(links)).save()
 	def multi(self):
 		links= self.generate_link()

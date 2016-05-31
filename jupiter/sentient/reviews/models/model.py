@@ -9,7 +9,7 @@ class Reviews(Document):
 	provider=StringField()
 	survey_id=StringField()
 	rating=StringField()
-	review=StringField()
+	review=StringField(unique=True)
 	sentiment=StringField()
 class Scraped(Document):
 	provider=StringField()
