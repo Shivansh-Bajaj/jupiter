@@ -97,11 +97,11 @@ class TripAdvisor(object):
 		else:
 			links= self.generate_link()
 			# print (links)
-			for i in links:
-				try:
+			try:
+				for i in links:
 					self.sub_get(i)
-				except NotUniqueError:
-					pass
+			except NotUniqueError:
+				pass
 			# links= self.generate_link()
 			# if len(Record.objects(links=set(links)))!=0:
 			# 	print ("Already Reviews Collected")

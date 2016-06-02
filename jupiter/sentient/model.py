@@ -41,15 +41,16 @@ class AspectQ(Document):
 
 	def execute(self):
 		# Get minute difference
-		fmt = '%Y-%m-%d %H:%M:%S'
-		now= datetime.datetime.now()
-		d1 = datetime.strptime(now, fmt)
-		d2 = datetime.strptime(self.last_update, fmt)
+		# fmt = '%Y-%m-%d %H:%M:%S'
+		# now= datetime.now()
+		# d1 = str(datetime.strptime(now, fmt))
+		# d2 = str(datetime.strptime(self.last_update, fmt))
 
-		# convert to unix timestamp
-		d1_ts = time.mktime(d1.timetuple())
-		d2_ts = time.mktime(d2.timetuple())
-		minutes=int(d2_ts-d1_ts) / 60
+		# # convert to unix timestamp
+		# d1_ts = time.mktime(d1.timetuple())
+		# d2_ts = time.mktime(d2.timetuple())
+		# minutes=int(d2_ts-d1_ts) / 60
+		minutes=61
 		if self.status=="true" and minutes < MINUTES:
 			print("Already Done",self.survey_id)
 		else:
