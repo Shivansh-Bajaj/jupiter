@@ -4,7 +4,7 @@ add to jupiter
 """
 import csv
 from model import TripAdvisorQ
-file_name="custom_data/q_links.csv"
+file_name="custom_data/q_links_1.csv"
 
 class CustomTask(object):
 	"""docstring for CustomTask"""
@@ -29,7 +29,7 @@ class CustomTask(object):
 		name = name.replace(" ","")
 		return name.lower()
 	def add_task(self,i):
-		survey_id= self.name_to_id(i[0])
+		survey_id= i[1]
 		obj2=TripAdvisorQ()
 		obj2.base_url=i[2]
 		obj2.survey_id=survey_id
@@ -45,4 +45,4 @@ def minitask():
 		obj2.save()
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"Test",2).run_csv()
+	CustomTask(file_name,"FGTH2231",2).run_csv()
