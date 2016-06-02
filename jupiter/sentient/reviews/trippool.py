@@ -95,25 +95,25 @@ class TripAdvisor(object):
 	def get_data(self):
 		if isinstance(self.sid,list):print("Ignored")
 		else:
-			links= self.generate_link()
-			# print (links)
-			try:
-				for i in links:
-					self.sub_get(i)
-			except NotUniqueError:
-				pass
 			# links= self.generate_link()
-			# if len(Record.objects(links=set(links)))!=0:
-			# 	print ("Already Reviews Collected")
-			# else:
-			# 	# pool= Pool(8)
-			# 	# pool.map(self.sub_get,links)
+			# # print (links)
+			# try:
 			# 	for i in links:
-			# 		try:
-			# 			self.sub_get(i)
-			# 		except NotUniqueError:
-			# 			pass
-			# 	Record(survey_id= self.sid,provider="tripadvisor",links= set(links)).save()
+			# 		self.sub_get(i)
+			# except NotUniqueError:
+			# 	pass
+			links= self.generate_link()
+			if len(Record.objects(links=set(links)))!=0:
+				print ("Already Reviews Collected")
+			else:
+				# pool= Pool(8)
+				# pool.map(self.sub_get,links)
+				for i in links:
+					try:
+						self.sub_get(i)
+					except NotUniqueError:
+						pass
+				Record(survey_id= self.sid,provider="tripadvisor",links= set(links)).save()
 	def multi(self):
 		links= self.generate_link()
 		# return links
