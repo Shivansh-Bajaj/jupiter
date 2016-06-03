@@ -27,7 +27,7 @@ class CustomTask(object):
 				if len(i[2])!=0:
 					# print ("Something")
 					# print(i[2])
-					# self.add_task(i)
+					self.add_task(i)
 					self.add_relation(i)
 					print (i[0],"added")
 	def name_to_id(self,name):
