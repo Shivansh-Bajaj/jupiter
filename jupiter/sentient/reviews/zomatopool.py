@@ -9,8 +9,8 @@ try:
 	from jupiter.sentient.reviews.nlp import Senti
 	from jupiter.sentient.models.model import Status
 except:
-	from models.model import Reviews,Scraped,Record
-	from nlp import Senti
+	from reviews.models.model import Reviews,Scraped,Record
+	from reviews.nlp import Senti
 """from 
 VARIABLES
 """
@@ -86,7 +86,7 @@ class Zomato(object):
 		else:
 			rid = self.get_id()
 			total= self.get_total()
-			turn = int(total/5)
+			turn = int(total/5)+1
 			print (turn)
 			# 1/0
 			if len(Record.objects(survey_id= self.sid,rid=str(rid)))!=0:

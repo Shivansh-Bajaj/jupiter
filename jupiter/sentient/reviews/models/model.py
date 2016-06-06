@@ -10,7 +10,16 @@ class Reviews(Document):
 	survey_id=StringField()
 	rating=StringField()
 	review=StringField()
+	review_identifier=StringField()
 	sentiment=StringField()
+	meta = {
+		'indexes': [
+			{'fields': ['-review_identifier'], 'unique': True,
+			  'sparse': True, 'types': False },
+		],
+	}
+
+
 class Scraped(Document):
 	provider=StringField()
 	survey_id=StringField()

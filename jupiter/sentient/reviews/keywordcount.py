@@ -1,8 +1,10 @@
 from sklearn.feature_extraction.text import CountVectorizer
 import numpy as np
 import csv
-from jupiter.sentient.reviews.stop_words import stops
-
+try:
+	from jupiter.sentient.reviews.stop_words import stops
+except:
+	from reviews.stop_words import stops
 
 
 class KeywordCount(object):

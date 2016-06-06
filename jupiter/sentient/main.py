@@ -36,8 +36,10 @@ class Sentient(object):
 		
 		Sentiment(self.sid,self.p).run()
 		print("Sentiment Done")
+
 		AspectR(self.sid,self.p).run()
 		print ("AspectR Done")
+		
 	def run(self):
 		if verbose:print ("Starting Scraping")
 		self.scrap_data()
@@ -47,9 +49,9 @@ class Sentient(object):
 		self.run_ml()
 		print("Done")
 if __name__ == '__main__':
-	url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
+	# url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
 	url="https://www.tripadvisor.in/Restaurant_Review-g1162523-d4009998-Reviews-The_Beer_Cafe-Kirtinagar_Uttarakhand.html"
-	survey_id="djxLoj855WwprrpAvXw"
+	survey_id="test"
 	provider="tripadvisor"
 	Sentient(url,survey_id,provider).run()
 	

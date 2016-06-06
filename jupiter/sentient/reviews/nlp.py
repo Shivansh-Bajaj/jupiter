@@ -4,9 +4,9 @@ try:
 	from jupiter.sentient.reviews.models.model import Reviews,WordCloudD
 	from jupiter.sentient.reviews.keywordcount import KeywordCount
 except:
-	from rake import Rake
-	from models.model import Reviews,WordCloudD
-	from keywordcount import KeywordCount
+	from reviews.rake import Rake
+	from reviews.models.model import Reviews,WordCloudD
+	from reviews.keywordcount import KeywordCount
 from collections import OrderedDict
 from operator import itemgetter
 
@@ -57,7 +57,7 @@ class WordCloud(object):
 	def wc(self):
 		"""
 		"""
-		# stoppath="jupiter/sentient/reviews/models/stopwords.txt"
+		stoppath="jupiter/sentient/reviews/models/stopwords.txt"
 
 		text= self.collect_reviews()
 		# rake= Rake(stoppath)

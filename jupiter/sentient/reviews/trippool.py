@@ -5,6 +5,8 @@ import requests
 # from datum import DatumBox
 from collections import Counter
 from multiprocessing import Pool
+from mongoengine import ValidationError, NotUniqueError
+
 import sys
 try:
 	from jupiter.sentient.reviews.models.model import Reviews,Record
@@ -63,16 +65,26 @@ class TripAdvisor(object):
 		for j in review_link:
 			# print ("New Review Link")
 			rl = j.find("a",href=True)
+			print ("review_link",rl)
 			review_res= urlopen(base_url+rl['href']).read()
 			if review_res!=None:
 				soup2= BeautifulSoup(review_res)
+				# print (soup2)
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]
 				# review= soup2.find('p',{'property':'reviewBody'}).text +"\n"+"#rating: "+ rating
 				review= soup2.find('p',{'property':'reviewBody'}).text
+				print("*********")
+				review_identifier=review[0:100]
 				sentiment= Senti(review).sent()
 				# print("chunk done")
-				print(rating)
-				save = Reviews(survey_id=self.sid,provider=self.p,review=review,rating=rating,sentiment=sentiment).save()
+				# print(rating)
+				try:
+					save = Reviews(survey_id=self.sid,provider=self.p,review=review,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
+				except NotUniqueError:
+					print ("NotUniqueError")
+					raise NotUniqueError("A non unique error found. Skipping review collection")
+				except Exception as e:
+					print ("An exception occured ignoring ",e)
 
 				# print ("Saved")
 				# reviews.append(review)
@@ -83,12 +95,24 @@ class TripAdvisor(object):
 	def get_data(self):
 		if isinstance(self.sid,list):print("Ignored")
 		else:
+			# links= self.generate_link()
+			# # print (links)
+			# try:
+			# 	for i in links:
+			# 		self.sub_get(i)
+			# except NotUniqueError:
+			# 	pass
 			links= self.generate_link()
 			if len(Record.objects(links=set(links)))!=0:
 				print ("Already Reviews Collected")
 			else:
-				pool= Pool(8)
-				pool.map(self.sub_get,links)
+				# pool= Pool(8)
+				# pool.map(self.sub_get,links)
+				for i in links:
+					try:
+						self.sub_get(i)
+					except NotUniqueError:
+						pass
 				Record(survey_id= self.sid,provider="tripadvisor",links= set(links)).save()
 	def multi(self):
 		links= self.generate_link()
@@ -121,12 +145,12 @@ class TripAdvisor(object):
 
 if __name__ == '__main__':
 	pass
-	# test_url="https://www.tripadvisor.in/Restaurant_Review-g1062901-d4696931-Reviews-Country_Inn_Suites_by_Carlson_Sahibabad-Ghaziabad_Uttar_Pradesh.html"
-	# test= TripAdvisor(test_url)
-	# r= test.get_data()
-	# # for i in r:
+	test_url="https://www.tripadvisor.in/Restaurant_Review-g1062901-d4696931-Reviews-Country_Inn_Suites_by_Carlson_Sahibabad-Ghaziabad_Uttar_Pradesh.html"
+	test= TripAdvisor(test_url)
+	r= test.get_data()
+	# for i in r:
 
 
-	# end = time.time()
-	# print ("Time Taken")
-	# print (end-start)
+	end = time.time()
+	print ("Time Taken")
+	print (end-start)
