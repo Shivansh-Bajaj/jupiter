@@ -24,7 +24,7 @@ from jupiter.sentient.reviews.nlp import Senti
 # ssl.wrap_socket = sslwrap(ssl.wrap_socket)
 import time
 start= time.time()
-
+verbose=True
 class TripAdvisor(object):
 	"""docstring for"""
 	def __init__(self,url,survey_id,provider="tripadvisor"):
@@ -66,11 +66,13 @@ class TripAdvisor(object):
 			rl = rl.encode('utf-8').strip()
 			print ("review_link",rl)
 			review_res= urlopen(base_url+rl['href']).read().encode('utf-8').strip()
+			if verbose: print("Section 1 working fine")
 			if review_res!=None:
 				soup2= BeautifulSoup(review_res)
-				# print (soup2)
+				if verbose: print("Section 2 working fine")
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]
 				# review= soup2.find('p',{'property':'reviewBody'}).text +"\n"+"#rating: "+ rating
+				if verbose: print ("Section 3 working fine")
 				review= soup2.find('p',{'property':'reviewBody'}).text
 				print("*********")
 				review_identifier=review[0:100]
