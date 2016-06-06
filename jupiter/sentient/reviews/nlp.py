@@ -58,11 +58,7 @@ class WordCloud(object):
 		"""
 		"""
 		stoppath="jupiter/sentient/reviews/models/stopwords.txt"
-# <<<<<<< HEAD
-# 		stoppath="reviews/models/stopwords.txt"
-# =======
 
-# >>>>>>> 4fe187ff5a3050cce9d03f224f5fc63f19d2ea6f
 		text= self.collect_reviews()
 		# rake= Rake(stoppath)
 		# keywords= rake.run(text)

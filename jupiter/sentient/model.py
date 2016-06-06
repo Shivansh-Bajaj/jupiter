@@ -65,8 +65,6 @@ class AspectQ(Document):
 			try:
 				print("provider",self.provider)
 				Sentient(self.base_url,survey_id,self.provider).run()
-
-
 				pass
 			except Exception as e:
 

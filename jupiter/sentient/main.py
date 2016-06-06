@@ -36,8 +36,10 @@ class Sentient(object):
 		
 		Sentiment(self.sid,self.p).run()
 		print("Sentiment Done")
+
 		AspectR(self.sid,self.p).run()
 		print ("AspectR Done")
+		
 	def run(self):
 		if verbose:print ("Starting Scraping")
 		self.scrap_data()

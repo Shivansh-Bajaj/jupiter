@@ -5,12 +5,14 @@ add to jupiter
 import csv
 from model import TripAdvisorQ
 from mongoengine import *
+
 file_name="custom_data/q_links_1.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
     provider = StringField()
     parent = StringField()
+   
 class CustomTask(object):
 	"""docstring for CustomTask"""
 	def __init__(self,file_name,custom_survey_id,buffer_n=None,mode="csv"):

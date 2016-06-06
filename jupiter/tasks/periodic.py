@@ -26,9 +26,10 @@ def spawn_processor_m_30():
   To prevent any magic to happen, do **not** spawn any periodic tasks inside.
   """
   print ("Process Running-- delay : 2min")
+  # print(len(AspectQ.objects))
+
   for obj in AspectQ.objects:
     try:
-      print (obj.survey_id)
       obj.execute()
       obj.status="true"
       obj.last_update=datetime.datetime.now()

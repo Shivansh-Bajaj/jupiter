@@ -6,13 +6,15 @@ connect("qwer")
 class Aspect(Document):
 	"""docstring for Aspect"""
 	sector=StringField()
-	food=StringField()
-	service=StringField()
-	price=StringField()
+	# food=StringField()
+	# service=StringField()
+	# price=StringField()
 	ambience=StringField()
 	value_for_money=StringField()
 	room_service=StringField()
 	cleanliness=StringField()
+	amenities=StringField()
+	
 	overall=StringField()
 	survey_id=StringField()
 	provider=StringField()
