@@ -3,10 +3,10 @@ Read from csv file .
 add to jupiter
 """
 import csv
-from model import TripAdvisorQ
+from jupiter.sentient.model import TripAdvisorQ
 from mongoengine import *
 
-file_name="custom_data/q_links_1.csv"
+file_name="jupiter/sentient/custom_data/q_links_1.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()

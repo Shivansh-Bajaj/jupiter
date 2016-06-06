@@ -1,7 +1,7 @@
 from mongoengine import *
 # Connect to Database
 #lazy connection
-connect("qwer")
+# connect("qwer")
 class Status(Document):
 	unique_identifier=StringField(unique=True)
 	scraped_status=StringField(default="false")

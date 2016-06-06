@@ -9,12 +9,9 @@ from mongoengine import Document
 from mongoengine.fields import URLField, DictField, BooleanField, StringField, ListField,DateTimeField
 from datetime import datetime
 import time
-try:
-	from jupiter.sentient.main import Sentient
-	from jupiter.sentient.models.model import WStatus
-except:
-	from main import Sentient
-	from models.model import WStatus
+from jupiter.sentient.main import Sentient
+from jupiter.sentient.models.model import WStatus
+
 
 """
 HARD VARIABLES
