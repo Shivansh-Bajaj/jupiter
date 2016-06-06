@@ -24,7 +24,7 @@ from jupiter.sentient.reviews.nlp import Senti
 # ssl.wrap_socket = sslwrap(ssl.wrap_socket)
 import time
 start= time.time()
-verbose=True
+# verbose=True
 class TripAdvisor(object):
 	"""docstring for"""
 	def __init__(self,url,survey_id,provider="tripadvisor"):
@@ -64,33 +64,33 @@ class TripAdvisor(object):
 			# print ("New Review Link")
 			rl = j.find("a",href=True)
 			temp= rl['href'].encode('utf-8')
-			if verbose:print("Type -0 rl", type(rl))
+			# if verbose:print("Type -0 rl", type(rl))
 			rl = rl.encode('utf-8').strip()
-			if verbose:print ("Type -1 rl",type(rl))
+			# if verbose:print ("Type -1 rl",type(rl))
 			rl= rl.decode('utf-8')
-			if verbose:print ("Type -2 rl", type(rl))
+			# if verbose:print ("Type -2 rl", type(rl))
 			#import json 
 			#rl = json.loads(rl)
 			#if verbose: print ("type", type(rl))
-			if verbose: print ("Review URL: ",temp)
+			print ("Review URL: ",temp)
 			temp = str(temp)[2:]
 			temp=temp[:-1]
 			full_url= base_url+temp
-			if verbose: print ("Full Url:",full_url)
+			# if verbose: print ("Full Url:",full_url)
 			import requests
 			review_res= requests.get(base_url+temp)
-			if verbose:print ("Encoding ", review_res.encoding)
-			if verbose:print ("Content Type",review_res.headers['content-type'])
+			# if verbose:print ("Encoding ", review_res.encoding)
+			# if verbose:print ("Content Type",review_res.headers['content-type'])
 			#review_res= urlopen(base_url+temp).read()
 			#review_res=str(review_res)
 			review_res= review_res.text
-			if verbose: print("Section 1 working fine")
+			# if verbose: print("Section 1 working fine")
 			if review_res!=None:
 				soup2= BeautifulSoup(review_res)
-				if verbose: print("Section 2 working fine")
+				# if verbose: print("Section 2 working fine")
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]
 				# review= soup2.find('p',{'property':'reviewBody'}).text +"\n"+"#rating: "+ rating
-				if verbose: print ("Section 3 working fine")
+				# if verbose: print ("Section 3 working fine")
 				review= soup2.find('p',{'property':'reviewBody'}).text
 				print("*********")
 				review_identifier=review[0:100]
