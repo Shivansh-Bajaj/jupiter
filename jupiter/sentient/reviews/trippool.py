@@ -65,6 +65,7 @@ class TripAdvisor(object):
 		for j in review_link:
 			# print ("New Review Link")
 			rl = j.find("a",href=True)
+			rl = rl.encode('utf-8')
 			print ("review_link",rl)
 			review_res= urlopen(base_url+rl['href']).read()
 			if review_res!=None:

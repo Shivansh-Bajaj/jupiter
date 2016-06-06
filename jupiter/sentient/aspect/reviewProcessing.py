@@ -12,12 +12,9 @@ import nltk
 import pandas as pd
 import re
 import os
-try:
-    from jupiter.sentient.aspect.models.model import Reviews
-    from jupiter.sentient.aspect import aspectSegmenter 
-except:
-    from aspect.models.model import Reviews
-    from aspect import aspectSegmenter 
+from jupiter.sentient.aspect.models.model import Reviews
+from jupiter.sentient.aspect import aspectSegmenter 
+
 # nltk.download('')
 
 lemmatizer = nltk.WordNetLemmatizer()
