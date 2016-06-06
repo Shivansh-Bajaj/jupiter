@@ -63,9 +63,27 @@ class TripAdvisor(object):
 		for j in review_link:
 			# print ("New Review Link")
 			rl = j.find("a",href=True)
+			temp= rl['href'].encode('utf-8')
+			if verbose:print("Type -0 rl", type(rl))
 			rl = rl.encode('utf-8').strip()
-			print ("review_link",rl)
-			review_res= urlopen(base_url+rl['href']).read().encode('utf-8').strip()
+			if verbose:print ("Type -1 rl",type(rl))
+			rl= rl.decode('utf-8')
+			if verbose:print ("Type -2 rl", type(rl))
+			#import json 
+			#rl = json.loads(rl)
+			#if verbose: print ("type", type(rl))
+			if verbose: print ("Review URL: ",temp)
+			temp = str(temp)[2:]
+			temp=temp[:-1]
+			full_url= base_url+temp
+			if verbose: print ("Full Url:",full_url)
+			import requests
+			review_res= requests.get(base_url+temp)
+			if verbose:print ("Encoding ", review_res.encoding)
+			if verbose:print ("Content Type",review_res.headers['content-type'])
+			#review_res= urlopen(base_url+temp).read()
+			#review_res=str(review_res)
+			review_res= review_res.text
 			if verbose: print("Section 1 working fine")
 			if review_res!=None:
 				soup2= BeautifulSoup(review_res)
