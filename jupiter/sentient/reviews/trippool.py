@@ -8,12 +8,10 @@ from multiprocessing import Pool
 from mongoengine import ValidationError, NotUniqueError
 
 import sys
-try:
-	from jupiter.sentient.reviews.models.model import Reviews,Record
-	from jupiter.sentient.reviews.nlp import Senti
-except:
-	from reviews.models.model import Reviews,Record
-	from reviews.nlp import Senti
+
+from jupiter.sentient.reviews.models.model import Reviews,Record
+from jupiter.sentient.reviews.nlp import Senti
+
 # import ssl
 # from functools import wraps
 # def sslwrap(func):
@@ -65,9 +63,9 @@ class TripAdvisor(object):
 		for j in review_link:
 			# print ("New Review Link")
 			rl = j.find("a",href=True)
-			rl = rl.encode('utf-8')
+			rl = rl.encode('utf-8').strip()
 			print ("review_link",rl)
-			review_res= urlopen(base_url+rl['href']).read()
+			review_res= urlopen(base_url+rl['href']).read().encode('utf-8').strip()
 			if review_res!=None:
 				soup2= BeautifulSoup(review_res)
 				# print (soup2)
