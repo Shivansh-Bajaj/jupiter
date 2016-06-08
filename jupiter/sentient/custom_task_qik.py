@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import TripAdvisorQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/q_links_qik.csv"
+file_name="jupiter/sentient/custom_data/q_links_qik50.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -61,4 +61,4 @@ def minitask():
 		obj2.save()
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"jgQeWylYov8OL3bdlr7",2).run_csv()
+	CustomTask(file_name,"xLOr4JBB4xMz659x8mB",2).run_csv()
