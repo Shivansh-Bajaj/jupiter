@@ -59,44 +59,36 @@ class TripAdvisor(object):
 		soup= BeautifulSoup(response)
 		review_link=soup.find_all('div',{'class':'quote'})
 		base_url= "https://www.tripadvisor.in"
-		# reviews=[]
+
 		for j in review_link:
-			# print ("New Review Link")
+
 			rl = j.find("a",href=True)
 			temp= rl['href'].encode('utf-8')
-			# if verbose:print("Type -0 rl", type(rl))
+
 			rl = rl.encode('utf-8').strip()
-			# if verbose:print ("Type -1 rl",type(rl))
+
 			rl= rl.decode('utf-8')
-			# if verbose:print ("Type -2 rl", type(rl))
-			#import json 
-			#rl = json.loads(rl)
-			#if verbose: print ("type", type(rl))
+
 			print ("Review URL: ",temp)
 			temp = str(temp)[2:]
 			temp=temp[:-1]
 			full_url= base_url+temp
-			# if verbose: print ("Full Url:",full_url)
+
 			import requests
 			review_res= requests.get(base_url+temp)
-			# if verbose:print ("Encoding ", review_res.encoding)
-			# if verbose:print ("Content Type",review_res.headers['content-type'])
-			#review_res= urlopen(base_url+temp).read()
-			#review_res=str(review_res)
+
 			review_res= review_res.text
-			# if verbose: print("Section 1 working fine")
+
 			if review_res!=None:
 				soup2= BeautifulSoup(review_res)
-				# if verbose: print("Section 2 working fine")
+
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]
-				# review= soup2.find('p',{'property':'reviewBody'}).text +"\n"+"#rating: "+ rating
-				# if verbose: print ("Section 3 working fine")
+
 				review= soup2.find('p',{'property':'reviewBody'}).text
 				print("*********")
 				review_identifier=review[0:100]
-				sentiment= Senti(review).sent()
-				# print("chunk done")
-				# print(rating)
+				sentiment= Senti(review).sent(rating)
+
 				try:
 					save = Reviews(survey_id=self.sid,provider=self.p,review=review,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
 				except NotUniqueError:
@@ -105,8 +97,6 @@ class TripAdvisor(object):
 				except Exception as e:
 					print ("An exception occured ignoring ",e)
 
-				# print ("Saved")
-				# reviews.append(review)
 			else:
 				print("Empty Review")
 		#

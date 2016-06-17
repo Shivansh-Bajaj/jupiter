@@ -14,14 +14,21 @@ class Senti(object):
 	"""docstring for Senti"""
 	def __init__(self, txt):
 		self.t= txt
-	def sent(self):
-		blob = TextBlob(self.t)
-		sentence_sentiment = blob.sentences[0].sentiment.polarity
-		if sentence_sentiment > 0:
+	def sent(self, overall_rating):
+		# blob = TextBlob(self.t)
+		# sentence_sentiment = blob.sentences[0].sentiment.polarity
+		# if sentence_sentiment > 0:
+		# 	return "Positive"
+		# if sentence_sentiment == 0:
+		# 	return "Neutral"
+		# if sentence_sentiment < 0:
+		# 	return "Negative"
+		overall_rating = float(overall_rating)
+		if overall_rating > 3:
 			return "Positive"
-		if sentence_sentiment == 0:
+		if overall_rating == 3:
 			return "Neutral"
-		if sentence_sentiment < 0:
+		if overall_rating < 3:
 			return "Negative"
 
 class WordCloud(object):
