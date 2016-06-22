@@ -9,12 +9,9 @@ from mongoengine import Document
 from mongoengine.fields import URLField, DictField, BooleanField, StringField, ListField,DateTimeField
 from datetime import datetime
 import time
-try:
-	from jupiter.sentient.main import Sentient
-	from jupiter.sentient.models.model import WStatus
-except:
-	from main import Sentient
-	from models.model import WStatus
+from jupiter.sentient.main import Sentient
+from jupiter.sentient.models.model import WStatus
+
 
 """
 HARD VARIABLES
@@ -51,7 +48,8 @@ class AspectQ(Document):
 		# d2_ts = time.mktime(d2.timetuple())
 		# minutes=int(d2_ts-d1_ts) / 60
 		minutes=61
-		if self.status=="true" and minutes < MINUTES:
+		# if self.status=="true" and minutes < MINUTES:
+		if self.status=="true":
 			print("Already Done",self.survey_id)
 		else:
 			if minutes>MINUTES:
@@ -67,7 +65,6 @@ class AspectQ(Document):
 				Sentient(self.base_url,survey_id,self.provider).run()
 				pass
 			except Exception as e:
-
 				print("EXECUTE Exception", e)
 				raise e
 			print("survey_id",survey_id)

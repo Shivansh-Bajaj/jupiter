@@ -1,11 +1,9 @@
 import csv
 import os
-try:
-	from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR
-	from jupiter.sentient.aspect.config import ASPECTS
-except:
-	from aspect.models.model import Aspect,Reviews,SentR
-	from aspect.config import ASPECTS
+
+from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR
+from jupiter.sentient.aspect.config import ASPECTS
+
 
 # from mongoengine import *
 # class Reviews(Document):

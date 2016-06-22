@@ -8,12 +8,10 @@ from multiprocessing import Pool
 from mongoengine import ValidationError, NotUniqueError
 
 import sys
-try:
-	from jupiter.sentient.reviews.models.model import Reviews,Record
-	from jupiter.sentient.reviews.nlp import Senti
-except:
-	from reviews.models.model import Reviews,Record
-	from reviews.nlp import Senti
+
+from jupiter.sentient.reviews.models.model import Reviews,Record
+from jupiter.sentient.reviews.nlp import Senti
+
 # import ssl
 # from functools import wraps
 # def sslwrap(func):
@@ -26,7 +24,7 @@ except:
 # ssl.wrap_socket = sslwrap(ssl.wrap_socket)
 import time
 start= time.time()
-
+# verbose=True
 class TripAdvisor(object):
 	"""docstring for"""
 	def __init__(self,url,survey_id,provider="tripadvisor"):
@@ -61,23 +59,36 @@ class TripAdvisor(object):
 		soup= BeautifulSoup(response)
 		review_link=soup.find_all('div',{'class':'quote'})
 		base_url= "https://www.tripadvisor.in"
-		# reviews=[]
+
 		for j in review_link:
-			# print ("New Review Link")
+
 			rl = j.find("a",href=True)
-			print ("review_link",rl)
-			review_res= urlopen(base_url+rl['href']).read()
+			temp= rl['href'].encode('utf-8')
+
+			rl = rl.encode('utf-8').strip()
+
+			rl= rl.decode('utf-8')
+
+			print ("Review URL: ",temp)
+			temp = str(temp)[2:]
+			temp=temp[:-1]
+			full_url= base_url+temp
+
+			import requests
+			review_res= requests.get(base_url+temp)
+
+			review_res= review_res.text
+
 			if review_res!=None:
 				soup2= BeautifulSoup(review_res)
-				# print (soup2)
+
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]
-				# review= soup2.find('p',{'property':'reviewBody'}).text +"\n"+"#rating: "+ rating
+
 				review= soup2.find('p',{'property':'reviewBody'}).text
 				print("*********")
 				review_identifier=review[0:100]
-				sentiment= Senti(review).sent()
-				# print("chunk done")
-				# print(rating)
+				sentiment= Senti(review).sent(rating)
+
 				try:
 					save = Reviews(survey_id=self.sid,provider=self.p,review=review,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
 				except NotUniqueError:
@@ -86,8 +97,6 @@ class TripAdvisor(object):
 				except Exception as e:
 					print ("An exception occured ignoring ",e)
 
-				# print ("Saved")
-				# reviews.append(review)
 			else:
 				print("Empty Review")
 		#

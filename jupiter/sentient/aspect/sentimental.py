@@ -1,10 +1,9 @@
 import csv
 from textblob import TextBlob
 import os
-try:
-	from jupiter.sentient.aspect.models.model import ChiFinal,SentR
-except Exception as e:
-	from aspect.models.model import SentR
+
+from jupiter.sentient.aspect.models.model import ChiFinal,SentR
+
 
 provider="none"
 survey_id="none"

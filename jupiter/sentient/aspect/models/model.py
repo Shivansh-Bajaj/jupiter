@@ -2,7 +2,7 @@
 from mongoengine import *
 # Connect to Database
 #lazy connection
-connect("qwer")
+# connect("qwer")
 class Aspect(Document):
 	"""docstring for Aspect"""
 	sector=StringField()
