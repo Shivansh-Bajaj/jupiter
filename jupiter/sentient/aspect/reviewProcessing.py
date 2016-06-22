@@ -203,14 +203,11 @@ class ReviewP(object):
         # self.s= sector
     def run(self):
         try:
-            print ("LIST m_sentences","wow",len(m_sentences),m_sentences[0],"enf")
-        except:print("LIST m_sentences")
-        try:
-            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('jupiter/sentient/aspect/Data/restaurant_bootstrapping.dat')
+            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('jupiter/sentient/aspect/Data/restaurant_bootstrapping.dat',self.sid)
 
         except Exception as e:
-            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('aspect/Data/restaurant_bootstrapping.dat')
-
+            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('aspect/Data/restaurant_bootstrapping.dat',self.sid)
+        print("m_aspectkeywords",m_aspectkeywords)
         q_sentences = loadReviewAndProcess(self.sid,self.p)[0]
         m_sentences=loadReviewAndProcess(self.sid,self.p)[1]
         m_sentences_annotated, m_aspectkeywords_fixed = aspectSegmenter.BootStrapping(m_sentences, m_vocabulary, m_aspectkeywords)
