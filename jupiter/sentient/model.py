@@ -25,6 +25,7 @@ class AspectQ(Document):
 	parent_id=StringField()
 	status=StringField(default="false")
 	last_update=DateTimeField()
+	aspects=ListField(required=True)
 	meta = {'allow_inheritance': True}
 
 	@property
