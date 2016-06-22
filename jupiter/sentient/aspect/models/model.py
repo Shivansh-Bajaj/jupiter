@@ -9,6 +9,7 @@ class Aspect(Document):
 	# food=StringField()
 	# service=StringField()
 	# price=StringField()
+	aspects=DictField()
 	ambience=StringField()
 	value_for_money=StringField()
 	room_service=StringField()
@@ -26,6 +27,8 @@ class Reviews(Document):
 	review=StringField()
 	review_identifier=StringField()
 	sentiment= StringField()
+	date_added=StringField()
+	datetime=DateTimeField()
 	meta = {
 		'indexes': [
 			{'fields': ['-review_identifier'], 'unique': True,

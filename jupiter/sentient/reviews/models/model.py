@@ -12,11 +12,14 @@ class Reviews(Document):
 	review=StringField()
 	review_identifier=StringField()
 	sentiment=StringField()
+	date_added=StringField()
+	datetime=DateTimeField()
 	meta = {
 		'indexes': [
 			{'fields': ['-review_identifier'], 'unique': True,
 			  'sparse': True, 'types': False },
 		],
+		'strict':False
 	}
 
 
