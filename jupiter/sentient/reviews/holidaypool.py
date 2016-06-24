@@ -64,7 +64,7 @@ class HolidayIQ(object):
 				break
 			page_no=page_no+1
 			current_url=get_next_link(current_url,page_no)	
-		Record(survey_id=self.sid,provider="HolidayIO",links=set(links))	
+		Record(survey_id=self.sid,provider="holidayiq",links=set(links))	
 
 if __name__ == '__main__':
 	test_url="http://www.holidayiq.com/Holiday-Inn-Resort-Cavelossim-Mobor-hotel-2129.html"
