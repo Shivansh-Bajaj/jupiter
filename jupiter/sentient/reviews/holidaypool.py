@@ -5,6 +5,7 @@ import requests
 from multiprocessing import Pool
 from mongoengine import ValidationError, NotUniqueError
 import sys
+import re
 try:
 	from jupiter.sentient.reviews.models.model import Reviews,Record
 	from jupiter.sentient.reviews.nlp import Senti
@@ -13,7 +14,7 @@ except:
 	from reviews.nlp import Senti
 class HolidayIQ(object):
 	"""docstring for"""
-	def __init__(self,url,survey_id,provider="HolidayIO"):
+	def __init__(self,url,survey_id,provider="HolidayIQ"):
 		self.url= url
 		self.p=provider
 		self.sid=survey_id
@@ -31,10 +32,10 @@ class HolidayIQ(object):
 			more_content=re.compile("^moreReviewContent[0-9]+")
 	#		less_content=re.compile("^lessReviewContent[0-9]+")
 			if review!=None:
-				rating=int(review.find('meta',{'itemprop':'ratingValue'})['content'])
-				content=review.find('p',{'id':more_content})
+				rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])%5)
+				content=str(review.find('p',{'id':more_content}))
 				review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text
-				sentiment=Senti(review).sent(rating%5)
+				sentiment=Senti(review).sent(rating)
 				try:
 					save = Reviews(survey_id=self.sid,provider=self.p,review=content,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
 				except NotUniqueError:
@@ -57,14 +58,14 @@ class HolidayIQ(object):
 				self.get_reviews(soup)
 			except NotUniqueError:
 				pass
-			print("url:"+current_url+"\nadded")
+			print("reviews url:"+current_url+"#complete\n")
 			links.append(current_url)
 			more_reviews=int(soup.find('input',{'id':'textReviewToBeDisplay'})['value'])
 			if more_reviews==0:
 				break
 			page_no=page_no+1
-			current_url=get_next_link(current_url,page_no)	
-		Record(survey_id=self.sid,provider="HolidayIO",links=set(links))	
+			current_url=self.get_next_link(page_no)	
+		Record(survey_id=self.sid,provider="HolidayIQ",links=set(links))	
 
 if __name__ == '__main__':
 	test_url="http://www.holidayiq.com/Holiday-Inn-Resort-Cavelossim-Mobor-hotel-2129.html"
