@@ -29,7 +29,6 @@ class Sentient(object):
 			# self.p="tripadvisor"
 			TripAdvisor(self.u,self.sid).get_data()
 		if "holidayiq" in self.u:
-			print("scraping start holidayIQ")
 			HolidayIQ(self.u,self.sid).get_data()
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
