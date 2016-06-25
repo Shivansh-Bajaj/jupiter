@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+import sys
+print ("*******************")
+print(sys.path)
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import requests
@@ -7,10 +10,11 @@ from collections import Counter
 from multiprocessing import Pool
 from mongoengine import ValidationError, NotUniqueError
 from datetime import datetime as dt
-import sys
+#import sys
 
-from jupiter.sentient.reviews.models.model import Reviews,Record
+from jupiter.sentient.reviews.models.model import Reviews,Record,AspectQ
 from jupiter.sentient.reviews.nlp import Senti
+#from jupiter.sentient.model import AspectQ
 
 # import ssl
 # from functools import wraps
@@ -26,6 +30,7 @@ import time
 start= time.time()
 # verbose=True
 class TripAdvisor(object):
+
 	"""docstring for"""
 	def __init__(self,url,survey_id,provider="tripadvisor"):
 		self.url= url
@@ -61,6 +66,7 @@ class TripAdvisor(object):
 		base_url= "https://www.tripadvisor.in"
 		obj=Reviews.objects(survey_id=self.sid).order_by('-datetime').first()
 		record= Record.objects(survey_id=self.sid)
+		time_review= AspectQ.objects(survey_id=self.sid)[0].time_review
 		for j in review_link:
 			rl = j.find("a",href=True)
 			temp= rl['href'].encode('utf-8')
@@ -81,26 +87,35 @@ class TripAdvisor(object):
 
 				soup2= BeautifulSoup(review_res)
 				date=soup2.find('span',{'class':'ratingDate'})['content']
-				date=date.replace('l','1')
+				if len(date)==0 or date==None:
+					raw_date=soup2.find('span',{'class':'ratingDate'}).text
+					to_remove=len("Reviewed ")
+					raw_date= raw_date[to_remove:]
+					parse_date=dt.strptime(raw_date,'%d %B %Y')
+					#Reviewed 15 March 2016
+				#date=date.replace('l','1')
 
-				parse_date= dt.strptime(date,"%Y-%m-%d")
-				if obj!=None:
+				else:parse_date= dt.strptime(date,"%Y-%m-%d")
+				if time_review!=None:
 					# get the most recent date
 					if record!=None:
 					
-						msd= obj.datetime
-						print (msd,parse_date)
-						if msd>=parse_date:
+						#msd= obj.datetime
+						print (time_review,"|",parse_date)
+						if time_review>=parse_date:
+
 							raise Exception("Not collecting reviews")
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]
 
 				review= soup2.find('p',{'property':'reviewBody'}).text
 				print("*********")
-				review_identifier=review[0:100]
+				from random import randrange
+				r= str(randrange(100,999999))
+				review_identifier=review[0:100]+r
 				sentiment= Senti(review).sent(rating)
 
 				try:
-					save = Reviews(survey_id=self.sid,datetime=parse_date,date_added=date,provider=self.p,review=review,rating=rating,sentiment=sentiment).save(validate=False)
+					save = Reviews(review_identifier=review_identifier,survey_id=self.sid,datetime=parse_date,date_added=date,provider=self.p,review=review,rating=rating,sentiment=sentiment).save(validate=False)
 				except NotUniqueError:
 					print("NotUniqueError")
 				except Exception as e:
@@ -122,7 +137,8 @@ class TripAdvisor(object):
 			# 	pass
 			b=1
 			links= self.generate_link()
-			if b==2:
+			#links= links.reverse()
+			if len(Record.objects(links=set(links)))!=0:
 				print ("Already Reviews Collected")
 			else:
 				# pool= Pool(8)

@@ -12,3 +12,6 @@ class Status(Document):
 class WStatus(Document):
 	unique_identifier=StringField(unique=True)
 	status= StringField(default="false")
+class SurveyAspects(Document):
+	survey_id= StringField()
+	aspects= ListField()
