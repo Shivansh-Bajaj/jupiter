@@ -49,7 +49,7 @@ class CustomTask(object):
 			#upper 2 rows. i.e the header row, and an empty row.
 			obj2.survey_id=survey_id
 			obj2.parent_id=self.c
-			#extend the list till the aspeccts you want to be calculated
+			obj2.aspects=["ambience"]#extend the list till the aspeccts you want to be calculated
 			obj2.time_review="2016-01-01" #default date. okay?k change it to suit your limit
 			obj2.unique_identifier=survey_id+"tripadvisor"
 			obj2.save()
