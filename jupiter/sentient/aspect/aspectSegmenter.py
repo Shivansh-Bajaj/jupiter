@@ -2,7 +2,8 @@
 import re
 import numpy as np
 import operator    
-from jupiter.sentient.models.model import SurveyAspects
+# from jupiter.sentient.models.model import SurveyAspects
+
 # Bootstrapping Aspect Segmentation Parameters from paper LARA
 chi_topK = 35 # Top K words to extend aspect seed words
 chi_iter = 10 # Number of bootstrapping iterations to converge  
@@ -12,8 +13,8 @@ tf_cut = 10 # discard terms occurring less than 10 times in corpus
 # Function to load Aspect Keywords fom a file
 # We can Aspects and seed words in file to load
 # it dynamically
-def loadAspectKeywords(filename,survey_id):
-    aspects_to_find= SurveyAspects.objects(survey_id=survey_id)[0].aspects
+def loadAspectKeywords(filename):
+    # aspects_to_find= SurveyAspects.objects(survey_id=survey_id)[0].aspects
     m_aspectKeywords = dict()
     f = open(filename, 'r')
     for line in f.readlines():
@@ -22,9 +23,8 @@ def loadAspectKeywords(filename,survey_id):
         for i in range(1,len(container)):
             keywords.append(container[i].strip())
         asp_name = re.sub("[:]", "" , container[0])
-        if asp_name in aspects_to_find:    
-            m_aspectKeywords[asp_name] = keywords
-            print ("keywords for ", asp_name, ":", len(keywords))
+        m_aspectKeywords[asp_name] = keywords
+        print ("keywords for ", asp_name, ":", len(keywords))
     f.close()
     return m_aspectKeywords
 

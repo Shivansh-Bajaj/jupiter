@@ -25,7 +25,7 @@ from jupiter._config import version
 from jupiter.api.directives import access_token
 from jupiter.sentient.model import ZomatoQ, TripAdvisorQ
 from datetime import datetime as dt
-from jupiter.sentient.models.model import SurveyAspects
+
 @hug.get('/{task_id}', versions=version)
 def get_task(key: access_token, task_id: hug.types.text):
   pass
@@ -38,7 +38,6 @@ def put_task(key: access_token,
       access_url: hug.types.text,
       survey_id: hug.types.text,
       children: hug.types.text,
-      aspects:hug.types.text,
       time_review:hug.types.text):
 
   provider_cls = providers[provider]
@@ -58,10 +57,6 @@ def put_task(key: access_token,
             obj.unique_identifier=survey_id+provider
             obj.time_review= time_rev
             obj.save()
-            sa= SurveyAspects()
-            sa.survey_id=survey_id
-            sa.aspects=aspects
-            sa.save()
             pass
           else:
             pass
@@ -72,10 +67,7 @@ def put_task(key: access_token,
           obj2.unique_identifier=children+provider
           obj.time_review=time_rev
           obj2.save()
-          sa= SurveyAspects()
-          sa.survey_id=survey_id
-          sa.aspects=aspects
-          sa.save()
+          
           return obj2.repr
       except ValidationError:raise falcon.HTTPBadRequest(title='ValidationError',description='The parameters provided are invalid')
       except NotUniqueError:raise falcon.HTTPBadRequest(title='NotUniqueError',description='The given survey_id exists')
@@ -90,10 +82,7 @@ def put_task(key: access_token,
       obj.unique_identifier=survey_id+provider
       obj.time_review=time_rev
       obj.save()
-      sa= SurveyAspects()
-      sa.survey_id=survey_id
-      sa.aspects=aspects
-      sa.save()
+      
     else:pass
     obj2=TripAdvisorQ()
     obj2.base_url=access_url
@@ -102,10 +91,7 @@ def put_task(key: access_token,
     obj2.unique_identifier=children+provider
     obj2.time_review=time_rev
     obj2.save()
-    sa= SurveyAspects()
-    sa.survey_id=survey_id
-    sa.aspects=aspects
-    sa.save()
+    
     return obj2.repr
   except ValidationError:
     raise falcon.HTTPBadRequest(

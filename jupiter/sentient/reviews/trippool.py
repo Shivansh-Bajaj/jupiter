@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 print ("*******************")
-print(sys.path)
+
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import requests
