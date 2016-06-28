@@ -71,15 +71,4 @@ def minitask():
 		obj2.unique_identifier=survey_id+"tripadvisor"
 		obj2.save()
 if __name__ == '__main__':
-	# main()
-	#Just add a custom_parent_survey_id . thats it folk.!
-	CustomTask(file_name,"LKln86YMApjeYvpbOgG",2).run_csv()
-	#fill in here. dinner! @Madhu- Comment out below
-	# obj= TripAdvisorQ()
-	# obj.survey_id="children"
-	# obj.aspects=["ambience","amenities"]
-	# obj.base_url="https://www.tripadvisor.in/Restaurant_Review-g1062901-d4696931-Reviews-Country_Inn_Suites_by_Carlson_Sahibabad-Ghaziabad_Uttar_Pradesh.html"
-	# obj.time_review="2016-01-01"
-	# obj.unique_identifier="childrentripadvisor"
-	# #obj.provider="tripadvisor"
-	# obj.save()
+	CustomTask(file_name,"ZzqznQeWl3OBm2kK1K5",2).run_csv()
