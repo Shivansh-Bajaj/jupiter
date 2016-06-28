@@ -82,6 +82,6 @@ class TripAdvisorQ(AspectQ):
 		pass
 
 class HolidayIQQ(AspectQ):
-	provider="holidayiq"
+	provider="HolidayIQ"
 	def _scrape(self):
 		pass
