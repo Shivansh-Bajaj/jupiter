@@ -6,6 +6,7 @@ from jupiter.sentient.aspect.aspectratings import AspectR
 from jupiter.sentient.reviews.trippool import TripAdvisor
 from jupiter.sentient.reviews.zomatopool import Zomato
 from jupiter.sentient.reviews.nlp import WordCloud
+from jupiter.sentient.reviews.holidaypool import HolidayIQ
 # except:
 # 	from aspect.reviewProcessing import ReviewP
 # 	from aspect.sentimental import Sentiment
@@ -27,6 +28,8 @@ class Sentient(object):
 		if "tripadvisor" in self.u:
 			# self.p="tripadvisor"
 			TripAdvisor(self.u,self.sid).get_data()
+		if "holidayiq" in self.u:
+			HolidayIQ(self.u,self.sid).get_data()
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
 	def run_ml(self):
@@ -50,7 +53,7 @@ class Sentient(object):
 		print("Done")
 if __name__ == '__main__':
 	# url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
-	url="https://www.tripadvisor.in/Restaurant_Review-g1162523-d4009998-Reviews-The_Beer_Cafe-Kirtinagar_Uttarakhand.html"
+	url="https://www.tripadvisor.in/Hotel_Review-g297612-d6200489-Reviews-Vetro_Inn_Spice-Surat_Gujarat.html"
 	survey_id="test"
 	provider="tripadvisor"
 	Sentient(url,survey_id,provider).run()
