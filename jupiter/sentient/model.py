@@ -25,6 +25,8 @@ class AspectQ(Document):
 	parent_id=StringField()
 	status=StringField(default="false")
 	last_update=DateTimeField()
+	aspects=ListField(required=True)
+	time_review= DateTimeField()
 	meta = {'allow_inheritance': True}
 
 	@property
@@ -76,5 +78,10 @@ class ZomatoQ(AspectQ):
 
 class TripAdvisorQ(AspectQ):
 	provider="tripadvisor"
+	def _scrape(self):
+		pass
+
+class HolidayIQQ(AspectQ):
+	provider="holidayiq"
 	def _scrape(self):
 		pass

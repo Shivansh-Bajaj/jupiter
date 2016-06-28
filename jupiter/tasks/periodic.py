@@ -31,16 +31,14 @@ def spawn_processor_m_30():
   for obj in AspectQ.objects:
     try:
       obj.execute()
-      obj.status="true"
+      # obj.status="true"
       obj.last_update=datetime.datetime.now()
       obj.save()
       # obj(status="true").save()
       print("success",obj.survey_id)
     except Exception as e:
-      print ("Exception",e,obj.survey_id)
-      # break
-      # obj(status="true").save()
-      # break
+      # print ("Exception",e,obj.survey_id)
+      print ("An exeption occured while executation for survey_id",obj.survey_id)
       
   pass
 
