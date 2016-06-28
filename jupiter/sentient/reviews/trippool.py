@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+import sys
+print ("*******************")
+
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import requests
@@ -6,11 +9,12 @@ import requests
 from collections import Counter
 from multiprocessing import Pool
 from mongoengine import ValidationError, NotUniqueError
+from datetime import datetime as dt
+#import sys
 
-import sys
-
-from jupiter.sentient.reviews.models.model import Reviews,Record
+from jupiter.sentient.reviews.models.model import Reviews,Record,AspectQ
 from jupiter.sentient.reviews.nlp import Senti
+#from jupiter.sentient.model import AspectQ
 
 # import ssl
 # from functools import wraps
@@ -26,6 +30,7 @@ import time
 start= time.time()
 # verbose=True
 class TripAdvisor(object):
+
 	"""docstring for"""
 	def __init__(self,url,survey_id,provider="tripadvisor"):
 		self.url= url
@@ -59,43 +64,62 @@ class TripAdvisor(object):
 		soup= BeautifulSoup(response)
 		review_link=soup.find_all('div',{'class':'quote'})
 		base_url= "https://www.tripadvisor.in"
-
+		obj=Reviews.objects(survey_id=self.sid).order_by('-datetime').first()
+		record= Record.objects(survey_id=self.sid)
+		time_review= AspectQ.objects(survey_id=self.sid)[0].time_review
 		for j in review_link:
-
 			rl = j.find("a",href=True)
 			temp= rl['href'].encode('utf-8')
-
 			rl = rl.encode('utf-8').strip()
-
 			rl= rl.decode('utf-8')
-
-			print ("Review URL: ",temp)
 			temp = str(temp)[2:]
 			temp=temp[:-1]
 			full_url= base_url+temp
-
 			import requests
 			review_res= requests.get(base_url+temp)
 
 			review_res= review_res.text
 
 			if review_res!=None:
-				soup2= BeautifulSoup(review_res)
+				# Check if review exists
+				# obj=Reviews.objects(survey_id=self.sid).order_by('-datetime').first()
 
+
+				soup2= BeautifulSoup(review_res)
+				date=soup2.find('span',{'class':'ratingDate'})['content']
+				if len(date)==0 or date==None:
+					raw_date=soup2.find('span',{'class':'ratingDate'}).text
+					to_remove=len("Reviewed ")
+					raw_date= raw_date[to_remove:]
+					parse_date=dt.strptime(raw_date,'%d %B %Y')
+					#Reviewed 15 March 2016
+				#date=date.replace('l','1')
+
+				else:parse_date= dt.strptime(date,"%Y-%m-%d")
+				if time_review!=None:
+					# get the most recent date
+					if record!=None:
+					
+						#msd= obj.datetime
+						print (time_review,"|",parse_date)
+						if time_review>=parse_date:
+
+							raise Exception("Not collecting reviews")
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]
 
 				review= soup2.find('p',{'property':'reviewBody'}).text
 				print("*********")
-				review_identifier=review[0:100]
+				from random import randrange
+				r= str(randrange(100,999999))
+				review_identifier=review[0:100]+r
 				sentiment= Senti(review).sent(rating)
 
 				try:
-					save = Reviews(survey_id=self.sid,provider=self.p,review=review,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
+					save = Reviews(review_identifier=review_identifier,survey_id=self.sid,datetime=parse_date,date_added=date,provider=self.p,review=review,rating=rating,sentiment=sentiment).save(validate=False)
 				except NotUniqueError:
-					print ("NotUniqueError")
-					raise NotUniqueError("A non unique error found. Skipping review collection")
+					print("NotUniqueError")
 				except Exception as e:
-					print ("An exception occured ignoring ",e)
+					pass
 
 			else:
 				print("Empty Review")
@@ -111,7 +135,9 @@ class TripAdvisor(object):
 			# 		self.sub_get(i)
 			# except NotUniqueError:
 			# 	pass
+			b=1
 			links= self.generate_link()
+			#links= links.reverse()
 			if len(Record.objects(links=set(links)))!=0:
 				print ("Already Reviews Collected")
 			else:
@@ -120,18 +146,19 @@ class TripAdvisor(object):
 				for i in links:
 					try:
 						self.sub_get(i)
-					except NotUniqueError:
-						pass
+					except Exception as e:
+						print("trippool: exception",e)
+						break
 				Record(survey_id= self.sid,provider="tripadvisor",links= set(links)).save()
 	def multi(self):
 		links= self.generate_link()
 		# return links
-		if len(Record.objects(links=set(links)))!=0:
-			print ("Already Review Collected")
-		else:
-			pool= Pool(8)
-			results= pool.map(self.get_data,[links])
-			return results
+		# if len(Record.objects(links=set(links)))!=0:
+		# 	print ("Already Review Collected")
+		# else:
+		pool= Pool(8)
+		results= pool.map(self.get_data,[links])
+		return results
 
 	def main(self):
 		counter=0

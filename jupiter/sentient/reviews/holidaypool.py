@@ -6,6 +6,7 @@ from multiprocessing import Pool
 from mongoengine import ValidationError, NotUniqueError
 import sys
 import re
+
 try:
 	from jupiter.sentient.reviews.models.model import Reviews,Record
 	from jupiter.sentient.reviews.nlp import Senti
@@ -36,6 +37,7 @@ class HolidayIQ(object):
 				content=str(review.find('p',{'id':more_content}))
 				review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text
 				sentiment=Senti(review).sent(rating)
+
 				try:
 					save = Reviews(survey_id=self.sid,provider=self.p,review=content,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
 				except NotUniqueError:
@@ -58,14 +60,23 @@ class HolidayIQ(object):
 				self.get_reviews(soup)
 			except NotUniqueError:
 				pass
+<<<<<<< HEAD
 			print("reviews url:"+current_url+"#complete\n")
+=======
+			print("url:"+current_url+"\nadded")
+>>>>>>> origin/master
 			links.append(current_url)
 			more_reviews=int(soup.find('input',{'id':'textReviewToBeDisplay'})['value'])
 			if more_reviews==0:
 				break
 			page_no=page_no+1
+<<<<<<< HEAD
 			current_url=self.get_next_link(page_no)	
 		Record(survey_id=self.sid,provider="HolidayIQ",links=set(links))	
+=======
+			current_url=get_next_link(current_url,page_no)	
+		Record(survey_id=self.sid,provider="holidayiq",links=set(links))	
+>>>>>>> origin/master
 
 if __name__ == '__main__':
 	test_url="http://www.holidayiq.com/Holiday-Inn-Resort-Cavelossim-Mobor-hotel-2129.html"
@@ -73,4 +84,8 @@ if __name__ == '__main__':
 	r= test.get_data()
 	end = time.time()
 	print ("Time Taken")
+<<<<<<< HEAD
 	print (end)
+=======
+	print (end)
+>>>>>>> origin/master
