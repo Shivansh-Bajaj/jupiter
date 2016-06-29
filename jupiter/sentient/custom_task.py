@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import TripAdvisorQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/q_links_qik.csv"
+file_name="jupiter/sentient/custom_data/q_links_taj.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -50,7 +50,7 @@ class CustomTask(object):
 			obj2.survey_id=survey_id
 			obj2.parent_id=self.c
 			obj2.aspects=["ambience"]#extend the list till the aspeccts you want to be calculated
-			obj2.time_review="2016-01-01" #default date. okay?k change it to suit your limit
+			obj2.time_review="2016-04-01" #default date. okay?k change it to suit your limit
 			obj2.unique_identifier=survey_id+"tripadvisor"
 			obj2.save()
 		except Exception as e:
@@ -71,4 +71,4 @@ def minitask():
 		obj2.unique_identifier=survey_id+"tripadvisor"
 		obj2.save()
 if __name__ == '__main__':
-	CustomTask(file_name,"ZzqznQeWl3OBm2kK1K5",2).run_csv()
+	CustomTask(file_name,"djp1rj8NL31jjB5mp3q",2).run_csv()
