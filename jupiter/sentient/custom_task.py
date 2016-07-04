@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import TripAdvisorQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/q_links_1.csv"
+file_name="jupiter/sentient/custom_data/q_links_taj.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -38,13 +38,23 @@ class CustomTask(object):
 		return name.lower()
 	def add_task(self,i):
 		survey_id= i[1]
-		obj2=TripAdvisorQ()
-		obj2.base_url=i[2]
-		obj2.survey_id=survey_id
-		obj2.parent_id=self.c
-		obj2.unique_identifier=survey_id+"tripadvisor"
-		obj2.aspect_notation=["ambience","value_for_money","room_service","cleanliness","amenities"]
-		obj2.save()
+		try:
+			obj2=TripAdvisorQ()
+			obj2.base_url=i[2]
+			#See the numbering 2 in i[2], it refers to column number 0,1,2..n
+			#So whenever you add a new header(aka column) lets say date_limit in 
+			#csv file for time_review, you go like this
+			#obj2.time_review=i[column_number]
+			#the buffer is the total number of rows which are not to be included. 2 means
+			#upper 2 rows. i.e the header row, and an empty row.
+			obj2.survey_id=survey_id
+			obj2.parent_id=self.c
+			obj2.time_review="2016-04-01" #default date. okay?k change it to suit your limit
+			obj2.unique_identifier=survey_id+"tripadvisor"
+			obj2.aspect_notation=["ambience","value_for_money","room_service","cleanliness","amenities"]
+			obj2.save()
+		except Exception as e:
+			print("Following exception has happened: ",e)
 	def add_relation(self,i):
 		survey_id= i[1]
 		obj= Relation()
@@ -62,4 +72,4 @@ def minitask():
 		obj2.save()
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"ZzqznQeWl3OBm2kK1K5",2).run_csv()
+	CustomTask(file_name,"djp1rj8NL31jjB5mp3q",2).run_csv()

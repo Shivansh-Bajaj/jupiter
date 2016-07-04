@@ -7,6 +7,7 @@ from jupiter.sentient.reviews.trippool import TripAdvisor
 from jupiter.sentient.reviews.zomatopool import Zomato
 from jupiter.sentient.reviews.nlp import WordCloud
 from jupiter.sentient.reviews.holidaypool import HolidayIQ
+
 # except:
 # 	from aspect.reviewProcessing import ReviewP
 # 	from aspect.sentimental import Sentiment
@@ -24,14 +25,13 @@ class Sentient(object):
 		self.aspect_notation=aspect_notation
 	def scrap_data(self):
 		print(self.aspect_notation)
-#		if "zomato.com" in self.u:
-			# self.p= "zomato"
-#			Zomato(self.u,self.sid).get_data()
-#		if "tripadvisor" in self.u:
-			# self.p="tripadvisor"
-#			TripAdvisor(self.u,self.sid).get_data()
-#		if "holidayiq" in self.u:
-#			HolidayIQ(self.u,self.sid).get_data()
+		if "zomato.com" in self.u:
+			Zomato(self.u,self.sid).get_data()
+		if "tripadvisor" in self.u:
+			TripAdvisor(self.u,self.sid).get_data()
+		if "holidayiq" in self.u:
+			HolidayIQ(self.u,self.sid).get_data()
+
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
 	def run_ml(self):

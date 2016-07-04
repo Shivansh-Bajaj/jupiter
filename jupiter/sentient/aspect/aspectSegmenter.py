@@ -1,11 +1,8 @@
-'''
-Created on 27-Mar-2015
 
-@author: Himani
-'''
 import re
 import numpy as np
 import operator    
+# from jupiter.sentient.models.model import SurveyAspects
 
 # Bootstrapping Aspect Segmentation Parameters from paper LARA
 chi_topK = 35 # Top K words to extend aspect seed words
@@ -17,7 +14,6 @@ tf_cut = 10 # discard terms occurring less than 10 times in corpus
 # We can Aspects and seed words in file to load
 # it dynamically
 def loadAspectKeywords(filename,aspect_notation):
-
     m_aspectKeywords = dict()
     f = open(filename, 'r')
     for line in f.readlines():
