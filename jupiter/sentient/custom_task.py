@@ -43,6 +43,7 @@ class CustomTask(object):
 		obj2.survey_id=survey_id
 		obj2.parent_id=self.c
 		obj2.unique_identifier=survey_id+"tripadvisor"
+		obj2.aspect_notation=["ambience","value_for_money","room_service","cleanliness","amenities"]
 		obj2.save()
 	def add_relation(self,i):
 		survey_id= i[1]

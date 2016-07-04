@@ -3,6 +3,13 @@ from mongoengine import *
 # Connect to Database
 #lazy connection
 # connect("qwer")
+class AspectData(Document):
+	"""docstring for Aspect"""
+	name=StringField()
+#	Sector=StringField()
+	value=StringField()
+	provider=StringField()
+	survey_id=StringField()
 class Aspect(Document):
 	"""docstring for Aspect"""
 	sector=StringField()

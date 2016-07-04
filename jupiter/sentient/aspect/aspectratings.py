@@ -1,7 +1,7 @@
 import csv
 import os
 
-from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR
+from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR,AspectData
 from jupiter.sentient.aspect.config import ASPECTS
 
 
@@ -163,8 +163,9 @@ class AspectR(object):
 		# with open(filename, "rt") as csvfile:
 		# 	spamreader = csv.reader(csvfile)
 		try:
+			print(spamreader)
 			for row in spamreader:
-				# print("row",row)
+				# print("row",row)	
 				aspect = row.line[2]
 				review_ID = row.line[1]
 				polarity = row.line[5]
@@ -191,10 +192,28 @@ class AspectR(object):
 			for row in spamreader:
 				# print(row.rating)
 				overall_ratings.append(float(row.rating))
-
+			temp={}
+			for i in ASPECTS:
+				temp[i]=[]
+			temp['neutral']=[]
+			temp['overall']=[]
 			last_review_ID = max(list(map(int,[row[0] for row in data])))
 			for review_ID in range(1, last_review_ID):
-
+				review_rows=[row for row in data if row[0]==str(review_ID)]
+				for row in review_rows:
+					if row[1]=='-1':
+						temp['neutral'].append(row)
+					else:
+						temp[ASPECTS[int(row[1])]].append(row)
+					temp['overall'].append(overall_ratings[review_ID])
+				for key, value in temp.items():
+					if key in ASPECTS:
+						if len(review_rows)!=0:
+							AR_aspect=aspect_rating(review_rows,value,overall_ratings[review_ID])
+						else:
+							AR_aspect=overall_ratings[review_ID]
+						r=AspectData(name=key,survey_id=self.sid, provider=self.p,value=str(AR_aspect)).save()					
+			for review_ID in range(1, last_review_ID):
 				review_rows = [row for row in data if row[0] == str(review_ID)]
 				# food_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('food'))]
 				# service_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('service'))]
@@ -236,5 +255,5 @@ class AspectR(object):
 if __name__ == '__main__':
 
 # Overall 4.5
-	a= AspectR('MAlnDybkavavGkBxn9D',"zomato")
+	a= AspectR('576907be78cbfb46091f1d1c',"tripadvisor")
 	print(a.run())

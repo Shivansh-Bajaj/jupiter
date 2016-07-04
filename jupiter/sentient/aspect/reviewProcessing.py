@@ -197,16 +197,17 @@ def saveExtendedAspectKeywords(m_aspectkeywords_fixed,AOutfilename):
     f.close()        
         
 class ReviewP(object):
-    def __init__(self,survey_id,provider):
+    def __init__(self,survey_id,provider,aspect_notation):
         self.sid= survey_id
         self.p= provider
+        self.aspect_notation=aspect_notation
         # self.s= sector
     def run(self):
         try:
             print ("LIST m_sentences","wow",len(m_sentences),m_sentences[0],"enf")
         except:print("LIST m_sentences")
         try:
-            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('jupiter/sentient/aspect/Data/restaurant_bootstrapping.dat')
+            m_aspectkeywords = aspectSegmenter.loadAspectKeywords('jupiter/sentient/aspect/Data/restaurant_bootstrapping.dat',self.aspect_notation)
 
         except Exception as e:
             m_aspectkeywords = aspectSegmenter.loadAspectKeywords('aspect/Data/restaurant_bootstrapping.dat')
@@ -214,6 +215,7 @@ class ReviewP(object):
         q_sentences = loadReviewAndProcess(self.sid,self.p)[0]
         m_sentences=loadReviewAndProcess(self.sid,self.p)[1]
         m_sentences_annotated, m_aspectkeywords_fixed = aspectSegmenter.BootStrapping(m_sentences, m_vocabulary, m_aspectkeywords)
+        print(m_sentences_annotated)
         try:
             saveAnnotatedSentences(m_sentences_annotated, q_sentences,"jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv",self.sid,self.p)
             saveExtendedAspectKeywords(m_aspectkeywords_fixed,'jupiter/sentient/aspect/Data/restaurant_bootstrapped_keywords_chi_final.dat')
@@ -235,6 +237,7 @@ if __name__=='__main__':
     print ('Start Bootstrapping For Aspect Segmentation')
     m_sentences_annotated, m_aspectkeywords_fixed = aspectSegmenter.BootStrapping(m_sentences, m_vocabulary, m_aspectkeywords)
     print ('Saving Annotated sentences and extended aspect keywords list')
+    print(m_sentences_annotated)
     saveAnnotatedSentences(m_sentences_annotated, q_sentences,'Data/annotated_sentences_chi_final.csv')
     print ('Saving Extended Aspect Keyword list')
     saveExtendedAspectKeywords(m_aspectkeywords_fixed,'Data/restaurant_bootstrapped_keywords_chi_final.dat')

@@ -17,24 +17,26 @@ from jupiter.sentient.reviews.holidaypool import HolidayIQ
 verbose= True
 class Sentient(object):
 	"""docstring for Sentient"""
-	def __init__(self,url,survey_id,provider):
+	def __init__(self,url,survey_id,provider,aspect_notation):
 		self.u=url
 		self.sid= survey_id
 		self.p= provider
+		self.aspect_notation=aspect_notation
 	def scrap_data(self):
-		if "zomato.com" in self.u:
+		print(self.aspect_notation)
+#		if "zomato.com" in self.u:
 			# self.p= "zomato"
-			Zomato(self.u,self.sid).get_data()
-		if "tripadvisor" in self.u:
+#			Zomato(self.u,self.sid).get_data()
+#		if "tripadvisor" in self.u:
 			# self.p="tripadvisor"
-			TripAdvisor(self.u,self.sid).get_data()
-		if "holidayiq" in self.u:
-			HolidayIQ(self.u,self.sid).get_data()
+#			TripAdvisor(self.u,self.sid).get_data()
+#		if "holidayiq" in self.u:
+#			HolidayIQ(self.u,self.sid).get_data()
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
 	def run_ml(self):
 		
-		ReviewP(self.sid,self.p).run()
+		ReviewP(self.sid,self.p,self.aspect_notation).run()
 		print("ReviewP Done")
 		
 		Sentiment(self.sid,self.p).run()
@@ -54,7 +56,7 @@ class Sentient(object):
 if __name__ == '__main__':
 	# url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
 	url="https://www.tripadvisor.in/Hotel_Review-g297612-d6200489-Reviews-Vetro_Inn_Spice-Surat_Gujarat.html"
-	survey_id="test"
+	survey_id="576907be78cbfb46091f1d1c"
 	provider="tripadvisor"
 	Sentient(url,survey_id,provider).run()
 	

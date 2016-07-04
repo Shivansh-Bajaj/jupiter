@@ -26,7 +26,7 @@ class AspectQ(Document):
 	status=StringField(default="false")
 	last_update=DateTimeField()
 	meta = {'allow_inheritance': True}
-
+	aspect_notation=ListField()
 	@property
 	def repr(self):
 		return {
@@ -62,7 +62,7 @@ class AspectQ(Document):
 				survey_id=self.survey_id
 			try:
 				print("provider",self.provider)
-				Sentient(self.base_url,survey_id,self.provider).run()
+				Sentient(self.base_url,survey_id,self.provider,self.aspect_notation).run()
 				pass
 			except Exception as e:
 				print("EXECUTE Exception", e)
