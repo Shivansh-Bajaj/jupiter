@@ -13,18 +13,19 @@ tf_cut = 10 # discard terms occurring less than 10 times in corpus
 # Function to load Aspect Keywords fom a file
 # We can Aspects and seed words in file to load
 # it dynamically
-def loadAspectKeywords(filename):
-    # aspects_to_find= SurveyAspects.objects(survey_id=survey_id)[0].aspects
+def loadAspectKeywords(filename,aspect_notation):
     m_aspectKeywords = dict()
     f = open(filename, 'r')
     for line in f.readlines():
         container = line.split(" ")
         keywords = []
-        for i in range(1,len(container)):
-            keywords.append(container[i].strip())
-        asp_name = re.sub("[:]", "" , container[0])
-        m_aspectKeywords[asp_name] = keywords
-        print ("keywords for ", asp_name, ":", len(keywords))
+        
+        asp_name = re.sub("[:]", "" , container[0])    
+        if asp_name in aspect_notation:
+            for i in range(1,len(container)):
+                keywords.append(container[i].strip())
+            m_aspectKeywords[asp_name] = keywords
+            print ("keywords for ", asp_name, ":", len(keywords))
     f.close()
     return m_aspectKeywords
 
@@ -164,7 +165,7 @@ def rankKeywordsByChi(m_chi_table, m_vocabulary, m_aspectkeywords, m_ranklist):
     return extended, m_aspectkeywords       
                     
 def BootStrapping(m_sentences, m_vocabulary, m_aspectkeywords):
-
+    print("//////////////////bootstrapping//////////////")
     print ("Vocabulary Size:", len(m_vocabulary))
     it = 0
     while True:

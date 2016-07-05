@@ -49,9 +49,9 @@ class CustomTask(object):
 			#upper 2 rows. i.e the header row, and an empty row.
 			obj2.survey_id=survey_id
 			obj2.parent_id=self.c
-			obj2.aspects=["ambience"]#extend the list till the aspeccts you want to be calculated
 			obj2.time_review="2016-04-01" #default date. okay?k change it to suit your limit
 			obj2.unique_identifier=survey_id+"tripadvisor"
+			obj2.aspect_notation=["ambience","value_for_money","room_service","cleanliness","amenities"]
 			obj2.save()
 		except Exception as e:
 			print("Following exception has happened: ",e)
@@ -71,4 +71,5 @@ def minitask():
 		obj2.unique_identifier=survey_id+"tripadvisor"
 		obj2.save()
 if __name__ == '__main__':
+	# main()
 	CustomTask(file_name,"djp1rj8NL31jjB5mp3q",2).run_csv()

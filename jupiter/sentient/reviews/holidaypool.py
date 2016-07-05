@@ -33,10 +33,11 @@ class HolidayIQ(object):
 	#		less_content=re.compile("^lessReviewContent[0-9]+")
 			if review!=None:
 				rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])%5)
-				content=str(review.find('p',{'id':more_content}))
+				content=str(review.find('p',{'id':more_content}).text)
 				review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text
 				sentiment=Senti(review).sent(rating)
 				try:
+					print("review save"+review_identifier)
 					save = Reviews(survey_id=self.sid,provider=self.p,review=content,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
 				except NotUniqueError:
 					print ("NotUniqueError")
@@ -68,9 +69,7 @@ class HolidayIQ(object):
 		Record(survey_id=self.sid,provider="HolidayIQ",links=set(links))	
 
 if __name__ == '__main__':
-	test_url="http://www.holidayiq.com/Holiday-Inn-Resort-Cavelossim-Mobor-hotel-2129.html"
-	test= HolidayIQ(test_url)
+	test_url="http://www.holidayiq.com/Hari-Mahal-Hotel-Jaipur-hotel-2249.html"
+	test= HolidayIQ(test_url,"2WzzBWZAvVKoJonJvW2")
 	r= test.get_data()
-	end = time.time()
-	print ("Time Taken")
-	print (end)
+	print ("end")
