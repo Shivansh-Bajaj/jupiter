@@ -44,7 +44,7 @@ class CustomTask(object):
 			obj2.base_url=i[2]
 			obj2.survey_id=survey_id
 			obj2.parent_id=self.c
-			obj2.time_review="1971-01-01"
+			obj2.time_review="2016-01-01"
 			obj2.unique_identifier=survey_id+"tripadvisor"
 			obj2.aspect_notation=["ambience","value_for_money","room_service","cleanliness","amenities"]
 			obj2.save()
