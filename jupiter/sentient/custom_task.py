@@ -27,29 +27,24 @@ class CustomTask(object):
 				pass
 			for i in reader:
 				if len(i[2])!=0:
-					# print ("Something")
-					# print(i[2])
+
 					self.add_task(i)
 					self.add_relation(i)
 					print (i[0],"added")
 	def name_to_id(self,name):
-		# Remove space
 		name = name.replace(" ","")
 		return name.lower()
 	def add_task(self,i):
+
 		survey_id= i[1]
+		print (survey_id)
+
 		try:
 			obj2=TripAdvisorQ()
 			obj2.base_url=i[2]
-			#See the numbering 2 in i[2], it refers to column number 0,1,2..n
-			#So whenever you add a new header(aka column) lets say date_limit in 
-			#csv file for time_review, you go like this
-			#obj2.time_review=i[column_number]
-			#the buffer is the total number of rows which are not to be included. 2 means
-			#upper 2 rows. i.e the header row, and an empty row.
 			obj2.survey_id=survey_id
 			obj2.parent_id=self.c
-			obj2.time_review="2016-04-01" #default date. okay?k change it to suit your limit
+			obj2.time_review="2015-04-01"
 			obj2.unique_identifier=survey_id+"tripadvisor"
 			obj2.aspect_notation=["ambience","value_for_money","room_service","cleanliness","amenities"]
 			obj2.save()
@@ -72,4 +67,4 @@ def minitask():
 		obj2.save()
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"djp1rj8NL31jjB5mp3q",2).run_csv()
+	CustomTask(file_name,"4z9JerJQYy3OXVZjy5k",2).run_csv()

@@ -25,7 +25,7 @@ class AspectQ(Document):
 	parent_id=StringField()
 	status=StringField(default="false")
 	last_update=DateTimeField()
-	aspects=ListField(required=True)
+	aspects=ListField(required=False)
 	time_review= DateTimeField()
 	meta = {'allow_inheritance': True}
 	aspect_notation=ListField()

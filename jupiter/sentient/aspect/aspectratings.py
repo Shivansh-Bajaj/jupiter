@@ -212,40 +212,42 @@ class AspectR(object):
 							AR_aspect=aspect_rating(review_rows,value,overall_ratings[review_ID])
 						else:
 							AR_aspect=overall_ratings[review_ID]
+						print ("Inside aspectratings.py", self.sid)
 						r=AspectData(name=key,survey_id=self.sid, provider=self.p,value=str(AR_aspect)).save()					
-			for review_ID in range(1, last_review_ID):
-				review_rows = [row for row in data if row[0] == str(review_ID)]
-				# food_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('food'))]
-				# service_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('service'))]
-				# price_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('price'))]
-				ambience_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('ambience'))]
-				vfm_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('value_for_money'))]
-				rs_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('room_service'))]
-				cleanliness_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('cleanliness'))]
-				amenities_rows=[row for row in review_rows if row[1] == str(ASPECTS.index('amenities'))]
-				neutral_rows = [row for row in review_rows if row[1] == '-1']
-				# print(food_rows)
-				overall = overall_ratings[review_ID]
+			
+			# for review_ID in range(1, last_review_ID):
+			# 	review_rows = [row for row in data if row[0] == str(review_ID)]
+			# 	# food_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('food'))]
+			# 	# service_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('service'))]
+			# 	# price_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('price'))]
+			# 	ambience_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('ambience'))]
+			# 	vfm_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('value_for_money'))]
+			# 	rs_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('room_service'))]
+			# 	cleanliness_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('cleanliness'))]
+			# 	amenities_rows = [row for row in review_rows if row[1] == str(ASPECTS.index('amenities'))]
+			# 	neutral_rows = [row for row in review_rows if row[1] == '-1']
+			# 	# print(food_rows)
+			# 	overall = overall_ratings[review_ID]
 
-				if len(review_rows) !=0 :
-					# AR_food = aspect_rating(review_rows, food_rows, overall)
-					# AR_service = aspect_rating(review_rows, service_rows, overall)
-					# AR_price = aspect_rating(review_rows, price_rows, overall)
-					AR_ambience=aspect_rating(review_rows,ambience_rows,overall)
-					AR_vfm=aspect_rating(review_rows,vfm_rows,overall)
-					AR_rs=aspect_rating(review_rows,rs_rows,overall)
-					AR_cleanliness=aspect_rating(review_rows,cleanliness_rows,overall)
-					AR_amenities=aspect_rating(review_rows,amenities_rows,overall)
+			# 	if len(review_rows) !=0 :
+			# 		# AR_food = aspect_rating(review_rows, food_rows, overall)
+			# 		# AR_service = aspect_rating(review_rows, service_rows, overall)
+			# 		# AR_price = aspect_rating(review_rows, price_rows, overall)
+			# 		AR_ambience=aspect_rating(review_rows,ambience_rows,overall)
+			# 		AR_vfm=aspect_rating(review_rows,vfm_rows,overall)
+			# 		AR_rs=aspect_rating(review_rows,rs_rows,overall)
+			# 		AR_cleanliness=aspect_rating(review_rows,cleanliness_rows,overall)
+			# 		AR_amenities=aspect_rating(review_rows,amenities_rows,overall)
 
-				else :
-					AR_ambience = overall
-					AR_vfm = overall
-					AR_rs = overall
-					AR_cleanliness = overall
-					AR_amenities = overall
+			# 	else :
+			# 		AR_ambience = overall
+			# 		AR_vfm = overall
+			# 		AR_rs = overall
+			# 		AR_cleanliness = overall
+			# 		AR_amenities = overall
 					
-				# r= Aspect(sector="food",provider=self.p,survey_id=self.sid,food=str(AR_food),service=str(AR_service),price=str(AR_price),value_for_money=str(AR_vfm),room_service=str(AR_rs),cleanliness=str(AR_cleanliness),overall=str(overall)).save()
-				r= Aspect(sector="food",provider=self.p,survey_id=self.sid,ambience=str(AR_ambience),value_for_money=str(AR_vfm),room_service=str(AR_rs),cleanliness=str(AR_cleanliness),amenities=str(AR_amenities),overall=str(overall)).save()
+			# 	# r= Aspect(sector="food",provider=self.p,survey_id=self.sid,food=str(AR_food),service=str(AR_service),price=str(AR_price),value_for_money=str(AR_vfm),room_service=str(AR_rs),cleanliness=str(AR_cleanliness),overall=str(overall)).save()
+			# 	r= Aspect(sector="food",provider=self.p,survey_id=self.sid,ambience=str(AR_ambience),value_for_money=str(AR_vfm),room_service=str(AR_rs),cleanliness=str(AR_cleanliness),amenities=str(AR_amenities),overall=str(overall)).save()
 				print("Aspect Rating Done")
 		except Exception as e:
 			# print("aspect_rating3",e)
