@@ -32,7 +32,7 @@ class HolidayIQ(object):
 			more_content=re.compile("^moreReviewContent[0-9]+")
 	#		less_content=re.compile("^lessReviewContent[0-9]+")
 			if review!=None:
-				rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])%5)
+				rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])*5/7)
 				content=str(review.find('p',{'id':more_content}).text)
 				review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text
 				sentiment=Senti(review).sent(rating)

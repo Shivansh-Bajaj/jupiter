@@ -24,11 +24,11 @@ class Senti(object):
 		# if sentence_sentiment < 0:
 		# 	return "Negative"
 		overall_rating = float(overall_rating)
-		if overall_rating > 3:
+		if overall_rating > 3.2:
 			return "Positive"
-		if overall_rating == 3:
+		if overall_rating >= 2.8 or overall_rating <= 3.2:
 			return "Neutral"
-		if overall_rating < 3:
+		if overall_rating < 2.8:
 			return "Negative"
 
 class WordCloud(object):
