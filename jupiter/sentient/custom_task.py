@@ -10,7 +10,7 @@ file_name="jupiter/sentient/custom_data/q_links_1.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
-    provider = StringField()
+    provider = ListField()
     parent = StringField()
    
 class CustomTask(object):
@@ -27,7 +27,6 @@ class CustomTask(object):
 				pass
 			for i in reader:
 				if len(i[2])!=0:
-
 					self.add_task(i)
 					self.add_relation(i)
 					print (i[0],"added")
@@ -44,7 +43,7 @@ class CustomTask(object):
 			obj2.base_url=i[2]
 			obj2.survey_id=survey_id
 			obj2.parent_id=self.c
-			obj2.time_review="2016-01-01"
+			obj2.time_review="1980-01-01"
 			obj2.unique_identifier=survey_id+"tripadvisor"
 			obj2.aspect_notation=["ambience","value_for_money","room_service","cleanliness","amenities"]
 			obj2.save()
@@ -52,11 +51,22 @@ class CustomTask(object):
 			print("Following exception has happened: ",e)
 	def add_relation(self,i):
 		survey_id= i[1]
-		obj= Relation()
-		obj.survey_id=survey_id
-		obj.provider="tripadvisor"
-		obj.parent=self.c
-		obj.save()
+		objects=Relation.objects(survey_id = survey_id)
+
+		print (len(objects))
+		if len(objects) == 0:
+			obj2 = Relation()
+			obj2.survey_id=survey_id
+			obj2.provider=["tripadvisor"]
+			obj2.parent=self.c
+			obj2.save()
+			print ("added new object")
+		else:
+			newObj = Relation()
+			newObj = objects[0]
+			newObj.provider.append("tripadvisor")
+			newObj.save()
+			print ("updated old object")
 
 def minitask():
 		obj2=TripAdvisorQ()
@@ -67,4 +77,4 @@ def minitask():
 		obj2.save()
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"vOAWLlOmAZyY23AdmZy",2).run_csv()
+	CustomTask(file_name,"8NxZgAVK8eD5MBQjZda",2).run_csv()
