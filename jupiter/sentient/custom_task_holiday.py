@@ -37,7 +37,7 @@ class CustomTask(object):
 				pass
 			for i in reader:
 				if len(i[2])!=0:
-					# self.add_task(i)
+					self.add_task(i)
 					self.add_relation(i)
 					print (i[0],"added")
 		self.add_aspects(self.c)
