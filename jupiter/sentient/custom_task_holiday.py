@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import HolidayIQQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/q_links_holidayiq.csv"
+file_name="jupiter/sentient/custom_data/webcrs/holidayiq.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
