@@ -54,7 +54,7 @@ class CustomTask(object):
 			obj3.survey_id=survey_id
 			obj3.parent_id=self.c
 			obj3.unique_identifier=survey_id+"HolidayIQ"
-			obj3.aspect_notation=aspect_list
+			obj3.aspect_notation=self.aspect_list
 			obj3.save()
 			print(survey_id,"has been added")
 		except Exception as e:
