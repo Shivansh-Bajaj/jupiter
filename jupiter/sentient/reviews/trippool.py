@@ -45,14 +45,14 @@ class TripAdvisor(object):
 			return int(links[-1].text)
 		except Exception as e:
 			return 1
-		
+
 	def generate_link(self):
 		endvalue= self.last_links()
 		links=[self.url]
 		if endvalue==1:
 			return links
-			
-		
+
+
 		add= len('Reviews-')
 		marker= self.url.index('Reviews-')+add
 		for i in range(1,endvalue):
@@ -66,7 +66,13 @@ class TripAdvisor(object):
 		base_url= "https://www.tripadvisor.in"
 		obj=Reviews.objects(survey_id=self.sid).order_by('-datetime').first()
 		record= Record.objects(survey_id=self.sid)
-		time_review= AspectQ.objects(survey_id=self.sid)[0].time_review
+		last_update=AspectQ.objects(survey_id=self.sid)[0].last_update
+		time_review = AspectQ.objects(survey_id=self.sid)[0].time_review 
+		if last_update!=None:
+			time_reviewed=time_review if (time_review>=last_update) else last_update
+		else:
+			time_reviewed=time_review
+
 		for j in review_link:
 			rl = j.find("a",href=True)
 			temp= rl['href'].encode('utf-8')
@@ -96,13 +102,13 @@ class TripAdvisor(object):
 				#date=date.replace('l','1')
 
 				else:parse_date= dt.strptime(date,"%Y-%m-%d")
-				if time_review!=None:
+				if time_reviewed!=None:
 					# get the most recent date
 					if record!=None:
-					
+
 						#msd= obj.datetime
-						print (time_review,"|",parse_date)
-						if time_review>=parse_date:
+						print (time_reviewed,"|",parse_date)
+						if time_reviewed>=parse_date:
 
 							raise Exception("Not collecting reviews")
 				rating=soup2.find('img',{'class':'sprite-rating_s_fill'})['alt'][0]

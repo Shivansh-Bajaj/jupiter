@@ -53,6 +53,7 @@ class CustomTask(object):
 			obj3.base_url=i[2]
 			obj3.survey_id=survey_id
 			obj3.parent_id=self.c
+			obj3.time_review="1980-01-01"
 			obj3.unique_identifier=survey_id+"HolidayIQ"
 			obj3.aspect_notation=self.aspect_list
 			obj3.save()
