@@ -34,7 +34,7 @@ class HolidayIQ(object):
 			if review!=None:
 				rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])*5/7)
 				content=str(review.find('p',{'id':more_content}).text)
-				review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text
+				review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text+content[0:20]
 				sentiment=Senti(review).sent(rating)
 				try:
 					print("review save"+review_identifier)
