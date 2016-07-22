@@ -7,7 +7,7 @@ from jupiter.sentient.reviews.trippool import TripAdvisor
 from jupiter.sentient.reviews.zomatopool import Zomato
 from jupiter.sentient.reviews.nlp import WordCloud
 from jupiter.sentient.reviews.holidaypool import HolidayIQ
-
+from jupiter.sentient.reviews.bookingpool import Booking
 # except:
 # 	from aspect.reviewProcessing import ReviewP
 # 	from aspect.sentimental import Sentiment
@@ -31,6 +31,8 @@ class Sentient(object):
 			TripAdvisor(self.u,self.sid).get_data()
 		if "holidayiq" in self.u:
 			HolidayIQ(self.u,self.sid).get_data()
+		if "booking" in self.u:
+			Booking(self.u,self.sid).get_data()
 
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
@@ -55,8 +57,8 @@ class Sentient(object):
 		print("Done")
 if __name__ == '__main__':
 	# url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
-	url="https://www.tripadvisor.in/Hotel_Review-g297612-d6200489-Reviews-Vetro_Inn_Spice-Surat_Gujarat.html"
-	survey_id="576907be78cbfb46091f1d1c"
-	provider="tripadvisor"
-	Sentient(url,survey_id,provider).run()
+	url="http://www.booking.com/hotel/in/swissa-tel-goa.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGyIAQGYATG4AQ_IAQ_YAQHoAQH4AQKoAgM;sid=69a80e530b4bd33d6a2ce0e128061485;dcid=12;dest_id=4127;dest_type=region;dist=0;group_adults=2;room1=A%2CA;sb_price_type=total;srfid=39183e2a96da4c1e9df94a8b1555fa36ec6494ddX4;type=total;ucfs=1&"
+	survey_id="vOAWLlOmAZyY23AdmZy"
+	provider="booking"
+	Sentient(url,survey_id,provider,["ambience","value_for_money","room_service","cleanliness","amenities"]).run()
 	
