@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import TripAdvisorQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/webcrs/trip.csv"
+file_name="jupiter/sentient/custom_data/sterling/trip.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()

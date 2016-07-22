@@ -6,6 +6,8 @@ from multiprocessing import Pool
 from mongoengine import ValidationError, NotUniqueError
 import sys
 import re
+from jupiter.sentient import model
+import datetime
 try:
 	from jupiter.sentient.reviews.models.model import Reviews,Record
 	from jupiter.sentient.reviews.nlp import Senti
@@ -32,13 +34,13 @@ class HolidayIQ(object):
 			review_date=review.find('meta',{'itemprop':'datePublished'})['content']
 			review_date=review_date.replace(",","")
 			parsed_date=datetime.datetime.strptime(review_date,'%d %B %Y')
-			print(time_review+"|"+parsed_date)
+			print(time_reviewed,"|",parsed_date)
 			if parsed_date>=time_reviewed:
 				more_content=re.compile("^moreReviewContent[0-9]+")
 				if review!=None:
 					rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])*5/7)
 					content=str(review.find('p',{'id':more_content}).text)
-					review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text
+					review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text.strip()
 					sentiment=Senti(review).sent(rating)
 					try:
 						print("review save"+review_identifier)
@@ -57,8 +59,8 @@ class HolidayIQ(object):
 		while True:
 			response=urlopen(current_url)
 			soup=BeautifulSoup(response,"html.parser")
-			last_update=AspectQ.objects(survey_id=self.sid)[0].last_update
-			time_review = AspectQ.objects(survey_id=self.sid)[0].time_review
+			last_update=model.AspectQ.objects(survey_id=self.sid)[0].last_update
+			time_review = model.AspectQ.objects(survey_id=self.sid)[0].time_review
 			if last_update!=None:
 				time_reviewed=time_review if (time_review>=last_update) else last_update
 			else:
