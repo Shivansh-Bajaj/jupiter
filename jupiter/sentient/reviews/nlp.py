@@ -26,7 +26,7 @@ class Senti(object):
 		overall_rating = float(overall_rating)
 		if overall_rating > 3.2:
 			return "Positive"
-		if overall_rating >= 2.8 or overall_rating <= 3.2:
+		if overall_rating >= 2.8 and overall_rating <= 3.2:
 			return "Neutral"
 		if overall_rating < 2.8:
 			return "Negative"
