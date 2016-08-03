@@ -34,7 +34,8 @@ class Reviews(Document):
 	review=StringField()
 	review_identifier=StringField()
 	sentiment= StringField()
-	date_added=StringField()
+	date_added=DateTimeField()
+	review_link=StringField()
 	datetime=DateTimeField()
 class ChiFinal(Document):
 	data=ListField(unique=True)
@@ -60,3 +61,16 @@ class Sentiments(Document):
 	provider=StringField()
 	review=StringField()
 	sentiment=StringField()
+class AnnotationSentences(Document):
+	survey_id=StringField()
+	provider=StringField()
+	RID=StringField()
+	aspect=StringField()
+	original=StringField()
+	sentences=StringField()
+class KeywordAspects(Document):
+        
+        survey_id=StringField()
+        provider=StringField()
+        aspect=StringField()
+        value=ListField()

@@ -46,13 +46,15 @@ class Booking(object):
 					review=li.find('div',{'class':'review_item_review'})
 					content=review.find('div',{'class':'review_item_review_content'}).find_all('span',{'itemprop':'reviewBody'})
 					header=review.find('div',{'class':'review_item_review_header'})
+					review_link=header.find('a',{'class':'review_item_header_content'})['href']
+					print(review_link,parsed_date)
 					rating=str(float(header.find('meta',{'itemprop':'ratingValue'})['content'])/2.0)
 					sentiment=Senti(review).sent(rating)
 					review_identifier=header.find('span',{'itemprop':'name'}).text.strip()
 					for texts in content:
 						texts=texts.text.strip() if texts!=None else None
 						try:
-							save=Reviews(survey_id=self.sid,provider=self.p,review=texts,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
+							save=Reviews(survey_id=self.sid,provider=self.p,review=texts,review_identifier=review_identifier,rating=rating,sentiment=sentiment,review_link=review_link,date_added=parsed_date).save()
 							print("reviews saved identified by:",review_identifier)
 							total_reviews_collected+=1
 						except NotUniqueError:

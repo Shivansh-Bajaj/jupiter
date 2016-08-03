@@ -12,7 +12,8 @@ class Reviews(DynamicDocument):
 	review=StringField()
 	review_identifier=StringField()
 	sentiment=StringField()
-	date_added=StringField()
+	date_added=DateTimeField()
+	review_link=StringField()
 	datetime=DateTimeField()
 
 
@@ -38,11 +39,11 @@ class AspectQ(Document):
 	parent= StringField() #Value , 'true'
 	parent_id=StringField()
 	status=StringField(default="false")
-	last_update=DateTimeField()
-	aspects=ListField(required=True)
+	last_update=DateTimeField(default='1980-01-01')
+	aspects=ListField(required=False)
 	time_review= DateTimeField()
 	meta = {'allow_inheritance': True}
-
+	aspect_notation=ListField()
 	@property
 	def repr(self):
 		return {
@@ -78,7 +79,7 @@ class AspectQ(Document):
 				survey_id=self.survey_id
 			try:
 				print("provider",self.provider)
-				Sentient(self.base_url,survey_id,self.provider).run()
+				Sentient(self.base_url,survey_id,self.provider,self.aspect_notation).run()
 				pass
 			except Exception as e:
 				print("EXECUTE Exception", e)

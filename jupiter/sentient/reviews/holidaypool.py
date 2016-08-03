@@ -41,10 +41,12 @@ class HolidayIQ(object):
 					rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])*5/7)
 					content=str(review.find('p',{'id':more_content}).text)
 					review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text.strip()
+					review_link=review.find('a',{'class':'featured-blog-clicked'})['href']
 					sentiment=Senti(review).sent(rating)
 					try:
+						save = Reviews(survey_id=self.sid,date_added=parsed_date,review_link=review_link,provider=self.p,review=content,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
+					
 						print("review save"+review_identifier)
-						save = Reviews(survey_id=self.sid,provider=self.p,review=content,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
 					except NotUniqueError:
 						print ("NotUniqueError")
 						raise NotUniqueError("A non unique error found. Skipping review collection")

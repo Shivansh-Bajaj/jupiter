@@ -121,7 +121,7 @@ class TripAdvisor(object):
 				sentiment= Senti(review).sent(rating)
 
 				try:
-					save = Reviews(review_identifier=review_identifier,survey_id=self.sid,datetime=parse_date,date_added=date,provider=self.p,review=review,rating=rating,sentiment=sentiment).save(validate=False)
+					save = Reviews(review_identifier=review_identifier,survey_id=self.sid,datetime=parse_date,date_added=date,provider=self.p,review=review,rating=rating,review_link=full_url,sentiment=sentiment).save(validate=False)
 				except NotUniqueError:
 					print("NotUniqueError")
 				except Exception as e:
