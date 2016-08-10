@@ -14,12 +14,12 @@ tf_cut = 10 # discard terms occurring less than 10 times in corpus
 # We can Aspects and seed words in file to load
 # it dynamically
 def loadAspectKeywords(filename,aspect_notation):
+    print(aspect_notation)
     m_aspectKeywords = dict()
     f = open(filename, 'r')
     for line in f.readlines():
         container = line.split(" ")
         keywords = []
-        
         asp_name = re.sub("[:]", "" , container[0])    
         if asp_name in aspect_notation:
             for i in range(1,len(container)):

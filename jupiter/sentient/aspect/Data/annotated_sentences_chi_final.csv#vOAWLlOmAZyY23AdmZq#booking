@@ -1,0 +1,741 @@
+,RID,aspects,original,sentences
+0,1,-1,Service needs to be improved.,service needs improved .
+1,1,-1,A lot actually.,lot actually .
+2,1,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+3,1,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+4,2,-1,Excellent location.,excellent location .
+5,2,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+6,2,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+7,3,-1,Nothing that I can think of.,nothing think .
+8,5,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+9,6,-1,Friendly helpful staff.,friendly helpful staff .
+10,7,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+11,8,-1,good space in the room,good space room
+12,9,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+13,10,-1,Good swimming pool,good swimming pool
+14,12,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+15,13,-1,Room was always damp.,room always damp .
+16,13,-1,Checkout and breakfast too early.,checkout breakfast early .
+17,13,-1,Not much to do in direct proximity.,much direct proximity .
+18,13,-1,Awfully expensive taxis.,awfully expensive taxis .
+19,14,-1,Cosy rooms.,cosy rooms .
+20,15,-1,Service needs to be improved.,service needs improved .
+21,15,-1,A lot actually.,lot actually .
+22,15,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+23,15,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+24,16,-1,Excellent location.,excellent location .
+25,16,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+26,16,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+27,17,-1,Nothing that I can think of.,nothing think .
+28,19,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+29,20,-1,Friendly helpful staff.,friendly helpful staff .
+30,21,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+31,22,-1,good space in the room,good space room
+32,23,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+33,24,-1,Good swimming pool,good swimming pool
+34,26,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+35,27,-1,Room was always damp.,room always damp .
+36,27,-1,Checkout and breakfast too early.,checkout breakfast early .
+37,27,-1,Not much to do in direct proximity.,much direct proximity .
+38,27,-1,Awfully expensive taxis.,awfully expensive taxis .
+39,28,-1,Cosy rooms.,cosy rooms .
+40,29,-1,Service needs to be improved.,service needs improved .
+41,29,-1,A lot actually.,lot actually .
+42,29,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+43,29,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+44,30,-1,Excellent location.,excellent location .
+45,30,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+46,30,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+47,31,-1,Nothing that I can think of.,nothing think .
+48,33,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+49,34,-1,Friendly helpful staff.,friendly helpful staff .
+50,35,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+51,36,-1,good space in the room,good space room
+52,37,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+53,38,-1,Good swimming pool,good swimming pool
+54,40,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+55,41,-1,Room was always damp.,room always damp .
+56,41,-1,Checkout and breakfast too early.,checkout breakfast early .
+57,41,-1,Not much to do in direct proximity.,much direct proximity .
+58,41,-1,Awfully expensive taxis.,awfully expensive taxis .
+59,42,-1,Cosy rooms.,cosy rooms .
+60,43,-1,Service needs to be improved.,service needs improved .
+61,43,-1,A lot actually.,lot actually .
+62,43,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+63,43,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+64,44,-1,Excellent location.,excellent location .
+65,44,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+66,44,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+67,45,-1,Nothing that I can think of.,nothing think .
+68,47,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+69,48,-1,Friendly helpful staff.,friendly helpful staff .
+70,49,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+71,50,-1,good space in the room,good space room
+72,51,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+73,52,-1,Good swimming pool,good swimming pool
+74,54,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+75,55,-1,Room was always damp.,room always damp .
+76,55,-1,Checkout and breakfast too early.,checkout breakfast early .
+77,55,-1,Not much to do in direct proximity.,much direct proximity .
+78,55,-1,Awfully expensive taxis.,awfully expensive taxis .
+79,56,-1,Cosy rooms.,cosy rooms .
+80,57,-1,Service needs to be improved.,service needs improved .
+81,57,-1,A lot actually.,lot actually .
+82,57,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+83,57,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+84,58,-1,Excellent location.,excellent location .
+85,58,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+86,58,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+87,59,-1,Nothing that I can think of.,nothing think .
+88,61,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+89,62,-1,Friendly helpful staff.,friendly helpful staff .
+90,63,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+91,64,-1,good space in the room,good space room
+92,65,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+93,66,-1,Good swimming pool,good swimming pool
+94,68,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+95,69,-1,Room was always damp.,room always damp .
+96,69,-1,Checkout and breakfast too early.,checkout breakfast early .
+97,69,-1,Not much to do in direct proximity.,much direct proximity .
+98,69,-1,Awfully expensive taxis.,awfully expensive taxis .
+99,70,-1,Cosy rooms.,cosy rooms .
+100,71,-1,Service needs to be improved.,service needs improved .
+101,71,-1,A lot actually.,lot actually .
+102,71,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+103,71,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+104,72,-1,Excellent location.,excellent location .
+105,72,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+106,72,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+107,73,-1,Nothing that I can think of.,nothing think .
+108,75,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+109,76,-1,Friendly helpful staff.,friendly helpful staff .
+110,77,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+111,78,-1,good space in the room,good space room
+112,79,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+113,80,-1,Good swimming pool,good swimming pool
+114,82,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+115,83,-1,Room was always damp.,room always damp .
+116,83,-1,Checkout and breakfast too early.,checkout breakfast early .
+117,83,-1,Not much to do in direct proximity.,much direct proximity .
+118,83,-1,Awfully expensive taxis.,awfully expensive taxis .
+119,84,-1,Cosy rooms.,cosy rooms .
+120,85,-1,Service needs to be improved.,service needs improved .
+121,85,-1,A lot actually.,lot actually .
+122,85,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+123,85,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+124,86,-1,Excellent location.,excellent location .
+125,86,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+126,86,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+127,87,-1,Nothing that I can think of.,nothing think .
+128,89,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+129,90,-1,Friendly helpful staff.,friendly helpful staff .
+130,91,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+131,92,-1,good space in the room,good space room
+132,93,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+133,94,-1,Good swimming pool,good swimming pool
+134,96,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+135,97,-1,Room was always damp.,room always damp .
+136,97,-1,Checkout and breakfast too early.,checkout breakfast early .
+137,97,-1,Not much to do in direct proximity.,much direct proximity .
+138,97,-1,Awfully expensive taxis.,awfully expensive taxis .
+139,98,-1,Cosy rooms.,cosy rooms .
+140,99,-1,Service needs to be improved.,service needs improved .
+141,99,-1,A lot actually.,lot actually .
+142,99,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+143,99,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+144,100,-1,Excellent location.,excellent location .
+145,100,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+146,100,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+147,101,-1,Nothing that I can think of.,nothing think .
+148,103,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+149,104,-1,Friendly helpful staff.,friendly helpful staff .
+150,105,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+151,106,-1,good space in the room,good space room
+152,107,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+153,108,-1,Good swimming pool,good swimming pool
+154,110,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+155,111,-1,Room was always damp.,room always damp .
+156,111,-1,Checkout and breakfast too early.,checkout breakfast early .
+157,111,-1,Not much to do in direct proximity.,much direct proximity .
+158,111,-1,Awfully expensive taxis.,awfully expensive taxis .
+159,112,-1,Cosy rooms.,cosy rooms .
+160,113,-1,Service needs to be improved.,service needs improved .
+161,113,-1,A lot actually.,lot actually .
+162,113,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+163,113,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+164,114,-1,Excellent location.,excellent location .
+165,114,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+166,114,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+167,115,-1,Nothing that I can think of.,nothing think .
+168,117,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+169,118,-1,Friendly helpful staff.,friendly helpful staff .
+170,119,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+171,120,-1,good space in the room,good space room
+172,121,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+173,122,-1,Good swimming pool,good swimming pool
+174,124,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+175,125,-1,Room was always damp.,room always damp .
+176,125,-1,Checkout and breakfast too early.,checkout breakfast early .
+177,125,-1,Not much to do in direct proximity.,much direct proximity .
+178,125,-1,Awfully expensive taxis.,awfully expensive taxis .
+179,126,-1,Cosy rooms.,cosy rooms .
+180,127,-1,Service needs to be improved.,service needs improved .
+181,127,-1,A lot actually.,lot actually .
+182,127,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+183,127,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+184,128,-1,Excellent location.,excellent location .
+185,128,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+186,128,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+187,129,-1,Nothing that I can think of.,nothing think .
+188,131,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+189,132,-1,Friendly helpful staff.,friendly helpful staff .
+190,133,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+191,134,-1,good space in the room,good space room
+192,135,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+193,136,-1,Good swimming pool,good swimming pool
+194,138,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+195,139,-1,Room was always damp.,room always damp .
+196,139,-1,Checkout and breakfast too early.,checkout breakfast early .
+197,139,-1,Not much to do in direct proximity.,much direct proximity .
+198,139,-1,Awfully expensive taxis.,awfully expensive taxis .
+199,140,-1,Cosy rooms.,cosy rooms .
+200,141,-1,Service needs to be improved.,service needs improved .
+201,141,-1,A lot actually.,lot actually .
+202,141,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+203,141,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+204,142,-1,Excellent location.,excellent location .
+205,142,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+206,142,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+207,143,-1,Nothing that I can think of.,nothing think .
+208,145,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+209,146,-1,Friendly helpful staff.,friendly helpful staff .
+210,147,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+211,148,-1,good space in the room,good space room
+212,149,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+213,150,-1,Good swimming pool,good swimming pool
+214,152,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+215,153,-1,Room was always damp.,room always damp .
+216,153,-1,Checkout and breakfast too early.,checkout breakfast early .
+217,153,-1,Not much to do in direct proximity.,much direct proximity .
+218,153,-1,Awfully expensive taxis.,awfully expensive taxis .
+219,154,-1,Cosy rooms.,cosy rooms .
+220,155,-1,Service needs to be improved.,service needs improved .
+221,155,-1,A lot actually.,lot actually .
+222,155,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+223,155,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+224,156,-1,Excellent location.,excellent location .
+225,156,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+226,156,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+227,157,-1,Nothing that I can think of.,nothing think .
+228,159,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+229,160,-1,Friendly helpful staff.,friendly helpful staff .
+230,161,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+231,162,-1,good space in the room,good space room
+232,163,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+233,164,-1,Good swimming pool,good swimming pool
+234,166,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+235,167,-1,Room was always damp.,room always damp .
+236,167,-1,Checkout and breakfast too early.,checkout breakfast early .
+237,167,-1,Not much to do in direct proximity.,much direct proximity .
+238,167,-1,Awfully expensive taxis.,awfully expensive taxis .
+239,168,-1,Cosy rooms.,cosy rooms .
+240,169,-1,Service needs to be improved.,service needs improved .
+241,169,-1,A lot actually.,lot actually .
+242,169,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+243,169,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+244,170,-1,Excellent location.,excellent location .
+245,170,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+246,170,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+247,171,-1,Nothing that I can think of.,nothing think .
+248,173,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+249,174,-1,Friendly helpful staff.,friendly helpful staff .
+250,175,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+251,176,-1,good space in the room,good space room
+252,177,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+253,178,-1,Good swimming pool,good swimming pool
+254,180,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+255,181,-1,Room was always damp.,room always damp .
+256,181,-1,Checkout and breakfast too early.,checkout breakfast early .
+257,181,-1,Not much to do in direct proximity.,much direct proximity .
+258,181,-1,Awfully expensive taxis.,awfully expensive taxis .
+259,182,-1,Cosy rooms.,cosy rooms .
+260,183,-1,Service needs to be improved.,service needs improved .
+261,183,-1,A lot actually.,lot actually .
+262,183,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+263,183,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+264,184,-1,Excellent location.,excellent location .
+265,184,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+266,184,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+267,185,-1,Nothing that I can think of.,nothing think .
+268,187,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+269,188,-1,Friendly helpful staff.,friendly helpful staff .
+270,189,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+271,190,-1,good space in the room,good space room
+272,191,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+273,192,-1,Good swimming pool,good swimming pool
+274,194,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+275,195,-1,Room was always damp.,room always damp .
+276,195,-1,Checkout and breakfast too early.,checkout breakfast early .
+277,195,-1,Not much to do in direct proximity.,much direct proximity .
+278,195,-1,Awfully expensive taxis.,awfully expensive taxis .
+279,196,-1,Cosy rooms.,cosy rooms .
+280,197,-1,Service needs to be improved.,service needs improved .
+281,197,-1,A lot actually.,lot actually .
+282,197,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+283,197,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+284,198,-1,Excellent location.,excellent location .
+285,198,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+286,198,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+287,199,-1,Nothing that I can think of.,nothing think .
+288,201,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+289,202,-1,Friendly helpful staff.,friendly helpful staff .
+290,203,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+291,204,-1,good space in the room,good space room
+292,205,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+293,206,-1,Good swimming pool,good swimming pool
+294,208,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+295,209,-1,Room was always damp.,room always damp .
+296,209,-1,Checkout and breakfast too early.,checkout breakfast early .
+297,209,-1,Not much to do in direct proximity.,much direct proximity .
+298,209,-1,Awfully expensive taxis.,awfully expensive taxis .
+299,210,-1,Cosy rooms.,cosy rooms .
+300,211,-1,Service needs to be improved.,service needs improved .
+301,211,-1,A lot actually.,lot actually .
+302,211,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+303,211,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+304,212,-1,Excellent location.,excellent location .
+305,212,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+306,212,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+307,213,-1,Nothing that I can think of.,nothing think .
+308,215,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+309,216,-1,Friendly helpful staff.,friendly helpful staff .
+310,217,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+311,218,-1,good space in the room,good space room
+312,219,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+313,220,-1,Good swimming pool,good swimming pool
+314,222,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+315,223,-1,Room was always damp.,room always damp .
+316,223,-1,Checkout and breakfast too early.,checkout breakfast early .
+317,223,-1,Not much to do in direct proximity.,much direct proximity .
+318,223,-1,Awfully expensive taxis.,awfully expensive taxis .
+319,224,-1,Cosy rooms.,cosy rooms .
+320,225,-1,Service needs to be improved.,service needs improved .
+321,225,-1,A lot actually.,lot actually .
+322,225,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+323,225,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+324,226,-1,Excellent location.,excellent location .
+325,226,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+326,226,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+327,227,-1,Nothing that I can think of.,nothing think .
+328,229,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+329,230,-1,Friendly helpful staff.,friendly helpful staff .
+330,231,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+331,232,-1,good space in the room,good space room
+332,233,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+333,234,-1,Good swimming pool,good swimming pool
+334,236,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+335,237,-1,Room was always damp.,room always damp .
+336,237,-1,Checkout and breakfast too early.,checkout breakfast early .
+337,237,-1,Not much to do in direct proximity.,much direct proximity .
+338,237,-1,Awfully expensive taxis.,awfully expensive taxis .
+339,238,-1,Cosy rooms.,cosy rooms .
+340,239,-1,Service needs to be improved.,service needs improved .
+341,239,-1,A lot actually.,lot actually .
+342,239,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+343,239,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+344,240,-1,Excellent location.,excellent location .
+345,240,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+346,240,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+347,241,-1,Nothing that I can think of.,nothing think .
+348,243,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+349,244,-1,Friendly helpful staff.,friendly helpful staff .
+350,245,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+351,246,-1,good space in the room,good space room
+352,247,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+353,248,-1,Good swimming pool,good swimming pool
+354,250,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+355,251,-1,Room was always damp.,room always damp .
+356,251,-1,Checkout and breakfast too early.,checkout breakfast early .
+357,251,-1,Not much to do in direct proximity.,much direct proximity .
+358,251,-1,Awfully expensive taxis.,awfully expensive taxis .
+359,252,-1,Cosy rooms.,cosy rooms .
+360,253,-1,Service needs to be improved.,service needs improved .
+361,253,-1,A lot actually.,lot actually .
+362,253,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+363,253,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+364,254,-1,Excellent location.,excellent location .
+365,254,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+366,254,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+367,255,-1,Nothing that I can think of.,nothing think .
+368,257,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+369,258,-1,Friendly helpful staff.,friendly helpful staff .
+370,259,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+371,260,-1,good space in the room,good space room
+372,261,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+373,262,-1,Good swimming pool,good swimming pool
+374,264,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+375,265,-1,Room was always damp.,room always damp .
+376,265,-1,Checkout and breakfast too early.,checkout breakfast early .
+377,265,-1,Not much to do in direct proximity.,much direct proximity .
+378,265,-1,Awfully expensive taxis.,awfully expensive taxis .
+379,266,-1,Cosy rooms.,cosy rooms .
+380,267,-1,Service needs to be improved.,service needs improved .
+381,267,-1,A lot actually.,lot actually .
+382,267,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+383,267,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+384,268,-1,Excellent location.,excellent location .
+385,268,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+386,268,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+387,269,-1,Nothing that I can think of.,nothing think .
+388,271,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+389,272,-1,Friendly helpful staff.,friendly helpful staff .
+390,273,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+391,274,-1,good space in the room,good space room
+392,275,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+393,276,-1,Good swimming pool,good swimming pool
+394,278,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+395,279,-1,Room was always damp.,room always damp .
+396,279,-1,Checkout and breakfast too early.,checkout breakfast early .
+397,279,-1,Not much to do in direct proximity.,much direct proximity .
+398,279,-1,Awfully expensive taxis.,awfully expensive taxis .
+399,280,-1,Cosy rooms.,cosy rooms .
+400,281,-1,Service needs to be improved.,service needs improved .
+401,281,-1,A lot actually.,lot actually .
+402,281,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+403,281,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+404,282,-1,Excellent location.,excellent location .
+405,282,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+406,282,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+407,283,-1,Nothing that I can think of.,nothing think .
+408,285,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+409,286,-1,Friendly helpful staff.,friendly helpful staff .
+410,287,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+411,288,-1,good space in the room,good space room
+412,289,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+413,290,-1,Good swimming pool,good swimming pool
+414,292,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+415,293,-1,Room was always damp.,room always damp .
+416,293,-1,Checkout and breakfast too early.,checkout breakfast early .
+417,293,-1,Not much to do in direct proximity.,much direct proximity .
+418,293,-1,Awfully expensive taxis.,awfully expensive taxis .
+419,294,-1,Cosy rooms.,cosy rooms .
+420,295,-1,Service needs to be improved.,service needs improved .
+421,295,-1,A lot actually.,lot actually .
+422,295,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+423,295,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+424,296,-1,Excellent location.,excellent location .
+425,296,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+426,296,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+427,297,-1,Nothing that I can think of.,nothing think .
+428,299,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+429,300,-1,Friendly helpful staff.,friendly helpful staff .
+430,301,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+431,302,-1,good space in the room,good space room
+432,303,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+433,304,-1,Good swimming pool,good swimming pool
+434,306,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+435,307,-1,Room was always damp.,room always damp .
+436,307,-1,Checkout and breakfast too early.,checkout breakfast early .
+437,307,-1,Not much to do in direct proximity.,much direct proximity .
+438,307,-1,Awfully expensive taxis.,awfully expensive taxis .
+439,308,-1,Cosy rooms.,cosy rooms .
+440,309,-1,Service needs to be improved.,service needs improved .
+441,309,-1,A lot actually.,lot actually .
+442,309,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+443,309,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+444,310,-1,Excellent location.,excellent location .
+445,310,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+446,310,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+447,311,-1,Nothing that I can think of.,nothing think .
+448,313,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+449,314,-1,Friendly helpful staff.,friendly helpful staff .
+450,315,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+451,316,-1,good space in the room,good space room
+452,317,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+453,318,-1,Good swimming pool,good swimming pool
+454,320,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+455,321,-1,Room was always damp.,room always damp .
+456,321,-1,Checkout and breakfast too early.,checkout breakfast early .
+457,321,-1,Not much to do in direct proximity.,much direct proximity .
+458,321,-1,Awfully expensive taxis.,awfully expensive taxis .
+459,322,-1,Cosy rooms.,cosy rooms .
+460,323,-1,Service needs to be improved.,service needs improved .
+461,323,-1,A lot actually.,lot actually .
+462,323,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+463,323,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+464,324,-1,Excellent location.,excellent location .
+465,324,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+466,324,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+467,325,-1,Nothing that I can think of.,nothing think .
+468,327,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+469,328,-1,Friendly helpful staff.,friendly helpful staff .
+470,329,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+471,330,-1,good space in the room,good space room
+472,331,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+473,332,-1,Good swimming pool,good swimming pool
+474,334,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+475,335,-1,Room was always damp.,room always damp .
+476,335,-1,Checkout and breakfast too early.,checkout breakfast early .
+477,335,-1,Not much to do in direct proximity.,much direct proximity .
+478,335,-1,Awfully expensive taxis.,awfully expensive taxis .
+479,336,-1,Cosy rooms.,cosy rooms .
+480,337,-1,Service needs to be improved.,service needs improved .
+481,337,-1,A lot actually.,lot actually .
+482,337,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+483,337,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+484,338,-1,Excellent location.,excellent location .
+485,338,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+486,338,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+487,339,-1,Nothing that I can think of.,nothing think .
+488,341,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+489,342,-1,Friendly helpful staff.,friendly helpful staff .
+490,343,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+491,344,-1,good space in the room,good space room
+492,345,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+493,346,-1,Good swimming pool,good swimming pool
+494,348,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+495,349,-1,Room was always damp.,room always damp .
+496,349,-1,Checkout and breakfast too early.,checkout breakfast early .
+497,349,-1,Not much to do in direct proximity.,much direct proximity .
+498,349,-1,Awfully expensive taxis.,awfully expensive taxis .
+499,350,-1,Cosy rooms.,cosy rooms .
+500,351,-1,Service needs to be improved.,service needs improved .
+501,351,-1,A lot actually.,lot actually .
+502,351,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+503,351,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+504,352,-1,Excellent location.,excellent location .
+505,352,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+506,352,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+507,353,-1,Nothing that I can think of.,nothing think .
+508,355,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+509,356,-1,Friendly helpful staff.,friendly helpful staff .
+510,357,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+511,358,-1,good space in the room,good space room
+512,359,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+513,360,-1,Good swimming pool,good swimming pool
+514,362,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+515,363,-1,Room was always damp.,room always damp .
+516,363,-1,Checkout and breakfast too early.,checkout breakfast early .
+517,363,-1,Not much to do in direct proximity.,much direct proximity .
+518,363,-1,Awfully expensive taxis.,awfully expensive taxis .
+519,364,-1,Cosy rooms.,cosy rooms .
+520,365,-1,Service needs to be improved.,service needs improved .
+521,365,-1,A lot actually.,lot actually .
+522,365,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+523,365,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+524,366,-1,Excellent location.,excellent location .
+525,366,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+526,366,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+527,367,-1,Nothing that I can think of.,nothing think .
+528,369,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+529,370,-1,Friendly helpful staff.,friendly helpful staff .
+530,371,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+531,372,-1,good space in the room,good space room
+532,373,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+533,374,-1,Good swimming pool,good swimming pool
+534,376,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+535,377,-1,Room was always damp.,room always damp .
+536,377,-1,Checkout and breakfast too early.,checkout breakfast early .
+537,377,-1,Not much to do in direct proximity.,much direct proximity .
+538,377,-1,Awfully expensive taxis.,awfully expensive taxis .
+539,378,-1,Cosy rooms.,cosy rooms .
+540,379,-1,Service needs to be improved.,service needs improved .
+541,379,-1,A lot actually.,lot actually .
+542,379,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+543,379,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+544,380,-1,Excellent location.,excellent location .
+545,380,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+546,380,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+547,381,-1,Nothing that I can think of.,nothing think .
+548,383,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+549,384,-1,Friendly helpful staff.,friendly helpful staff .
+550,385,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+551,386,-1,good space in the room,good space room
+552,387,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+553,388,-1,Good swimming pool,good swimming pool
+554,390,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+555,391,-1,Room was always damp.,room always damp .
+556,391,-1,Checkout and breakfast too early.,checkout breakfast early .
+557,391,-1,Not much to do in direct proximity.,much direct proximity .
+558,391,-1,Awfully expensive taxis.,awfully expensive taxis .
+559,392,-1,Cosy rooms.,cosy rooms .
+560,393,-1,Service needs to be improved.,service needs improved .
+561,393,-1,A lot actually.,lot actually .
+562,393,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+563,393,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+564,394,-1,Excellent location.,excellent location .
+565,394,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+566,394,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+567,395,-1,Nothing that I can think of.,nothing think .
+568,397,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+569,398,-1,Friendly helpful staff.,friendly helpful staff .
+570,399,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+571,400,-1,good space in the room,good space room
+572,401,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+573,402,-1,Good swimming pool,good swimming pool
+574,404,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+575,405,-1,Room was always damp.,room always damp .
+576,405,-1,Checkout and breakfast too early.,checkout breakfast early .
+577,405,-1,Not much to do in direct proximity.,much direct proximity .
+578,405,-1,Awfully expensive taxis.,awfully expensive taxis .
+579,406,-1,Cosy rooms.,cosy rooms .
+580,407,-1,Service needs to be improved.,service needs improved .
+581,407,-1,A lot actually.,lot actually .
+582,407,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+583,407,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+584,408,-1,Excellent location.,excellent location .
+585,408,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+586,408,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+587,409,-1,Nothing that I can think of.,nothing think .
+588,411,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+589,412,-1,Friendly helpful staff.,friendly helpful staff .
+590,413,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+591,414,-1,good space in the room,good space room
+592,415,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+593,416,-1,Good swimming pool,good swimming pool
+594,418,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+595,419,-1,Room was always damp.,room always damp .
+596,419,-1,Checkout and breakfast too early.,checkout breakfast early .
+597,419,-1,Not much to do in direct proximity.,much direct proximity .
+598,419,-1,Awfully expensive taxis.,awfully expensive taxis .
+599,420,-1,Cosy rooms.,cosy rooms .
+600,421,-1,Service needs to be improved.,service needs improved .
+601,421,-1,A lot actually.,lot actually .
+602,421,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+603,421,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+604,422,-1,Excellent location.,excellent location .
+605,422,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+606,422,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+607,423,-1,Nothing that I can think of.,nothing think .
+608,425,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+609,426,-1,Friendly helpful staff.,friendly helpful staff .
+610,427,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+611,428,-1,good space in the room,good space room
+612,429,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+613,430,-1,Good swimming pool,good swimming pool
+614,432,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+615,433,-1,Room was always damp.,room always damp .
+616,433,-1,Checkout and breakfast too early.,checkout breakfast early .
+617,433,-1,Not much to do in direct proximity.,much direct proximity .
+618,433,-1,Awfully expensive taxis.,awfully expensive taxis .
+619,434,-1,Cosy rooms.,cosy rooms .
+620,435,-1,Service needs to be improved.,service needs improved .
+621,435,-1,A lot actually.,lot actually .
+622,435,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+623,435,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+624,436,-1,Excellent location.,excellent location .
+625,436,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+626,436,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+627,437,-1,Nothing that I can think of.,nothing think .
+628,439,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+629,440,-1,Friendly helpful staff.,friendly helpful staff .
+630,441,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+631,442,-1,good space in the room,good space room
+632,443,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+633,444,-1,Good swimming pool,good swimming pool
+634,446,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+635,447,-1,Room was always damp.,room always damp .
+636,447,-1,Checkout and breakfast too early.,checkout breakfast early .
+637,447,-1,Not much to do in direct proximity.,much direct proximity .
+638,447,-1,Awfully expensive taxis.,awfully expensive taxis .
+639,448,-1,Cosy rooms.,cosy rooms .
+640,449,-1,Service needs to be improved.,service needs improved .
+641,449,-1,A lot actually.,lot actually .
+642,449,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+643,449,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+644,450,-1,Excellent location.,excellent location .
+645,450,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+646,450,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+647,451,-1,Nothing that I can think of.,nothing think .
+648,453,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+649,454,-1,Friendly helpful staff.,friendly helpful staff .
+650,455,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+651,456,-1,good space in the room,good space room
+652,457,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+653,458,-1,Good swimming pool,good swimming pool
+654,460,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+655,461,-1,Room was always damp.,room always damp .
+656,461,-1,Checkout and breakfast too early.,checkout breakfast early .
+657,461,-1,Not much to do in direct proximity.,much direct proximity .
+658,461,-1,Awfully expensive taxis.,awfully expensive taxis .
+659,462,-1,Cosy rooms.,cosy rooms .
+660,463,-1,Service needs to be improved.,service needs improved .
+661,463,-1,A lot actually.,lot actually .
+662,463,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+663,463,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+664,464,-1,Excellent location.,excellent location .
+665,464,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+666,464,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+667,465,-1,Nothing that I can think of.,nothing think .
+668,467,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+669,468,-1,Friendly helpful staff.,friendly helpful staff .
+670,469,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+671,470,-1,good space in the room,good space room
+672,471,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+673,472,-1,Good swimming pool,good swimming pool
+674,474,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+675,475,-1,Room was always damp.,room always damp .
+676,475,-1,Checkout and breakfast too early.,checkout breakfast early .
+677,475,-1,Not much to do in direct proximity.,much direct proximity .
+678,475,-1,Awfully expensive taxis.,awfully expensive taxis .
+679,476,-1,Cosy rooms.,cosy rooms .
+680,477,-1,Service needs to be improved.,service needs improved .
+681,477,-1,A lot actually.,lot actually .
+682,477,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+683,477,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+684,478,-1,Excellent location.,excellent location .
+685,478,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+686,478,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+687,479,-1,Nothing that I can think of.,nothing think .
+688,481,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+689,482,-1,Friendly helpful staff.,friendly helpful staff .
+690,483,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+691,484,-1,good space in the room,good space room
+692,485,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+693,486,-1,Good swimming pool,good swimming pool
+694,488,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+695,489,-1,Room was always damp.,room always damp .
+696,489,-1,Checkout and breakfast too early.,checkout breakfast early .
+697,489,-1,Not much to do in direct proximity.,much direct proximity .
+698,489,-1,Awfully expensive taxis.,awfully expensive taxis .
+699,490,-1,Cosy rooms.,cosy rooms .
+700,491,-1,Service needs to be improved.,service needs improved .
+701,491,-1,A lot actually.,lot actually .
+702,491,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+703,491,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+704,492,-1,Excellent location.,excellent location .
+705,492,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+706,492,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+707,493,-1,Nothing that I can think of.,nothing think .
+708,495,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+709,496,-1,Friendly helpful staff.,friendly helpful staff .
+710,497,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+711,498,-1,good space in the room,good space room
+712,499,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+713,500,-1,Good swimming pool,good swimming pool
+714,502,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+715,503,-1,Room was always damp.,room always damp .
+716,503,-1,Checkout and breakfast too early.,checkout breakfast early .
+717,503,-1,Not much to do in direct proximity.,much direct proximity .
+718,503,-1,Awfully expensive taxis.,awfully expensive taxis .
+719,504,-1,Cosy rooms.,cosy rooms .
+720,505,-1,Service needs to be improved.,service needs improved .
+721,505,-1,A lot actually.,lot actually .
+722,505,-1,Even a small budget hotels offer free Wi-Fi but in Sterling it's charged.,even small budget hotels offer free wi-fi sterling charged .
+723,505,-1,Indoor games area needs lot of improvement and changes,indoor games area needs lot improvement changes
+724,506,-1,Excellent location.,excellent location .
+725,506,4,Fantastic pool and restaurent.,fantastic pool restaurent .
+726,506,-1,Vilage atmos and area is not very crowded and Very close to beach,vilage atmos area crowded close beach
+727,507,-1,Nothing that I can think of.,nothing think .
+728,509,-1,Could do with better housekeeping and maintenance.,could better housekeeping maintenance .
+729,510,-1,Friendly helpful staff.,friendly helpful staff .
+730,511,-1,"shortage of staff, travel out is a big hassle","shortage staff , travel big hassle"
+731,512,-1,good space in the room,good space room
+732,513,-1,"No travel desk, staff is inadequate","travel desk , staff inadequate"
+733,514,-1,Good swimming pool,good swimming pool
+734,516,-1,awesome propertywell equipped rooms,awesome property well equipped rooms
+735,517,-1,Room was always damp.,room always damp .
+736,517,-1,Checkout and breakfast too early.,checkout breakfast early .
+737,517,-1,Not much to do in direct proximity.,much direct proximity .
+738,517,-1,Awfully expensive taxis.,awfully expensive taxis .
+739,518,-1,Cosy rooms.,cosy rooms .

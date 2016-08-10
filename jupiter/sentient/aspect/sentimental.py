@@ -2,7 +2,7 @@ import csv
 from textblob import TextBlob
 import os
 
-from jupiter.sentient.aspect.models.model import ChiFinal,SentR
+from jupiter.sentient.aspect.models.model import ChiFinal,SentR,AnnotationSentences
 
 
 provider="none"
@@ -29,33 +29,14 @@ class Sentiment():
 		if isinstance(self.sid,list):
 			survey_id= self.sid[0]
 		else:survey_id=self.sid
-		data = []
-		
-		try:
-			filename="jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
-			with open(filename, "rt") as csvfile:	
-				spamreader = csv.reader(csvfile)
-			# spamreader=ChiFinal.objects(survey_id=self.sid)
-				for row in spamreader:
-					data.append(row)
-		except:
-			filename="aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
-			with open(filename, "rt") as csvfile:	
-				spamreader = csv.reader(csvfile)
-			# spamreader=ChiFinal.objects(survey_id=self.sid)
-				for row in spamreader:
-					data.append(row)
-		# print (data)
-		# spamreader= ChiFinal.objects()
-		# for row in spamreader:
-		# 	data.append(row)
-
-		number_of_sentences = len(data)
-
+		#data = []
+		data=AnnotationSentences.objects(survey_id=survey_id,provider=self.p)
+		print("sentence /////////////////")
+		number_of_sentences = 0
 		# with open("Data/sentimentalreviews.csv", "w") as out_file:
 		# 	writer = csv.writer(out_file)
 		SentR.objects(provider=self.p,survey_id=survey_id).delete()
-		for i in range(1, number_of_sentences):
+		for element in data:
 			# sentence = data[i][3]
 			# sentence= data.sentences
 			# print(sentence)
@@ -64,14 +45,15 @@ class Sentiment():
 			# line=[]
 			
 			# line = data[i]
-			sentence = data[i][3]
+			sentence = element.original
 			sentiment = get_sentiment(sentence)
-			line = data[i]
+			line = [number_of_sentences,element.RID,element.aspect,element.original,element.sentences]
 			line.append(sentiment)
 			# print ("line",line)
 			# print ("Saving SentR",survey_id)
-			
+			print(line)
 			SentR(provider=self.p,survey_id=survey_id,line=line).save()
+			number_of_sentences=number_of_sentences+1	
 			# writer.writerow(line)
 		#print("Sentiment Done")
 if __name__ == '__main__':
