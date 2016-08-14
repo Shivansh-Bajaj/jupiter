@@ -74,11 +74,12 @@ class CustomTask(object):
 			obj2.save()
 			print ("added new relation object")
 		else:
-			newObj = Relation()
-			newObj = objects[0]
-			newObj.provider.append("HolidayIQ")
-			newObj.save()
-			print ("updated old relation object")
+			if "HolidayIQ" not in objects[0].provider:
+				newObj = Relation()
+				newObj = objects[0]
+				newObj.provider.append("HolidayIQ")
+				newObj.save()
+				print ("updated old relation object")
 
 	def add_aspects(self, parent_id):
 		print ("ADDING ASPECTS")
