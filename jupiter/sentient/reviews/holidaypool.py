@@ -63,8 +63,8 @@ class HolidayIQ(object):
 		while True:
 			response=urlopen(current_url)
 			soup=BeautifulSoup(response,"html.parser")
-			last_update=AspectQ.objects(survey_id=self.sid, provider="HolidayIQ")[0].last_update
-			time_review = AspectQ.objects(survey_id=self.sid, provider="HolidayIQ")[0].time_review
+			last_update=AspectQ.objects(survey_id=self.sid, unique_identifier=self.sid+"HolidayIQ")[0].last_update
+			time_review = AspectQ.objects(survey_id=self.sid, unique_identifier=self.sid+"HolidayIQ")[0].time_review
 			if last_update!=None:
 				time_reviewed=time_review if (time_review>=last_update) else last_update
 			else:

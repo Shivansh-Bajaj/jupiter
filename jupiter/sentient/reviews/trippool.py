@@ -67,8 +67,8 @@ class TripAdvisor(object):
 		base_url= "https://www.tripadvisor.in"
 		obj=Reviews.objects(survey_id=self.sid).order_by('-datetime').first()
 		record= Record.objects(survey_id=self.sid)
-		last_update=AspectQ.objects(survey_id=self.sid, provider="tripadvisor")[0].last_update
-		time_review = AspectQ.objects(survey_id=self.sid, provider="tripadvisor")[0].time_review
+		last_update=AspectQ.objects(survey_id=self.sid, unique_identifier=self.sid+"tripadvisor")[0].last_update
+		time_review = AspectQ.objects(survey_id=self.sid, unique_identifier=self.sid+"tripadvisor")[0].time_review
 		if last_update!=None:
 			time_reviewed=time_review if (time_review>=last_update) else last_update
 		else:
