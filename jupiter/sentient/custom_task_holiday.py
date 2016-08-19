@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import HolidayIQQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/sterling/holidayiq.csv"
+file_name="jupiter/sentient/custom_data/lilac/holidayiq.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -110,4 +110,4 @@ class CustomTask(object):
 
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"BLNVGrxZlwBYZ81veV3",2).run_csv()
+	CustomTask(file_name,"7jBazdjgwjjepnjypk9",2).run_csv()
