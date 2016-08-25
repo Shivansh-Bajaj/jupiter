@@ -87,3 +87,13 @@ class BookingQ(AspectQ):
 	provider="booking"
 	def _scrape(self):
 		pass
+class facebookDetails(Document):
+    access_token=StringField()
+    user_id=StringField()
+    facebook_page_id=StringField()
+    def _unicode__(self):
+        return HashId.encode(self.id)
+class facebookQ(AspectQ):
+    access_token=StringField()
+    facebook_page_id=StringField()
+    pass
