@@ -37,6 +37,7 @@ class Reviews(Document):
 	date_added=DateTimeField()
 	review_link=StringField()
 	datetime=DateTimeField()
+	
 class ChiFinal(Document):
 	data=ListField(unique=True)
 	survey_id=StringField()

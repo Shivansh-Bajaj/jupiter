@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import HolidayIQQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/webcrs/holidayiq.csv"
+file_name="jupiter/sentient/custom_data/lilac/holidayiq.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -74,11 +74,12 @@ class CustomTask(object):
 			obj2.save()
 			print ("added new relation object")
 		else:
-			newObj = Relation()
-			newObj = objects[0]
-			newObj.provider.append("HolidayIQ")
-			newObj.save()
-			print ("updated old relation object")
+			if "HolidayIQ" not in objects[0].provider:
+				newObj = Relation()
+				newObj = objects[0]
+				newObj.provider.append("HolidayIQ")
+				newObj.save()
+				print ("updated old relation object")
 
 	def add_aspects(self, parent_id):
 		print ("ADDING ASPECTS")
@@ -109,4 +110,4 @@ class CustomTask(object):
 
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"BLNVGrxZlwBYZ81veV3",2).run_csv()
+	CustomTask(file_name,"7jBazdjgwjjepnjypk9",2).run_csv()

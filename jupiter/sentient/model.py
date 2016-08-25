@@ -10,7 +10,7 @@ from mongoengine.fields import URLField, DictField, BooleanField, StringField, L
 from datetime import datetime
 import time
 from jupiter.sentient.main import Sentient
-from jupiter.sentient.models.model import WStatus
+# from jupiter.sentient.models.model import WStatus
 
 
 """

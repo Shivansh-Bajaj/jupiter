@@ -6,7 +6,7 @@ import csv
 from jupiter.sentient.model import TripAdvisorQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/sterling/trip.csv"
+file_name="jupiter/sentient/custom_data/lilac/trip.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -20,7 +20,7 @@ class ClientAspects(Document):
 class ClientProviders(Document):
 	parent_id = StringField(required = True)
 	providers = ListField()
-   
+
 class CustomTask(object):
 	"""docstring for CustomTask"""
 	def __init__(self,file_name,custom_survey_id,buffer_n=None,mode="csv"):
@@ -28,7 +28,7 @@ class CustomTask(object):
 		self.c= custom_survey_id
 		self.b= buffer_n
 		self.aspect_list = ["ambience","value_for_money","room_service","cleanliness","amenities"]
-	
+
 	def run_csv(self):
 		with open(self.f,"rt") as f:
 			reader= list(csv.reader(f))
@@ -57,6 +57,7 @@ class CustomTask(object):
 			obj2.unique_identifier=survey_id+"tripadvisor"
 			obj2.aspect_notation=self.aspect_list
 			obj2.save()
+			print(survey_id,"has been added")
 		except Exception as e:
 			print("Following exception has happened: ",e)
 	def add_relation(self,i):
@@ -73,11 +74,12 @@ class CustomTask(object):
 			obj2.save()
 			print ("added new relation object")
 		else:
-			newObj = Relation()
-			newObj = objects[0]
-			newObj.provider.append("tripadvisor")
-			newObj.save()
-			print ("updated old relation object")
+			if "tripadvisor" not in objects[0].provider:
+				newObj = Relation()
+				newObj = objects[0]
+				newObj.provider.append("tripadvisor")
+				newObj.save()
+				print ("updated old relation object")
 
 	def add_aspects(self, parent_id):
 

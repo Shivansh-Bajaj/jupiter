@@ -3,11 +3,14 @@
 from jupiter.sentient.aspect.reviewProcessing import ReviewP
 from jupiter.sentient.aspect.sentimental import Sentiment
 from jupiter.sentient.aspect.aspectratings import AspectR
-from jupiter.sentient.reviews.trippool import TripAdvisor
-from jupiter.sentient.reviews.zomatopool import Zomato
+
+
 from jupiter.sentient.reviews.nlp import WordCloud
 from jupiter.sentient.reviews.holidaypool import HolidayIQ
 from jupiter.sentient.reviews.bookingpool import Booking
+
+
+
 # except:
 # 	from aspect.reviewProcessing import ReviewP
 # 	from aspect.sentimental import Sentiment
@@ -26,27 +29,31 @@ class Sentient(object):
 	def scrap_data(self):
 		print(self.aspect_notation)
 		if "zomato.com" in self.u:
+			from jupiter.sentient.reviews.zomatopool import Zomato
 			Zomato(self.u,self.sid).get_data()
 		if "tripadvisor" in self.u:
+			from jupiter.sentient.reviews.trippool import TripAdvisor
 			TripAdvisor(self.u,self.sid).get_data()
 		if "holidayiq" in self.u:
+			from jupiter.sentient.reviews.holidaypool import HolidayIQ
 			HolidayIQ(self.u,self.sid).get_data()
-		if "booking" in self.u:
+		if "booking.com" in self.u:
+			from jupiter.sentient.reviews.bookingpool import Booking
 			Booking(self.u,self.sid).get_data()
 
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
 	def run_ml(self):
-		
+
 		ReviewP(self.sid,self.p,self.aspect_notation).run()
 		print("ReviewP Done")
-		
+
 		Sentiment(self.sid,self.p).run()
 		print("Sentiment Done")
 
 		AspectR(self.sid,self.p).run()
 		print ("AspectR Done")
-		
+
 	def run(self):
 		if verbose:print ("Starting Scraping")
 		self.scrap_data()
@@ -61,4 +68,4 @@ if __name__ == '__main__':
 	survey_id="vOAWLlOmAZyY23AdmZy"
 	provider="booking"
 	Sentient(url,survey_id,provider,["ambience","value_for_money","room_service","cleanliness","amenities"]).run()
-	
+
