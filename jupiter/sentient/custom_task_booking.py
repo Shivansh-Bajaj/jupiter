@@ -1,4 +1,3 @@
-
 """
 Read from csv file .
 add to jupiter
@@ -7,7 +6,7 @@ import csv
 from jupiter.sentient.model import BookingQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/webcrs/booking.csv"
+file_name="jupiter/sentient/custom_data/sterling/booking-local.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -37,7 +36,6 @@ class CustomTask(object):
 				reader= reader[self.b:]
 				pass
 			for i in reader:
-				print(i)
 				if len(i[2])!=0:
 					self.add_task(i)
 					self.add_relation(i)
@@ -51,7 +49,6 @@ class CustomTask(object):
 	def add_task(self,i):
 		try:
 			survey_id= i[1]
-			print(survey_id)
 			obj3=BookingQ()
 			obj3.base_url=i[2]
 			obj3.survey_id=survey_id
@@ -77,11 +74,14 @@ class CustomTask(object):
 			obj2.save()
 			print ("added new relation object")
 		else:
-			newObj = Relation()
-			newObj = objects[0]
-			newObj.provider.append("booking")
-			newObj.save()
-			print ("updated old relation object")
+			if "booking" not in objects[0].provider:
+				newObj = Relation()
+				newObj = objects[0]
+				newObj.provider.append("booking")
+				newObj.save()
+				print ("updated old relation object with provider")
+			else:
+				print ("provider was already there in old relation object")
 
 	def add_aspects(self, parent_id):
 		print ("ADDING ASPECTS")
@@ -112,4 +112,4 @@ class CustomTask(object):
 
 if __name__ == '__main__':
 	# main()
-	CustomTask(file_name,"YzpzMxvndQpQkNMewAz",2).run_csv()
+	CustomTask(file_name,"XomY5oG3kvr5grpyoBV",2).run_csv()

@@ -7,12 +7,20 @@ from mongoengine import ValidationError, NotUniqueError
 import sys
 import re
 import datetime
-from jupiter.sentient.reviews.models.model import Reviews,Record
-from jupiter.sentient.reviews.nlp import Senti
-from jupiter.sentient import model
+try:
+	from jupiter.sentient.reviews.models.model import Reviews,Record
+	from jupiter.sentient.reviews.nlp import Senti
+	from jupiter.sentient.model import AspectQ
+except Exception as e:
+	from reviews.models.model import Reviews,Record
+	from reviews.nlp import Senti
+	from sentient.model import AspectQ
+
+
 #except:
 #	from reviews.models.model import Reviews,Recor,AspectQ
 #	from reviews.nlp import Senti
+
 class Booking(object):
 	"""docstring for"""
 	def __init__(self,url,survey_id,provider="booking"):
@@ -37,10 +45,10 @@ class Booking(object):
 			new_soup=BeautifulSoup(new_data,'html.parser')
 			print("collection reviews from url:"+soup_url)
 			lists=new_soup.find_all('li',{'class':'review_item'})
-			for li in lists:				
+			for li in lists:
 				review_date=li.find('meta',{'itemprop':'datePublished'})
 				review_date=review_date['content'] if review_date!=None else None
-				parsed_date=datetime.datetime.strptime(review_date,'%Y-%m-%d') 
+				parsed_date=datetime.datetime.strptime(review_date,'%Y-%m-%d')
 				print(time_reviewed,"|",parsed_date)
 				if parsed_date>=time_reviewed:
 					review=li.find('div',{'class':'review_item_review'})
@@ -53,8 +61,9 @@ class Booking(object):
 					review_identifier=header.find('span',{'itemprop':'name'}).text.strip()
 					for texts in content:
 						texts=texts.text.strip() if texts!=None else None
+						review_identifier += texts[0:10]
 						try:
-							save=Reviews(survey_id=self.sid,provider=self.p,review=texts,review_identifier=review_identifier,rating=rating,sentiment=sentiment,review_link=review_link,date_added=parsed_date).save()
+							save=Reviews(survey_id=self.sid,provider=self.p,review=texts,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
 							print("reviews saved identified by:",review_identifier)
 							total_reviews_collected+=1
 						except NotUniqueError:
@@ -64,30 +73,35 @@ class Booking(object):
 							print ("An exception occured ignoring ",e)
 				else:
 					print('empty review')
-			
+
 			links.append(soup_url)
 			next_url=self.get_next_link(new_soup)
 			if next_url==None:
 				break
 			else:
 				soup_url=next_url
-		print("total reviews collected =",total_reviews_collected)		
+		print("total reviews collected =",total_reviews_collected)
 		Record(survey_id=self.sid,provider="booking",links=set(links))
 	def get_data(self):
+		print ("Getting data for ",self.sid)
 		page_no=1
 		current_url=self.url
 		response=urlopen(current_url)
 		soup=BeautifulSoup(response,"html.parser")
-		aspect_q=model.AspectQ.objects(survey_id=self.sid)
+		aspect_q=AspectQ.objects(survey_id=self.sid)
+		# print ("\nFor survey: ", len(aspect_q[0].survey_id))
 		time_review = aspect_q[0].time_review
 		last_update=aspect_q[0].last_update
+
 		if last_update!=None:
 			time_reviewed=time_review if (time_review>=last_update) else last_update
 		else:
 			time_reviewed=time_review
 		start=soup.find_all('a',{"class":"show_all_reviews_btn"})
+		# print ("\n start: ", start)
 		if start:
-			start_url=self.base_url+start[0]['href'] 
+			start_url=self.base_url+start[0]['href']
+			# print ("\nStart URL: ", start_url)
 			try:
 				self.get_reviews(soup,time_reviewed,start_url)
 			except NotUniqueError:

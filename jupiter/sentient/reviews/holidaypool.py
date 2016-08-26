@@ -7,13 +7,16 @@ from mongoengine import ValidationError, NotUniqueError
 import sys
 import re
 from jupiter.sentient import model
-import datetime
+from datetime import datetime as dt
 try:
 	from jupiter.sentient.reviews.models.model import Reviews,Record
 	from jupiter.sentient.reviews.nlp import Senti
+	from jupiter.sentient.model import AspectQ
 except:
 	from reviews.models.model import Reviews,Record
 	from reviews.nlp import Senti
+	from sentient.model import AspectQ
+
 class HolidayIQ(object):
 	"""docstring for"""
 	def __init__(self,url,survey_id,provider="HolidayIQ"):
@@ -33,20 +36,20 @@ class HolidayIQ(object):
 		for review in reviews:
 			review_date=review.find('meta',{'itemprop':'datePublished'})['content']
 			review_date=review_date.replace(",","")
-			parsed_date=datetime.datetime.strptime(review_date,'%d %B %Y')
-			print(time_reviewed,"|",parsed_date)
+			parsed_date=dt.strptime(review_date,'%d %B %Y')
+			print(time_reviewed, "|", parsed_date)
 			if parsed_date>=time_reviewed:
 				more_content=re.compile("^moreReviewContent[0-9]+")
 				if review!=None:
 					rating=str(float(review.find('meta',{'itemprop':'ratingValue'})['content'])*5/7)
 					content=str(review.find('p',{'id':more_content}).text)
-					review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text.strip()
+					review_identifier=review.find('a',{'class':'featured-blog-clicked'}).text.strip()+content[0:15]
 					review_link=review.find('a',{'class':'featured-blog-clicked'})['href']
 					sentiment=Senti(review).sent(rating)
 					try:
 						save = Reviews(survey_id=self.sid,date_added=parsed_date,review_link=review_link,provider=self.p,review=content,review_identifier=review_identifier,rating=rating,sentiment=sentiment).save()
-					
-						print("review save"+review_identifier)
+
+						print("review save",review_identifier)
 					except NotUniqueError:
 						print ("NotUniqueError")
 						raise NotUniqueError("A non unique error found. Skipping review collection")
@@ -71,14 +74,14 @@ class HolidayIQ(object):
 				self.get_reviews(soup,time_reviewed)
 			except NotUniqueError:
 				pass
-			print("reviews url:"+current_url+"#complete\n")
+			print("reviews url:",current_url, "#complete\n")
 			links.append(current_url)
 			more_reviews=int(soup.find('input',{'id':'textReviewToBeDisplay'})['value'])
 			if more_reviews==0:
 				break
 			page_no=page_no+1
 			current_url=self.get_next_link(page_no)
-		Record(survey_id=self.sid,provider="HolidayIQ",links=set(links))
+		new_record=Record(survey_id=self.sid,provider="HolidayIQ",links=set(links)).save()
 
 if __name__ == '__main__':
 	test_url="http://www.holidayiq.com/Hari-Mahal-Hotel-Jaipur-hotel-2249.html"

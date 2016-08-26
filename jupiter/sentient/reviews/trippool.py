@@ -12,7 +12,8 @@ from mongoengine import ValidationError, NotUniqueError
 from datetime import datetime as dt
 #import sys
 
-from jupiter.sentient.reviews.models.model import Reviews,Record,AspectQ
+from jupiter.sentient.reviews.models.model import Reviews,Record
+from jupiter.sentient.model import AspectQ
 from jupiter.sentient.reviews.nlp import Senti
 #from jupiter.sentient.model import AspectQ
 
@@ -66,8 +67,8 @@ class TripAdvisor(object):
 		base_url= "https://www.tripadvisor.in"
 		obj=Reviews.objects(survey_id=self.sid).order_by('-datetime').first()
 		record= Record.objects(survey_id=self.sid)
-		last_update=AspectQ.objects(survey_id=self.sid)[0].last_update
-		time_review = AspectQ.objects(survey_id=self.sid)[0].time_review 
+		last_update=AspectQ.objects(survey_id=self.sid, unique_identifier=self.sid+"tripadvisor")[0].last_update
+		time_review = AspectQ.objects(survey_id=self.sid, unique_identifier=self.sid+"tripadvisor")[0].time_review
 		if last_update!=None:
 			time_reviewed=time_review if (time_review>=last_update) else last_update
 		else:
@@ -176,12 +177,12 @@ class TripAdvisor(object):
 			rev= self.get_data(links[counter:counter+1])
 			revtstr= " ".join(rev)
 			d= DatumBox()
-			print("datum")
+			# print("datum")
 			a= Counter(d.get_keywords(revtstr))
 			# print (a[4])
 			res= res+a
 			most_frequent_words_so_far = Counter(res).most_common(20)
-			print (most_frequent_words_so_far)
+			# print (most_frequent_words_so_far)
 			# print (most_frequent_words_so_far)
 			counter+=1
 
@@ -195,4 +196,6 @@ if __name__ == '__main__':
 
 	end = time.time()
 	print ("Time Taken")
-	print (end-start)
+	print (end)
+	# print ("Time Taken")
+	# print (end-start)
