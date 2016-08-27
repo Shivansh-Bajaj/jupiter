@@ -20,7 +20,7 @@ class ClientAspects(Document):
 class ClientProviders(Document):
 	parent_id = StringField(required = True)
 	providers = ListField()
-   
+
 class CustomTask(object):
 	"""docstring for CustomTask"""
 	def __init__(self,file_name,custom_survey_id,buffer_n=None,mode="csv"):
@@ -28,7 +28,7 @@ class CustomTask(object):
 		self.c= custom_survey_id
 		self.b= buffer_n
 		self.aspect_list = ["ambience","value_for_money","room_service","cleanliness","amenities"]
-	
+
 	def run_csv(self):
 		with open(self.f,"rt") as f:
 			reader= list(csv.reader(f))
