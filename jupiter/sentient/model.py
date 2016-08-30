@@ -9,13 +9,8 @@ from mongoengine.fields import (URLField, DictField, BooleanField, StringField,
     ListField, DateTimeField)
 from datetime import datetime
 import time
-from jupiter.sentient.main import Sentient
 # from jupiter.sentient.models.model import WStatus
 
-"""
-HARD VARIABLES
-"""
-MINUTES=60
 
 class AspectQ(Document):
 	base_url = URLField(required=True)
@@ -30,65 +25,3 @@ class AspectQ(Document):
 	aspect_notation = ListField()
 
 	meta = {'allow_inheritance': True}
-
-	@property
-	def repr(self):
-		return {
-			'id': str(self.pk),
-			'access_url': self.base_url,
-			'survey_id': self.survey_id,
-			# 'children': self.children
-		}
-
-	def execute(self):
-		# Get minute difference
-		# fmt = '%Y-%m-%d %H:%M:%S'
-		# now= datetime.now()
-		# d1 = str(datetime.strptime(now, fmt))
-		# d2 = str(datetime.strptime(self.last_update, fmt))
-
-		# # convert to unix timestamp
-		# d1_ts = time.mktime(d1.timetuple())
-		# d2_ts = time.mktime(d2.timetuple())
-		# minutes=int(d2_ts-d1_ts) / 60
-		minutes=61
-		# if self.status=="true" and minutes < MINUTES:
-		if self.status=="true":
-			print("Already Done",self.survey_id)
-		else:
-			if minutes>MINUTES:
-				print ("Re-working")
-			if self.parent=="true":
-				survey_id=[self.survey_id]
-				for obj in AspectQ.objects(parent_id=self.survey_id):
-					survey_id.append(obj.survey_id)
-			else:
-				survey_id=self.survey_id
-			try:
-				print("provider",self.provider)
-				Sentient(self.base_url,survey_id,self.provider,self.aspect_notation).run()
-				pass
-			except Exception as e:
-				print("EXECUTE Exception", e)
-				raise e
-			print("survey_id",survey_id)
-
-class ZomatoQ(AspectQ):
-	provider="zomato"
-	def _scrape(self):
-		pass
-
-class TripAdvisorQ(AspectQ):
-	provider="tripadvisor"
-	def _scrape(self):
-		pass
-
-class HolidayIQQ(AspectQ):
-	provider="HolidayIQ"
-	def _scrape(self):
-		pass
-
-class BookingQ(AspectQ):
-	provider="booking"
-	def _scrape(self):
-		pass
