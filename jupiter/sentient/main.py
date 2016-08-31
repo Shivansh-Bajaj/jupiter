@@ -27,16 +27,16 @@ class Sentient(object):
 	def scrap_data(self):
 		print(self.aspects)
 		# The name of providers are predefined in sub-classes of AspectQ model.
-		if provider == "zomato":
+		if self.p == "zomato":
 			from jupiter.sentient.reviews.zomatopool import Zomato
 			Zomato(self.u, self.sid).get_data()
-		if provider == "tripadvisor":
+		if self.p == "tripadvisor":
 			from jupiter.sentient.reviews.trippool import TripAdvisor
 			TripAdvisor(self.u, self.sid).get_data()
-		if provider == "HolidayIQ":
+		if self.p == "HolidayIQ":
 			from jupiter.sentient.reviews.holidaypool import HolidayIQ
 			HolidayIQ(self.u, self.sid).get_data()
-		if provider == "booking":
+		if self.p == "booking":
 			from jupiter.sentient.reviews.bookingpool import Booking
 			Booking(self.u, self.sid).get_data()
 
@@ -65,8 +65,8 @@ class Sentient(object):
 
 
 if __name__ == '__main__':
-	# url= "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
-	url="http://www.booking.com/hotel/in/swissa-tel-goa.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGyIAQGYATG4AQ_IAQ_YAQHoAQH4AQKoAgM;sid=69a80e530b4bd33d6a2ce0e128061485;dcid=12;dest_id=4127;dest_type=region;dist=0;group_adults=2;room1=A%2CA;sb_price_type=total;srfid=39183e2a96da4c1e9df94a8b1555fa36ec6494ddX4;type=total;ucfs=1&"
-	survey_id="vOAWLlOmAZyY23AdmZy"
-	provider="booking"
-	Sentient(url,survey_id,provider,["ambience","value_for_money","room_service","cleanliness","amenities"]).run()
+	# url = "https://www.zomato.com/ncr/purani-dilli-restaurant-zakir-nagar-new-delhi"
+	url = "http://www.booking.com/hotel/in/swissa-tel-goa.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGyIAQGYATG4AQ_IAQ_YAQHoAQH4AQKoAgM;sid=69a80e530b4bd33d6a2ce0e128061485;dcid=12;dest_id=4127;dest_type=region;dist=0;group_adults=2;room1=A%2CA;sb_price_type=total;srfid=39183e2a96da4c1e9df94a8b1555fa36ec6494ddX4;type=total;ucfs=1&"
+	survey_id = "vOAWLlOmAZyY23AdmZy"
+	provider = "booking"
+	Sentient(url, survey_id, provider, ["ambience", "value_for_money", "room_service", "cleanliness", "amenities"]).run()

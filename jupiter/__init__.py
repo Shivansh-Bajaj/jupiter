@@ -17,6 +17,7 @@ mongo_connect(mongo_dbi, **mongo_params)
 import jupiter.tasks.periodic
 import jupiter.tasks.utils
 
+
 @hug.get('/', versions=1)
 def index():
   return "Survaider"
@@ -34,4 +35,3 @@ def attach_hooks_api():
 @hug.extend_api('/tasks')
 def attach_tasks_api():
   return [api_tasks]
-

@@ -1,6 +1,14 @@
-# #!/usr/bin/env python
-# # -*- coding: utf-8 -*-
-# # Survaider
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Survaider
+
+"""
+Commented out because this file raises exceptions.
+The functions need to be rewritten because the code was written considering
+the old models defined in jupiter. Now they have been moved to survaider.
+So, we need to access the database and get data from the collections.
+"""
+
 # """Jupiter Task Runner API Base Interface
 #
 # This module exists with following simple goals:

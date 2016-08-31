@@ -7,6 +7,7 @@ from mongoengine import ValidationError, NotUniqueError
 import sys
 import re
 from datetime import datetime as dt
+from pymongo import MongoClient
 
 try:
 	from jupiter.sentient.reviews.models.model import Reviews, Record
@@ -78,11 +79,11 @@ class HolidayIQ(object):
 			last_update = db.aspect_q.find_one({
 				'survey_id': self.sid,
 				'unique_identifier': self.sid + "HolidayIQ"
-			}).last_update
+			})['last_update']
 			time_review = db.aspect_q.find_one({
 				'survey_id': self.sid,
 				'unique_identifier': self.sid + "HolidayIQ"
-			}).time_review
+			})['time_review']
 			if last_update != None:
 				time_reviewed = time_review if (time_review >= last_update) else last_update
 			else:

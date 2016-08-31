@@ -12,6 +12,7 @@ from mongoengine import ValidationError, NotUniqueError
 from datetime import datetime as dt
 from random import randrange
 # import sys
+from pymongo import MongoClient
 
 from jupiter.sentient.reviews.models.model import Reviews, Record
 from jupiter.sentient.reviews.nlp import Senti
@@ -76,11 +77,11 @@ class TripAdvisor(object):
 		last_update = db.aspect_q.find_one({
 			'survey_id': self.sid,
 			'unique_identifier': self.sid + "tripadvisor"
-		}).last_update
+		})['last_update']
 		time_review = db.aspect_q.find_one({
 			'survey_id': self.sid,
 			'unique_identifier': self.sid + "tripadvisor"
-		}).time_review
+		})['time_review']
 		if last_update != None:
 			time_reviewed = time_review if (time_review >= last_update) else last_update
 		else:

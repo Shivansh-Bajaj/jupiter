@@ -11,10 +11,10 @@ from jupiter import huey
 from jupiter.sentient.main import Sentient
 from jupiter._config import mongo_params, mongo_dbi
 
-# Get database
+
+# Connect to database
 client = MongoClient(mongo_params['host'], mongo_params['port'])
 db = client[mongo_dbi]
-
 
 # This is the renamed `execute()` method of `AspectQ` objects.
 def download_data_and_run_ml(obj):
@@ -61,16 +61,24 @@ def spawn_processor_m_30():
 
     To prevent any magic to happen, do **not** spawn any periodic tasks inside.
     """
-    print("Process Running -- delay : 2min")
+    print('Process Running -- delay : 2min')
     for obj in db.aspect_q.find():
         try:
             download_data_and_run_ml(obj)
-            obj['last_update'] = datetime.datetime.now()
-            obj.save()
-            print("success", obj['survey_id'])
+            # obj['last_update'] = datetime.datetime.now()
+            # obj.save()
+            db.aspect_q.update_one({
+                    '_id': obj['_id']
+                }, {
+                    '$set': {
+                        'last_update': datetime.datetime.now()
+                    }
+                }, upsert=False)
+            print('success', obj['survey_id'])
         except Exception as e:
-            print ("An exeption occured while executing survey_id", obj['survey_id'])
-
+            print('\n\nAn exeption occured while executing survey_id', obj['survey_id'])
+            print(e, '\n\n')
+            raise e
 
 # @huey.periodic_task(crontab(minute='*/1'))
 # def spawn_processor_m_15():
