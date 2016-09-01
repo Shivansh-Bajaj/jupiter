@@ -1,3 +1,8 @@
+"""
+Download any resources/packages used by machine learning packages here.
+Other resources can also be downloaded.
+"""
+
 import nltk
 
 def download_nltk_packages():

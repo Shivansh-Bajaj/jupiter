@@ -14,6 +14,7 @@ from jupiter._config import version
 from jupiter.api.directives import access_token
 from jupiter.webhooks.model import Hook, scope_values
 
+
 @hug.put('/', versions=version)
 def put_hook(key: access_token,
       scope: hug.types.one_of(scope_values),

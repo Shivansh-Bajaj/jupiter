@@ -3,10 +3,11 @@
 # Survaider
 
 """
-Commented out because this file raises exceptions.
+Commented out because this file is *not* used currently and raises exceptions.
 The functions need to be rewritten because the code was written considering
 the old models defined in jupiter. Now they have been moved to survaider.
-So, we need to access the database and get data from the collections.
+So, we need to access the database directly and get data from the collections
+instead of using mongoengine interface.
 """
 
 # """Jupiter Task Runner API Base Interface
