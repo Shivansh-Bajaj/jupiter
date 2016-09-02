@@ -1,19 +1,21 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Survaider
+
 """Webhook Register
 
 This module is used to register the webhooks.
-
 """
+
 from mongoengine import Document
 from mongoengine.fields import URLField, DictField, BooleanField, StringField
 
 from jupiter.tasks.utils import async_post
 
+
 # Define all the events that may be subscribed to
 scope_values = [
-  'scraped', # Emit this when a scraping task is finished.
+    'scraped', # Emit this when a scraping task is finished.
 ]
 
 def emit(scope, callback, **kwa):

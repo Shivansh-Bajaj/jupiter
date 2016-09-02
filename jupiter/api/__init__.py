@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Survaider
+
 """Jupiter Task Runner API Base Interface
 
 This module exists with following simple goals:
 - Manage tasks with a set of credentials into the periodic task runners.
-  - Credentials are the Zomato/Tripadvisor/etc. IDs and other informations
+  - Credentials are the Zomato/Tripadvisor/etc., IDs and other information
     that are sufficient to perform the aggregation tasks and any other stuff.
 - Management provides the following interfaces via REST Endpoints:
   - Add a credential

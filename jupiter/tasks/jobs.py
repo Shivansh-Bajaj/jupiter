@@ -6,6 +6,9 @@
 This module defines the functions and classes that are run by huey tasks.
 """
 
+from pymongo import MongoClient
+
+from jupiter.sentient.main import Sentient
 from jupiter._config import mongo_params, mongo_dbi
 
 

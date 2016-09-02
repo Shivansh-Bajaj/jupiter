@@ -2,43 +2,20 @@
 # -*- coding: utf-8 -*-
 # Survaider
 
-"""
-Commented out because this file is *not* used currently and raises exceptions.
-The functions need to be rewritten because the code was written considering
-the old models defined in jupiter. Now they have been moved to survaider.
-So, we need to access the database directly and get data from the collections
-instead of using mongoengine interface.
-"""
+from datetime import datetime as dt
 
-"""Jupiter Task Runner API Base Interface
-
-This module exists with following simple goals:
-- Manage tasks with a set of credentials into the periodic task runners.
-  - Credentials are the ZomatoQ/Tripadvisor/etc. IDs and other informations
-    that are sufficient to perform the aggregation tasks and any other stuff.
-- Management provides the following interfaces via REST Endpoints:
-  - Add a credential
-  - Get the status
-  - Revoke/Delete the task
-- The API also provides an interface to subscribe to server webhooks which
-  are sent to the requesting server when the tasks are completed.
-  - Add a webhook subscription
-  - Remove the subscription
-"""
 import hug
 import falcon
-
 from mongoengine import ValidationError, NotUniqueError
 
 from jupiter._config import version
 from jupiter.api.directives import access_token
 from jupiter.sentient.model import ZomatoQ, TripAdvisorQ
-from datetime import datetime as dt
 
 
 @hug.get('/{task_id}', versions=version)
 def get_task(key: access_token, task_id: hug.types.text):
-  pass
+    pass
 
 providers = {'zomato': ZomatoQ, 'tripadvisor': TripAdvisorQ}
 
@@ -83,7 +60,7 @@ def put_task(key: access_token,
         except NotUniqueError:
             raise falcon.HTTPBadRequest(title='NotUniqueError',
                                         description='The given survey_id exists')
-    elif provider=="tripadvisor":
+    elif provider == "tripadvisor":
         parent = TripAdvisorQ.objects(unique_identifier=survey_id+provider).count()
         try:
             if parent != 1:
@@ -103,12 +80,14 @@ def put_task(key: access_token,
             obj2.save()
             return obj2.repr
         except ValidationError:
-            raise falcon.HTTPBadRequest(title='ValidationError',
-                                        description='The parameters provided are invalid')
+            raise falcon.HTTPBadRequest(
+                title='ValidationError',
+                description='The parameters provided are invalid')
         except NotUniqueError:
-            raise falcon.HTTPBadRequest(title='NotUniqueError',
-                                        description='The given survey_id exists')
+            raise falcon.HTTPBadRequest(
+                title='NotUniqueError',
+                description='The given survey_id exists')
 
 @hug.delete('/{task_id}', versions=version)
 def delete_task(key: access_token, task_id: hug.types.text):
-  pass
+    pass
