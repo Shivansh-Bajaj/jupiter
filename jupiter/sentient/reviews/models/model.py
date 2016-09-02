@@ -40,8 +40,11 @@ class AspectsPolarityCount(Document):
 	hashtable = DictField()
 	# Structure of `hashtable` field:
 	# {
-	# 	'aspect_name_1': [positives_count, negatives_count, neutral_count],
+	# 	'aspect_name_1': [positive_count, negative_count, neutral_count],
 	# 	...
-	#	...
-	# 	'aspect_name_n': [positives_count, negatives_count, neutral_count]
+	# 	'aspect_name_n': [positive_count, negative_count, neutral_count]
 	# }
+
+class AspectRelatedWords(Document):
+	aspect_name = StringField()
+	related_words = ListField()
