@@ -19,33 +19,33 @@ scope_values = [
 ]
 
 def emit(scope, callback, **kwa):
-  """Helper method to emit the events"""
-  hook = Hook.objects(scope=scope, callback=callback)
-  try:
-    hook = hook[0]
-    if not hook.active:
-      raise RuntimeError
-    hook.payload.update(kwa)
-    hook.save()
-    hook.execute()
-  except (KeyError, RuntimeError):
-    raise ValueError('No such scope-callback combination exist')
+    """Helper method to emit the events"""
+    hook = Hook.objects(scope=scope, callback=callback)
+    try:
+        hook = hook[0]
+        if not hook.active:
+            raise RuntimeError
+        hook.payload.update(kwa)
+        hook.save()
+        hook.execute()
+    except (KeyError, RuntimeError):
+        raise ValueError('No such scope-callback combination exist')
 
 class Hook(Document):
-  callback = URLField(required=True, unique_with='scope')
-  scope = StringField(required=True, choices=scope_values)
-  payload = DictField()
-  active = BooleanField(default=True)
+    callback = URLField(required=True, unique_with='scope')
+    scope = StringField(required=True, choices=scope_values)
+    payload = DictField()
+    active = BooleanField(default=True)
 
-  meta = {'allow_inheritance': True}
+    meta = {'allow_inheritance': True}
 
-  @property
-  def repr(self):
-    return {
-      'id': str(self.id),
-      'callback': self.callback,
-    }
+    @property
+    def repr(self):
+        return {
+            'id': str(self.id),
+            'callback': self.callback,
+        }
 
-  def execute(self):
+    def execute(self):
     # Send the webhook request
-    async_post(self.callback, data=self.payload)
+        async_post(self.callback, data=self.payload)

@@ -2,6 +2,14 @@
 # -*- coding: utf-8 -*-
 # Survaider
 
+"""Jupiter Task Runner - API endpoints.
+
+This module provides interfaces to:
+    - Add a task.
+    - Get status.
+    - Delete a task.
+"""
+
 from datetime import datetime as dt
 
 import hug

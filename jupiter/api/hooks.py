@@ -4,7 +4,10 @@
 
 """Jupiter Task Runner - WebHooks API Interface
 
-See module documentation for further information.
+This module provides an interface to subscribe to server webhooks which are
+sent to the requesting server when tasks are completed.
+    - Add a webhook subscription.
+    - Remove the subscription.
 """
 
 import hug
@@ -31,17 +34,17 @@ def put_hook(key: access_token,
         hook.scope = scope
         hook.callback = callback_uri
         hook.save()
-
         return hook.repr
     except ValidationError:
         raise falcon.HTTPBadRequest(
             title='ValidationError',
-            description='The parameters provided are invalid')
-
+            description='The parameters provided are invalid'
+        )
     except NotUniqueError:
         raise falcon.HTTPBadRequest(
             title='NotUniqueError',
-            description='The given scope - callback combination is taken')
+            description='The given scope - callback combination is taken'
+        )
 
 delete_hook_methods = ['hook_id', 'callback_uri']
 
