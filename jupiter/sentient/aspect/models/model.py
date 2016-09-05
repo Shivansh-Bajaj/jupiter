@@ -1,10 +1,9 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Survaider
 
-from mongoengine import *
-
-# Connect to Database
-# lazy connection
-# connect("qwer")
+from mongoengine import Document
+from mongoengine.fields import (StringField, DictField, DateTimeField, ListField)
 
 class AspectData(Document):
 	"""docstring for Aspect"""

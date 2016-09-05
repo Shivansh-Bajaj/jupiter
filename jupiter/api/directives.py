@@ -14,7 +14,6 @@ import falcon
 
 from jupiter._config import access_tokens
 
-
 @hug.directive()
 def access_token(request, **kwargs):
     """Check API Keys and Verify them"""

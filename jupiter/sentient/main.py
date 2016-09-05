@@ -1,23 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Survaider
 
-# try:
 from jupiter.sentient.aspect.reviewProcessing import ReviewP
 from jupiter.sentient.aspect.sentimental import Sentiment
 from jupiter.sentient.aspect.aspectratings import AspectR
-
 from jupiter.sentient.reviews.nlp import WordCloud
-
-# except:
-# 	from aspect.reviewProcessing import ReviewP
-# 	from aspect.sentimental import Sentiment
-# 	from aspect.aspectratings import AspectR
-# 	from reviews.trippool import TripAdvisor
-# 	from reviews.zomatopool import Zomato
-# 	from reviews.nlp import WordCloud
 
 verbose = True
 
 class Sentient(object):
-	"""docstring for Sentient"""
+	"""
+	1. Scrapes web for reviews.
+	2. Runs wordcloud.
+	3. Runs ML.
+	"""
 	def __init__(self, url, survey_id, provider, aspects):
 		self.u = url
 		self.sid = survey_id

@@ -12,7 +12,6 @@ import uuid
 from jupiter.tests import BaseTestCase
 from jupiter.api.directives import access_token
 
-
 api = hug.API(__name__)
 
 class TestAccessToken(BaseTestCase):

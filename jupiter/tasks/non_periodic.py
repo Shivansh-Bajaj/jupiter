@@ -15,11 +15,9 @@ from jupiter import huey
 from jupiter._config import mongo_params, mongo_dbi
 from jupiter.tasks.jobs import download_data_and_run_ml
 
-
 # Connect to database
 client = MongoClient(mongo_params['host'], mongo_params['port'])
 db = client[mongo_dbi]
-
 
 @huey.task()
 def initial_data_download_and_ml_task(obj):

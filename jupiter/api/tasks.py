@@ -22,15 +22,12 @@ from jupiter._config import version, mongo_dbi, mongo_params, providers
 from jupiter.api.directives import access_token
 from jupiter.tasks.non_periodic import initial_data_download_and_ml_task
 
-
 client = MongoClient(**mongo_params)
 db = client[mongo_dbi]
-
 
 # The data from a PUT or POST request in hug can be accessed by passing the
 # name of the data element (for e.g., a key in case of json data) as an
 # argument in the function decorated by a hug http router decorator.
-
 
 def get_aspect_q_class(provider):
     return {
@@ -40,11 +37,9 @@ def get_aspect_q_class(provider):
         'booking': 'AspectQ.BookingQ'
     }.get(provider)
 
-
 @hug.get('/{task_id}', versions=version)
 def get_task(key: access_token, task_id: hug.types.text):
     pass
-
 
 @hug.put('/', versions=version)
 def put_task(key: access_token, obj_id: hug.types.text):
@@ -52,7 +47,6 @@ def put_task(key: access_token, obj_id: hug.types.text):
     # invalid).
 
     # Survaider saves the aspect_q objects.
-
     obj = db.aspect_q.find_one({'_id': objectid.ObjectId(obj_id)})
     initial_data_download_and_ml_task(obj)
     return {'success': 'Task successfully added'}
@@ -65,8 +59,7 @@ def put_task(key: access_token, obj_id: hug.types.text):
 	# 	'survey_id': obj.survey_id,
     # }
 
-
-"""Do NOT delete below commented code.
+"""Do NOT delete below commented put_task() function.
 It is another version of the put_task() that may be used by third party users
 of the jupiter api.
 """
@@ -99,7 +92,6 @@ of the jupiter api.
 #     return {'success': 'Task successfully added'}
 #     # TODO: Return some identifier such as task id to the caller of api
 #     # so that it can later delete the task based on that identifier.
-
 
 # providers = {'zomato': ZomatoQ, 'tripadvisor': TripAdvisorQ}
 #
@@ -170,7 +162,6 @@ of the jupiter api.
 #                 title='NotUniqueError',
 #                 description='The given survey_id exists'
 #             )
-
 
 @hug.delete('/{task_id}', versions=version)
 def delete_task(key: access_token, task_id: hug.types.text):

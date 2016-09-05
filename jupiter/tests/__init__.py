@@ -10,6 +10,5 @@ There may be sub-packages.
 
 import unittest
 
-
 class BaseTestCase(unittest.TestCase):
     pass

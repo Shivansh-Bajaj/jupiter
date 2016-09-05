@@ -3,6 +3,6 @@
 # Survaider
 
 """
-This package defines huey tasks.
+This module defines huey tasks.
 These tasks can be periodic or one-time.
 """

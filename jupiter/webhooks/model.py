@@ -12,7 +12,6 @@ from mongoengine.fields import URLField, DictField, BooleanField, StringField
 
 from jupiter.tasks.utils import async_post
 
-
 # Define all the events that may be subscribed to
 scope_values = [
     'scraped',  # Emit this when a scraping task is finished.
@@ -48,5 +47,5 @@ class Hook(Document):
         }
 
     def execute(self):
-    # Send the webhook request
+        # Send the webhook request
         async_post(self.callback, data=self.payload)

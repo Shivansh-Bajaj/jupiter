@@ -18,7 +18,6 @@ from jupiter._config import version
 from jupiter.api.directives import access_token
 from jupiter.webhooks.model import Hook, scope_values
 
-
 @hug.put('/', versions=version)
 def put_hook(key: access_token,
             scope: hug.types.one_of(scope_values),
@@ -45,7 +44,6 @@ def put_hook(key: access_token,
             title='NotUniqueError',
             description='The given scope - callback combination is taken'
         )
-
 
 delete_hook_methods = ['hook_id', 'callback_uri']
 
@@ -77,7 +75,6 @@ def delete_hook(key: access_token,
             'action': 'Delete',
             'hooks': deletes
         }
-
     except ValueError:
         raise falcon.HTTPBadRequest(
             title='ValueError',

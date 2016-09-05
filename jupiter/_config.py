@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # Survaider
 
+# API version
 version = 1
 
 access_tokens = {

@@ -4,11 +4,10 @@ import os
 
 from jupiter.sentient.aspect.models.model import ChiFinal, SentR
 
-
-provider="none"
-survey_id="none"
-
+provider = "none"
+survey_id = "none"
 filename = "jupiter/sentient/Data/annotated_sentences_chi_final.csv"
+
 def get_sentiment(text):
 	blob = TextBlob(text)
 	sentence_sentiment = blob.sentences[0].sentiment.polarity
@@ -74,6 +73,6 @@ class Sentiment():
 			SentR(provider=self.p,survey_id=survey_id,line=line).save()
 			# writer.writerow(line)
 		#print("Sentiment Done")
-if __name__ == '__main__':
 
+if __name__ == '__main__':
 	Sentiment("1","2").run()

@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Survaider
+
 import csv
 import os
 
@@ -5,12 +9,12 @@ from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR,AspectData
 from jupiter.sentient.aspect.config import ASPECTS
 
 # from mongoengine import *
+
 # class Reviews(Document):
 # 	pass
 
 from pymongo import MongoClient
 from jupiter._config import mongo_dbi, mongo_params
-
 
 # Connect to database
 client = MongoClient(**mongo_params)
