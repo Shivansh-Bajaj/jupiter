@@ -1,7 +1,7 @@
 # jupiter
 
 ## Steps:
-1. Running API Server in Debug Mode:
+1. Run API Server in Debug Mode:
 `$ gunicorn jupiter:__hug_wsgi__ --reload -b 127.0.0.1:8080`
 
 2. Run Task Queue:
