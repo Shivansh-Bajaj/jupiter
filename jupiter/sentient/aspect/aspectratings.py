@@ -6,7 +6,6 @@ import csv
 import os
 
 from jupiter.sentient.aspect.models.model import Aspect,Reviews,SentR,AspectData
-from jupiter.sentient.aspect.config import ASPECTS
 
 # from mongoengine import *
 
