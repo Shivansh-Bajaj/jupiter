@@ -15,6 +15,7 @@ mongo_connect(mongo_dbi, **mongo_params)
 
 # Register Huey tasks
 import jupiter.tasks.periodic
+import jupiter.tasks.non_periodic
 import jupiter.tasks.utils
 
 @hug.get('/', versions=1)

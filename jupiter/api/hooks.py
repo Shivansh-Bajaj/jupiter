@@ -46,6 +46,7 @@ def put_hook(key: access_token,
             description='The given scope - callback combination is taken'
         )
 
+
 delete_hook_methods = ['hook_id', 'callback_uri']
 
 @hug.delete('/', versions=version)
@@ -68,9 +69,9 @@ def delete_hook(key: access_token,
             raise ValueError
 
         deletes = []
-        for hook_ob in hook:
-            deletes.append(hook_ob.repr)
-            hook_ob.delete()
+        for hook_obj in hook:
+            deletes.append(hook_obj.repr)
+            hook_obj.delete()
 
         return {
             'action': 'Delete',
@@ -80,4 +81,5 @@ def delete_hook(key: access_token,
     except ValueError:
         raise falcon.HTTPBadRequest(
             title='ValueError',
-            description='`by` contains unsupported value')
+            description='`by` contains unsupported value'
+        )

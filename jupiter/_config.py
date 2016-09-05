@@ -24,3 +24,5 @@ mongo_params = {
 }
 
 mongo_dbi = 'qwer'  # Should be same as the survaider-app
+
+providers = ['zomato', 'tripadvisor']

@@ -15,7 +15,8 @@ from jupiter.tasks.utils import async_post
 
 # Define all the events that may be subscribed to
 scope_values = [
-    'scraped', # Emit this when a scraping task is finished.
+    'scraped',  # Emit this when a scraping task is finished.
+    'analyzed'   # Emit this when done with running ML analytics.
 ]
 
 def emit(scope, callback, **kwa):
@@ -42,8 +43,8 @@ class Hook(Document):
     @property
     def repr(self):
         return {
-            'id': str(self.id),
-            'callback': self.callback,
+            'hook_id': str(self.id),
+            'callback_uri': self.callback,
         }
 
     def execute(self):

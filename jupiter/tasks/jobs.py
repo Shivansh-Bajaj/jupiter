@@ -16,6 +16,7 @@ from jupiter._config import mongo_params, mongo_dbi
 client = MongoClient(mongo_params['host'], mongo_params['port'])
 db = client[mongo_dbi]
 
+
 def download_data_and_run_ml(obj):
     parent_id = db.relation.find_one({'survey_id': obj['survey_id']})['parent_id']
     aspects = db.client_aspects.find_one({'parent_id': parent_id})['aspects']

@@ -20,6 +20,7 @@ from jupiter.tasks.jobs import download_data_and_run_ml
 client = MongoClient(mongo_params['host'], mongo_params['port'])
 db = client[mongo_dbi]
 
+
 @huey.periodic_task(crontab(minute='*/30'))
 def spawn_processor_m_30():
     """These processors are run every 30 minutes
@@ -47,6 +48,7 @@ def spawn_processor_m_30():
                     'last_update': datetime.datetime.now()
                 }
             }, upsert=False)
+
 
 # @huey.periodic_task(crontab(minute='*/15'))
 # def spawn_processor_m_15():
