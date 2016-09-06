@@ -4,7 +4,7 @@
 1. Run API Server in Debug Mode:  
 `$ gunicorn jupiter:__hug_wsgi__ --reload -b 127.0.0.1:8080`
 
-2. Run Redis Server:
+2. Run Redis Server:  
 `$ redis-server`
 
 2. Run Task Queue:  
