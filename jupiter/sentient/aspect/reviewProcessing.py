@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Survaider
+
 '''
 Created on 27-Mar-2015
 
@@ -13,7 +17,7 @@ import pandas as pd
 import re
 import os
 from jupiter.sentient.aspect.models.model import Reviews
-from jupiter.sentient.aspect import aspectSegmenter 
+from jupiter.sentient.aspect import aspectSegmenter
 
 # nltk.download('')
 
@@ -31,7 +35,7 @@ m_vocabulary = dict()
 
 # q_sentences = []
 
-# This class structure holds a Token as word, 
+# This class structure holds a Token as word,
 # lemma and POS
 class Token(object):
     def __init__(self, word, lemma, pos):
@@ -40,18 +44,18 @@ class Token(object):
         self.pos = pos
 
 # This class structure holds a Sentence as list
-# of token objects, review ID, rating, and aspect ID   
+# of token objects, review ID, rating, and aspect ID
 class Sentence(object):
     def __init__(self, rid, rating, ttoken):
         self.rid = rid
         self.rating = rating
-        self.ttoken = ttoken 
+        self.ttoken = ttoken
         self.aspectID = -1
 
 # This function does the following:
 # 1. Use NLTK to Tokenize the reviews and create sentences
 # 2. Apply POS Tagger, Lemma and regular expression constraints
-# 3. Expand the vocabulary per sentences        
+# 3. Expand the vocabulary per sentences
 def loadReviewAndProcess(survey_id,provider):
     # Loading Reviews in a data frame
     # df = pd.read_csv(filename)
@@ -65,7 +69,7 @@ def loadReviewAndProcess(survey_id,provider):
     # num_reviews = len(df)
     # Adding ID column to existing data frame
     # df['RID'] = range(1, num_reviews + 1)
-    # reviews = df["review"]    
+    # reviews = df["review"]
     rid = 0
     # print(df["review"])
     # return "finish"
@@ -76,7 +80,7 @@ def loadReviewAndProcess(survey_id,provider):
         sentences = sent_tokenize(review.review)
         m_stns = []
 
-        
+
 
         for sentence in sentences:
             # print (sentence)
@@ -91,37 +95,37 @@ def loadReviewAndProcess(survey_id,provider):
 
                 qualified_sentences.append(sentence)
 
-        m_sentences.extend(m_stns)        
+        m_sentences.extend(m_stns)
         # Create Indexed Vocabulary
-        expandVocabulary(m_stns)    
+        expandVocabulary(m_stns)
         rid += 1
         if rid%100 == 0:
             print ('#',rid)
-    print ('')        
-    print ('Finished Loading reviews' ) 
+    print ('')
+    print ('Finished Loading reviews' )
     # print (qualified_sentences)
-    return qualified_sentences,m_sentences                       
+    return qualified_sentences,m_sentences
 
 # Expand Vocabulary per sentences. Vocabulary is
-# a dictionary containing key as unique words and 
-# assigned values as there IDs    
+# a dictionary containing key as unique words and
+# assigned values as there IDs
 def expandVocabulary(m_sentences):
     for stn in m_sentences:
         for tkn in stn.ttoken:
             if (tkn.lemma in m_vocabulary) == False:
-                    m_vocabulary[tkn.lemma] = len(m_vocabulary)    
+                    m_vocabulary[tkn.lemma] = len(m_vocabulary)
 
 # Apply POS Tagger Constraints and create sentences
-# as a list of Token objects                    
+# as a list of Token objects
 def addSentences(tokens, tagged_words, lemma, stops):
     stn = []
-    for i in range(len(tokens)):  
+    for i in range(len(tokens)):
         if ((tagged_words[i][1] is not "DT") and \
             (tagged_words[i][1] is not "IN") and \
             (tagged_words[i][1] is not "CD") and \
             (lemma[i] not in stops)):
             stn.append(Token(tokens[i], lemma[i], tagged_words[i][1]))
-    return stn              
+    return stn
 
 # Apply Lemmatization and regular expression constraints
 def getLemma(tokens):
@@ -134,7 +138,7 @@ def getLemma(tokens):
             lemma.append(term[1:])
         else:
             lemma.append(term)
-    return lemma  
+    return lemma
 
 # Save Final Aspect Annotated Sentences
 def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id,provider):
@@ -146,7 +150,7 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
         survey_id= survey_id[0]
     # print("test",survey_id,provider)
     for stn in m_sentences_annotated:
-       
+
         sentences_id.append(stn.rid)
         # print (stn.aspectID)
         # asp_ID = ""
@@ -159,7 +163,7 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
         # else:
         #     asp_ID = "None"
         # aspect_annot.append(asp_ID)
-     
+
         aspect_annot.append(stn.aspectID)
 
         wtokens = []
@@ -175,27 +179,27 @@ def saveAnnotatedSentences(m_sentences_annotated, q_sentences,filename,survey_id
         # ChiFinal(survey_id=survey_id,provider=provider,rid=stn.rid,aspects=stn.aspectID,original=q_sentences[count],sentences=sentences).save()
         # count+=1
     # ChiFinal(survey_id=survey_id,provider=provider,data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences}).save()
-    # print ("Check \n")  
+    # print ("Check \n")
     # data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences}
     # print (data)
     # print ("INFO",len(sentences_id),len(joined_sentences),len(aspect_annot),len(q_sentences))
     # print("Aspect Annot",aspect_annot)
-    output = pd.DataFrame( data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences}) 
-    output.to_csv(filename+"#"+survey_id+"#"+provider) 
+    output = pd.DataFrame( data={"RID":sentences_id, "sentences":joined_sentences, "aspects":aspect_annot, "original":q_sentences})
+    output.to_csv(filename+"#"+survey_id+"#"+provider)
 
 
-      
-    
+
+
 # Save final Aspect Keywords list
-def saveExtendedAspectKeywords(m_aspectkeywords_fixed,AOutfilename):    
+def saveExtendedAspectKeywords(m_aspectkeywords_fixed,AOutfilename):
     f = open(AOutfilename, 'w')
     for key, value in m_aspectkeywords_fixed.items():
         f.write(key + ': ')
         for v in value:
             f.write(v + ' ')
         f.write('\n')
-    f.close()        
-        
+    f.close()
+
 class ReviewP(object):
     def __init__(self,survey_id,provider,aspect_notation):
         self.sid= survey_id
@@ -222,11 +226,11 @@ class ReviewP(object):
         except Exception as  e:
             saveAnnotatedSentences(m_sentences_annotated, q_sentences,"aspect/Data/annotated_sentences_chi_final.csv",self.sid,self.p)
             saveExtendedAspectKeywords(m_aspectkeywords_fixed,'aspect/Data/restaurant_bootstrapped_keywords_chi_final.dat')
-       
-        
+
+
         print("Review Processing Done!")
 
-        
+
 if __name__=='__main__':
     # os.chdir('..')
     # os.chdir('..')
@@ -241,8 +245,8 @@ if __name__=='__main__':
     saveAnnotatedSentences(m_sentences_annotated, q_sentences,'Data/annotated_sentences_chi_final.csv')
     print ('Saving Extended Aspect Keyword list')
     saveExtendedAspectKeywords(m_aspectkeywords_fixed,'Data/restaurant_bootstrapped_keywords_chi_final.dat')
-    
-# if nltk errors go refer this 
+
+# if nltk errors go refer this
 # http://stackoverflow.com/questions/4867197/failed-loading-english-pickle-with-nltk-data-load
 # http://stackoverflow.com/questions/8590370/how-to-do-pos-tagging-using-the-nltk-pos-tagger-in-python
 # Zurez

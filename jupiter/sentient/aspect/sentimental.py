@@ -2,13 +2,12 @@ import csv
 from textblob import TextBlob
 import os
 
-from jupiter.sentient.aspect.models.model import ChiFinal,SentR
+from jupiter.sentient.aspect.models.model import ChiFinal, SentR
 
-
-provider="none"
-survey_id="none"
-
+provider = "none"
+survey_id = "none"
 filename = "jupiter/sentient/Data/annotated_sentences_chi_final.csv"
+
 def get_sentiment(text):
 	blob = TextBlob(text)
 	sentence_sentiment = blob.sentences[0].sentiment.polarity
@@ -30,17 +29,17 @@ class Sentiment():
 			survey_id= self.sid[0]
 		else:survey_id=self.sid
 		data = []
-		
+
 		try:
 			filename="jupiter/sentient/aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
-			with open(filename, "rt") as csvfile:	
+			with open(filename, "rt") as csvfile:
 				spamreader = csv.reader(csvfile)
 			# spamreader=ChiFinal.objects(survey_id=self.sid)
 				for row in spamreader:
 					data.append(row)
 		except:
 			filename="aspect/Data/annotated_sentences_chi_final.csv#"+survey_id+"#"+self.p
-			with open(filename, "rt") as csvfile:	
+			with open(filename, "rt") as csvfile:
 				spamreader = csv.reader(csvfile)
 			# spamreader=ChiFinal.objects(survey_id=self.sid)
 				for row in spamreader:
@@ -62,7 +61,7 @@ class Sentiment():
 			# sentiment = get_sentiment(sentence)
 			# #print("sent",sentiment)
 			# line=[]
-			
+
 			# line = data[i]
 			sentence = data[i][3]
 			sentiment = get_sentiment(sentence)
@@ -70,10 +69,10 @@ class Sentiment():
 			line.append(sentiment)
 			# print ("line",line)
 			# print ("Saving SentR",survey_id)
-			
+
 			SentR(provider=self.p,survey_id=survey_id,line=line).save()
 			# writer.writerow(line)
 		#print("Sentiment Done")
+
 if __name__ == '__main__':
-	
 	Sentiment("1","2").run()

@@ -1,1 +1,0 @@
-ASPECTS= ["ambience","value_for_money","room_service","cleanliness","amenities"]
