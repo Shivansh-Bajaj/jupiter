@@ -35,17 +35,3 @@ class WordCloudD(Document):
 	provider = StringField()
 	survey_id = StringField()
 	wc = DictField()
-
-class AspectsPolarityCount(Document):
-	review_obj_id = StringField(unique=True)
-	hashtable = DictField()
-	# Structure of `hashtable` field:
-	# {
-	# 	'aspect_name_1': [positive_count, negative_count, neutral_count],
-	# 	...
-	# 	'aspect_name_n': [positive_count, negative_count, neutral_count]
-	# }
-
-class AspectRelatedWords(Document):
-	aspect_name = StringField()
-	related_words = ListField()
