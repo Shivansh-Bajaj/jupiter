@@ -16,7 +16,6 @@ class Reviews(DynamicDocument):
 	date_added = DateTimeField()
 	review_link = StringField()
 	datetime = DateTimeField()
-	ml_completed = BooleanField(default=False)
 
 class Scraped(Document):
 	provider = StringField()
