@@ -24,6 +24,6 @@ mongo_params = {
     'port': 27017
 }
 
-mongo_dbi = 'qwer'  # Should be same as the survaider-app
+mongo_dbi = 'survaider'  # Should be same as the survaider app.
 
 providers = ['zomato', 'tripadvisor']
