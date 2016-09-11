@@ -1,10 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# Survaider
+
 import csv
 import os
 
 def aspect_rating(review_rows, aspect_rows, overall):
 	positive_rows = [row for row in aspect_rows if row[2] == 'Positive']
 	negative_rows = [row for row in aspect_rows if row[2] == 'Negative']
-	
+
 	if len(aspect_rows) == 0:
 		y = overall
 	else:
@@ -48,9 +52,7 @@ with open('Data/reviews.csv', "rt") as csvfile:
 last_review_ID = max(list(map(int,[row[0] for row in data])))
 
 for review_ID in range(1, last_review_ID):
-
 	review_rows = [row for row in data if row[0] == str(review_ID)]
-
 	food_rows = [row for row in review_rows if row[1] == '0']
 	service_rows = [row for row in review_rows if row[1] == '1']
 	price_rows = [row for row in review_rows if row[1] == '2']
@@ -58,7 +60,7 @@ for review_ID in range(1, last_review_ID):
 
 	overall = overall_ratings[review_ID]
 
-	if len(review_rows) !=0 :
+	if len(review_rows) != 0:
 		AR_food = aspect_rating(review_rows, food_rows, overall)
 		AR_service = aspect_rating(review_rows, service_rows, overall)
 		AR_price = aspect_rating(review_rows, price_rows, overall)
@@ -66,7 +68,7 @@ for review_ID in range(1, last_review_ID):
 		AR_food = overall
 		AR_service = overall
 		AR_price = overall
-	
+
 	# OUTPUT
 	# print (review_rows)
 	# print ("Food: ", AR_food, " Service: ", AR_service, " Price: ", AR_price)

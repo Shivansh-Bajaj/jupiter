@@ -58,7 +58,7 @@ class facebookCollector(object):
                     review_identifier=content[0:25]+r
                     sentiment=Senti(content).sent(aspect)
                     try:
-                         save=Reviews(provider=self.provider,review_identifier=review_identifier,survey_id=self.survey_id,date_added=review_date,review=content,rating=str(aspect),sentiment=sentiment,review_url=review_url).save()
+                         save=Reviews(provider=self.provider,review_identifier=review_identifier,survey_id=self.survey_id,date_added=review_date,review=content,rating=str(aspect),sentiment=sentiment).save()
                          print("review saved from page id:"+facebook_page_id+"\nreview idenifier:"+review_identifier+"\n*******************\n")
                     except Exception as e:
                         print("following exception occur while saving review",e)

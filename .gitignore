@@ -58,8 +58,12 @@ docs/_build/
 # PyBuilder
 target/
 
-#Ipython Notebook
+# Ipython Notebook
 .ipynb_checkpoints
+
 Data/*
 *tripadvisor
 *zomato
+
+# Redis server temp storage
+*.rdb
