@@ -8,7 +8,7 @@ import csv
 from jupiter.sentient.model import BookingQ,facebookDetails,facebookQ
 from mongoengine import *
 
-file_name="jupiter/sentient/custom_data/webcrs/booking.csv"
+file_name="jupiter/sentient/custom_data/webcrs/facebook.csv"
 class Relation(Document):
     """docstring for Relation"""
     survey_id = StringField()
@@ -28,6 +28,7 @@ class CustomTask(object):
         self.c=custom_survey_id
         self.b=buffer_n
         self.aspect_list=[""]
+        self.f=file_name
         self.base_url="https://graph.facebook.com/v2.7/me?fields=id,name,ratings"
     def name_to_id(self,name):
             name = name.replace(" ","")
@@ -94,16 +95,22 @@ class CustomTask(object):
 
     def get_facebook_pages(self):
         try:
-            facebook_obj=facebookDetails.objects(user_id=self.c)
-            for i in facebook_obj:
-                self.add_task(i['access_token'],i['user_id'],i['facebook_page_id'])
-                self.add_relation(i['user_id'])
-                print (i['access_token'],"added")
-                self.add_aspects(self.c)
-                self.add_providers(self.c)
+            with open(self.f,"rt") as f:
+                reader= list(csv.reader(f))
+                if self.b != None:
+                        reader= reader[self.b:]
+                        pass
+                for i in reader:
+                    facebook_obj=facebookDetails.objects(user_id=i[1])
+                    for i in facebook_obj:
+                        self.add_task(i['access_token'],i['user_id'],i['facebook_page_id'])
+                        self.add_relation(i['user_id'])
+                        print (i['user_id'],"added")
+            self.add_aspects(self.c)
+            self.add_providers(self.c)
         except Exception as e:
             print("following exception occur",e)
 
 if __name__ == '__main__':
 	# main()
-    CustomTask("jgBgKALz4mA3dNa5J36",2).get_facebook_pages()
+    CustomTask("jgBgKALz4mA3dNa5J36",1).get_facebook_pages()

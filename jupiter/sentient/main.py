@@ -6,12 +6,6 @@ from jupiter.sentient.aspect.aspectratings import AspectR
 
 
 from jupiter.sentient.reviews.nlp import WordCloud
-<<<<<<< HEAD
-from jupiter.sentient.reviews.holidaypool import HolidayIQ
-from jupiter.sentient.reviews.bookingpool import Booking
-=======
->>>>>>> d67bd6ed19345d19064aebff4a681546f8ded5d3
-
 
 
 # except:
@@ -43,7 +37,9 @@ class Sentient(object):
 		if "booking.com" in self.u:
 			from jupiter.sentient.reviews.bookingpool import Booking
 			Booking(self.u,self.sid).get_data()
-
+		if "facebook" in self.u:
+			from jupiter.sentient.reviews.facebookCollector import facebookCollector
+			facebookCollector(self.sid).run()
 	def wordcloud(self):
 		WordCloud(self.sid,self.p).wc()
 	def run_ml(self):
@@ -70,9 +66,5 @@ if __name__ == '__main__':
 	url="http://www.booking.com/hotel/in/swissa-tel-goa.html?label=gen173nr-1FCAEoggJCAlhYSDNiBW5vcmVmaGyIAQGYATG4AQ_IAQ_YAQHoAQH4AQKoAgM;sid=69a80e530b4bd33d6a2ce0e128061485;dcid=12;dest_id=4127;dest_type=region;dist=0;group_adults=2;room1=A%2CA;sb_price_type=total;srfid=39183e2a96da4c1e9df94a8b1555fa36ec6494ddX4;type=total;ucfs=1&"
 	survey_id="vOAWLlOmAZyY23AdmZy"
 	provider="booking"
-<<<<<<< HEAD
-	Sentient(url,survey_id,provider,["ambience","value_for_money","room_service","cleanliness","amenities"]).run()
 
-=======
 	Sentient(url,survey_id,provider,["ambience","value_for_money","room_service","cleanliness","amenities"]).run()
->>>>>>> d67bd6ed19345d19064aebff4a681546f8ded5d3

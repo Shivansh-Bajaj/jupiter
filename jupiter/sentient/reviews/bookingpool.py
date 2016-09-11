@@ -7,14 +7,9 @@ from mongoengine import ValidationError, NotUniqueError
 import sys
 import re
 import datetime
-try:
-	from jupiter.sentient.reviews.models.model import Reviews,Record
-	from jupiter.sentient.reviews.nlp import Senti
-	from jupiter.sentient.model import AspectQ
-except Exception as e:
-	from reviews.models.model import Reviews,Record
-	from reviews.nlp import Senti
-	from sentient.model import AspectQ
+from jupiter.sentient.reviews.models.model import Reviews,Record
+from jupiter.sentient.reviews.nlp import Senti
+from jupiter.sentient import model
 
 
 #except:
@@ -88,7 +83,7 @@ class Booking(object):
 		current_url=self.url
 		response=urlopen(current_url)
 		soup=BeautifulSoup(response,"html.parser")
-		aspect_q=AspectQ.objects(survey_id=self.sid)
+		aspect_q=model.AspectQ.objects(survey_id=self.sid)
 		# print ("\nFor survey: ", len(aspect_q[0].survey_id))
 		time_review = aspect_q[0].time_review
 		last_update=aspect_q[0].last_update

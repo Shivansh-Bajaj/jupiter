@@ -8,14 +8,9 @@ import sys
 import re
 from jupiter.sentient import model
 from datetime import datetime as dt
-try:
-	from jupiter.sentient.reviews.models.model import Reviews,Record
-	from jupiter.sentient.reviews.nlp import Senti
-	from jupiter.sentient.model import AspectQ
-except:
-	from reviews.models.model import Reviews,Record
-	from reviews.nlp import Senti
-	from sentient.model import AspectQ
+from jupiter.sentient.reviews.models.model import Reviews,Record
+from jupiter.sentient.reviews.nlp import Senti
+from jupiter.sentient import model
 
 class HolidayIQ(object):
 	"""docstring for"""
